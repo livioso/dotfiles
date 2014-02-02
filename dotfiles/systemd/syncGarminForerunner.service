@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync Garmin Forerunner 610 on with Garmin Connect
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/home/livio/Desktop/Various/doSyncForerunner610.sh'
+
+[Install]
+WantedBy=multi-user.target
