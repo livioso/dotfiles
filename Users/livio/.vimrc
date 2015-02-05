@@ -50,6 +50,7 @@ if has("gui_running")
 	set guifont=Source\ Code\ Pro:h19
 	set cursorline
 	set transparency=2
+	highlight NonText ctermfg=bg guifg=bg
 endif
 
 " jump to last cursor position unless 
