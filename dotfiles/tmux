@@ -1,0 +1,10 @@
+et-option -g default-command "reattach-to-user-namespace -l fish"
+set-window-option -g automatic-rename off
+set-option -g mouse-select-pane on
+set-option -g allow-rename off
+new -A -s 'main' -n 'servers' 'ls' # troubled line
+set -t main set-remain-on-exit on
+neww -n 'servers' ls
+splitw -h -p 35 htop
+selectw -t 0
+
