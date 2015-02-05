@@ -49,6 +49,7 @@ if has("gui_running")
 	colorscheme spacegray
 	set guifont=Source\ Code\ Pro:h19
 	set cursorline
+	set transparency=2
 endif
 
 " jump to last cursor position unless 
