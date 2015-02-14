@@ -12,6 +12,9 @@ set noswapfile
 " show command completion
 set wildmenu 
 
+" netrw show tree view
+let g:netrw_liststyle=3
+
 " disable all bells
 set noerrorbells " no beep on error
 set t_vb=        " no beep on <ESC>
