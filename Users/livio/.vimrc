@@ -10,7 +10,7 @@ set nobackup
 set noswapfile
 
 " show command completion
-set wildmenu 
+set wildmenu
 
 " netrw show tree view
 let g:netrw_liststyle=3
@@ -20,9 +20,9 @@ set noerrorbells " no beep on error
 set t_vb=        " no beep on <ESC>
 set novisualbell " no flashing screen on error
 
-" tab settings 
+" tab settings
 set smartindent
-set tabstop=2 
+set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
@@ -41,14 +41,14 @@ set foldnestmax=10    "deepest fold is 10 levels
 set nofoldenable      "dont fold by default
 set foldlevel=1       "this is just what i use
 
-" scroll 4x faster 
+" scroll 4x faster
 nnoremap <C-e> 4<C-e>
 nnoremap <C-y> 4<C-y>
 
 " remove annoying startup message
 set shortmess+=I
 
-if has("gui_running")	
+if has("gui_running")
 	colorscheme spacegray
 	set guifont=Source\ Code\ Pro:h19
 	set cursorline
@@ -56,9 +56,20 @@ if has("gui_running")
 	highlight NonText ctermfg=bg guifg=bg
 endif
 
-" jump to last cursor position unless 
+" jump to last cursor position unless
 " it is invalid in a event handler
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
+
+" show trailing whitespaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
