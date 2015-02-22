@@ -73,3 +73,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" trim trailing whitespaces
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
