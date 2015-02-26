@@ -8,7 +8,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
-" Plug 'bling/vim-airline'
+Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
 " Plug 'airblade/vim-gitgutter'
@@ -16,7 +16,7 @@ Plug 'kien/ctrlp.vim'
 call plug#end()
 
 " Enable vim airline
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Syntastic (recommended settings)
 set statusline+=%#warningmsg#
