@@ -1,4 +1,5 @@
 set nocompatible
+set backspace=indent,eol,start
 set langmenu=en_US.UTF-8
 syntax on
 set number
