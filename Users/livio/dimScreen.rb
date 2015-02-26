@@ -3,7 +3,7 @@
 require 'optparse'
 
 def main
-  screenDimCommand = ''
+  screenDimCommand = '
   OptionParser.new do |opts|
     opts.banner = "Usage: dim-screen.rb [options]"
     opts.on("-d", "--dim", "Dim screen to convenient level.") do |v|

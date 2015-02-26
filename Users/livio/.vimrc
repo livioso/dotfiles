@@ -11,7 +11,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
-" Plug 'airblade/vim-gitgutter'
+Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
 " Plug 'tpope/vim-fugitive'
 call plug#end()
 
@@ -27,8 +28,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
@@ -70,7 +69,6 @@ set title
 
 " status line settings
 set laststatus=2 " always show the statusline
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(Line\ %l,\ Column\ %c%)\ (%P)
 
 " searching settings
 set ignorecase  " ignore case in search
@@ -91,10 +89,10 @@ nnoremap <C-y> 4<C-y>
 set shortmess+=I
 
 if has("gui_running")
-	set guifont=Source\ Code\ Pro:h19
+	set guifont=Inconsolata\ zi4\ bold:h18
 	set guitablabel=%t
+	set guioptions-=r
 	set cursorline
-	" set transparency=2
 	highlight NonText ctermfg=bg guifg=bg
 endif
 
