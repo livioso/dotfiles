@@ -12,7 +12,7 @@ Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
 " Plug 'airblade/vim-gitgutter'
-""  Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Enable vim airline
@@ -64,6 +64,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+" just show file name in tab
+let &titlestring = @%
+set title
+
 " status line settings
 set laststatus=2 " always show the statusline
 set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(Line\ %l,\ Column\ %c%)\ (%P)
@@ -88,6 +92,7 @@ set shortmess+=I
 
 if has("gui_running")
 	set guifont=Source\ Code\ Pro:h19
+	set guitablabel=%t
 	set cursorline
 	" set transparency=2
 	highlight NonText ctermfg=bg guifg=bg
