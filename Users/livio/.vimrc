@@ -1,10 +1,47 @@
 set nocompatible
+set shell=/bin/bash
+
+" Vim Plug (https://github.com/junegunn/vim-plug)
+if empty(glob("~/.vim/autoload/plug.vim"))
+	execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'chriskempson/base16-vim'
+" Plug 'bling/vim-airline'
+Plug 'scrooloose/syntastic'
+Plug 'kien/ctrlp.vim'
+" Plug 'airblade/vim-gitgutter'
+""  Plug 'tpope/vim-fugitive'
+call plug#end()
+
+" Enable vim airline
+" let g:airline#extensions#tabline#enabled = 1
+
+" Syntastic (recommended settings)
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = '✘'
+let g:syntastic_warning_symbol = "▲"
+
+" General settings
+let base16colorspace=256 " Access colors present in 256 colorspace
+set t_Co=256
+set background=dark
+colorscheme base16-ocean
 set backspace=indent,eol,start
+set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
-syntax on
 set number
 set history=600
-set cmdheight=3
+set cmdheight=4
+syntax on
 
 " no need for it ~
 set nobackup
@@ -50,10 +87,9 @@ nnoremap <C-y> 4<C-y>
 set shortmess+=I
 
 if has("gui_running")
-	colorscheme spacegray
 	set guifont=Source\ Code\ Pro:h19
 	set cursorline
-	set transparency=2
+	" set transparency=2
 	highlight NonText ctermfg=bg guifg=bg
 endif
 
