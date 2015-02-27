@@ -13,11 +13,12 @@ Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Enable vim airline
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
 
 " Syntastic (recommended settings)
 set statusline+=%#warningmsg#
