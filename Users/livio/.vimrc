@@ -6,24 +6,23 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 	execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
+" Order is important
+" vim-fugitive before vim-airline!
 call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
-Plug 'bling/vim-airline'
-Plug 'scrooloose/syntastic'
-Plug 'kien/ctrlp.vim'
-Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 " Enable vim airline
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
-
-" Syntastic (recommended settings)
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+let g:airline_section_z="%L Lines : %P"
+let g:airline_section_y="Line\ %l\ : Column\ %c%)"
+let g:airline_section_x="[%{&ff} : %{strlen(&fenc)?&fenc:'none'}]"
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -63,10 +62,6 @@ set smartindent
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
-" just show file name in tab
-let &titlestring = @%
-set title
 
 " status line settings
 set laststatus=2 " always show the statusline
