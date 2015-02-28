@@ -1,4 +1,5 @@
-set PATH /usr/bin /bin /usr/sbin /sbin /usr/local/bin /opt/X11/bin /usr/local/MacGPG2/bin /usr/texbin/ /Users/livio/Android/sdk/platform-tools/ /Users/livio/Android/sdk/tools/
+set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /usr/local/MacGPG2/bin /usr/texbin/ /Users/livio/Android/sdk/platform-tools/ /Users/livio/Android/sdk/tools/
+
 
 # base16 Shell
 eval sh .config/base16-shell/base16-ocean.dark.sh
