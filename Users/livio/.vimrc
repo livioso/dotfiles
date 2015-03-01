@@ -23,7 +23,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z="%L Lines : %P"
 let g:airline_section_y="Line\ %l\ : Column\ %c%)"
 let g:airline_section_x="[%{&ff} : %{strlen(&fenc)?&fenc:'none'}]"
-
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -48,6 +48,7 @@ set noswapfile
 
 " show command completion
 set wildmenu
+set wildignore+=*/node_modules/*
 
 " netrw show tree view
 let g:netrw_liststyle=3
@@ -71,6 +72,10 @@ set ignorecase  " ignore case in search
 set incsearch   " incremental search
 nnoremap <cr> :nohlsearch<cr> " clear search on when hitting return
 
+" buffer settings
+nnoremap gp :bp<CR> " move to the previous buffer with gp
+nnoremap gn :bn<CR> " move to the next buffer with gn
+
 " folding setting using za, zm and zr
 set foldmethod=indent "fold based on indent
 set foldnestmax=10    "deepest fold is 10 levels
@@ -89,6 +94,7 @@ if has("gui_running")
 	set guitablabel=%t
 	set guioptions-=r
 	set cursorline
+	set vb t_vb=
 	highlight NonText ctermfg=bg guifg=bg
 endif
 
@@ -100,8 +106,6 @@ autocmd BufReadPost *
   \ endif
 
 " show trailing whitespaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
