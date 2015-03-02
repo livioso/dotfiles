@@ -7,6 +7,17 @@
 	smudge = git media smudge %f
 [color]
 	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	pager = true
+[color "status"]
+	added = green
+	changed = red bold
+	untracked = magenta bold
+[color "branch"]
+	remote = yellow
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
