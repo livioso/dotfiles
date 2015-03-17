@@ -18,16 +18,19 @@ Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 call plug#end()
 
-" Enable vim airline
+" Setup vim airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_z="%L Lines : %P"
 let g:airline_section_y="Line\ %l\ : Column\ %c%)"
 let g:airline_section_x="[%{&ff} : %{strlen(&fenc)?&fenc:'none'}]"
 let g:airline#extensions#tabline#fnamemod = ':t'
+" Setup Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" Setup Ctrl + P
+let g:ctrlp_show_hidden = 1
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
@@ -58,8 +61,11 @@ set noerrorbells " no beep on error
 set t_vb=        " no beep on <ESC>
 set novisualbell " no flashing screen on error
 
+" indentation settings
+set autoindent
+filetype plugin indent on
+
 " tab settings
-set smartindent
 set expandtab
 set tabstop=2
 set softtabstop=2
