@@ -106,6 +106,9 @@ if has("gui_running")
 	highlight NonText ctermfg=bg guifg=bg
 endif
 
+" printing options (print using :hardcopy
+set printoptions=portrait:n "landscape
+
 " jump to last cursor position unless
 " it is invalid in a event handler
 autocmd BufReadPost *
