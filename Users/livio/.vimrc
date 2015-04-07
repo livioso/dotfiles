@@ -3,7 +3,7 @@ set shell=/bin/bash
 
 " Vim Plug (https://github.com/junegunn/vim-plug)
 if empty(glob("~/.vim/autoload/plug.vim"))
-	execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 " Order is important
@@ -98,13 +98,13 @@ nnoremap <C-y> 4<C-y>
 set shortmess+=I
 
 if has("gui_running")
-	set guifont=Inconsolata\ zi4\ bold:h18
-	set guitablabel=%t
-	set guioptions-=r
-	set cursorline
+  set guifont=Inconsolata\ zi4\ bold:h18
+  set guitablabel=%t
+  set guioptions-=r
+  set cursorline
   set fullscreen
-	set vb t_vb=
-	highlight NonText ctermfg=bg guifg=bg
+  set vb t_vb=
+  highlight NonText ctermfg=bg guifg=bg
 endif
 
 " printing options (print using :hardcopy)
@@ -127,5 +127,5 @@ autocmd BufWinLeave * call clearmatches()
 
 " trim trailing whitespaces
 function! TrimWhiteSpace()
-    %s/\s\+$//e
+  %s/\s\+$//e
 endfunction
