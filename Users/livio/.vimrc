@@ -43,7 +43,7 @@ set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
 set number
 set history=600
-set cmdheight=4
+set cmdheight=8
 syntax on
 
 " no need for it ~
@@ -102,6 +102,7 @@ if has("gui_running")
 	set guitablabel=%t
 	set guioptions-=r
 	set cursorline
+  set fullscreen
 	set vb t_vb=
 	highlight NonText ctermfg=bg guifg=bg
 endif
