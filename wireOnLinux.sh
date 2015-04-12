@@ -1,10 +1,10 @@
 #! /bin/bash
 
-rm /home/livio/.vimrc
-ln Users/livio/.vimrc /home/livio/.vimrc
+rm ~/.vimrc
+ln Users/livio/.vimrc ~/.vimrc
 
-rm /home/livio/.vim/colors/spacegray.vim
-ln Users/livio/.vim/colors/spacegray.vim /home/livio/.vim/colors/spacegray.vim
+rm ~/.tmux.conf
+ln Users/livio/.tmux.conf ~/.tmux.conf
 
-rm /home/livio/.vim/colors/ir_black.vim
-ln Users/livio/.vim/colors/ir_black.vim /home/livio/.vim/colors/ir_black.vim
+rm ~/.gitconfig
+ln Users/livio/.gitconfig ~/.gitconfig
