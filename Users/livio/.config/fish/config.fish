@@ -2,7 +2,7 @@ set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /usr/local/Ma
 
 
 # base16 Shell
-eval sh .config/base16-shell/base16-ocean.dark.sh
+eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
 
 function sublime
 	/Applications/Sublime\ Text\ 3.app/Contents/MacOS/Sublime\ Text $argv
