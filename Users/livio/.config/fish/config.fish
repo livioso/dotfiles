@@ -7,3 +7,7 @@ eval sh .config/base16-shell/base16-ocean.dark.sh
 function sublime
 	/Applications/Sublime\ Text\ 3.app/Contents/MacOS/Sublime\ Text $argv
 end
+
+function refreshSpotlightIndex
+  sudo mdutil -E /
+end
