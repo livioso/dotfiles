@@ -17,6 +17,7 @@ Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'Keithbsmiley/swift.vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " Setup vim airline
