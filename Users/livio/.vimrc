@@ -45,6 +45,7 @@ set langmenu=en_US.UTF-8
 set number
 set history=600
 set cmdheight=8
+set scrolloff=4
 set nowrap
 syntax on
 
