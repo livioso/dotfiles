@@ -45,6 +45,7 @@ set langmenu=en_US.UTF-8
 set number
 set history=600
 set cmdheight=8
+set nowrap
 syntax on
 
 " no need for it ~
@@ -62,6 +63,10 @@ let g:netrw_liststyle=3
 set noerrorbells " no beep on error
 set t_vb=        " no beep on <ESC>
 set novisualbell " no flashing screen on error
+
+" set leader key to comma
+let mapleader = ","
+map <leader> :vsplit<cr>
 
 " indentation settings
 set autoindent
