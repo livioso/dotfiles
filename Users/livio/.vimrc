@@ -67,7 +67,6 @@ set novisualbell " no flashing screen on error
 
 " set leader key to comma
 let mapleader = ","
-map <leader> :vsplit<cr>
 
 " indentation settings
 set autoindent
