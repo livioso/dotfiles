@@ -19,6 +19,7 @@ Plug 'godlygeek/tabular'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-vinegar'
 call plug#end()
 
 " Setup vim airline
