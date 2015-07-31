@@ -39,6 +39,9 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Setup Ctrl + P
 let g:ctrlp_show_hidden = 1
+" Setup SnipMate (<tab> used by ycm use <ss>)
+imap ss <esc>a<Plug>snipMateNextOrTrigger
+smap ss <Plug>snipMateNextOrTrigger
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
