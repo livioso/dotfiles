@@ -20,6 +20,10 @@ Plug 'Keithbsmiley/swift.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-vinegar'
+Plug 'garbas/vim-snipmate'
+Plug 'MarcWeber/vim-addon-mw-utils' "required by garbas/vim-snipmate
+Plug 'tomtom/tlib_vim' "required by garbas/vim-snipmate
+Plug 'honza/vim-snippets' "required by garbas/vim-snipmate
 call plug#end()
 
 " Setup vim airline
