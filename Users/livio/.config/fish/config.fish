@@ -16,3 +16,6 @@ end
 # to have a working color scheme for more information see:
 # https://github.com/chriskempson/base16-shell
 eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
+
+# Colorize grep
+alias grep "grep -n --color"
