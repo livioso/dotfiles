@@ -19,3 +19,6 @@ eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
 
 # Colorize grep
 alias grep "grep -n --color"
+
+# run fish in vim mode
+fish_vi_mode
