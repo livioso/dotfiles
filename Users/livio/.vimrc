@@ -52,7 +52,8 @@ set backspace=indent,eol,start
 set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
 set number
-set history=600
+set history=1000
+set undolevels=1000
 set cmdheight=8
 set scrolloff=4
 set nowrap
