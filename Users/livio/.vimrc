@@ -24,6 +24,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'MarcWeber/vim-addon-mw-utils' "required by garbas/vim-snipmate
 Plug 'tomtom/tlib_vim' "required by garbas/vim-snipmate
 Plug 'honza/vim-snippets' "required by garbas/vim-snipmate
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 " Setup vim airline
@@ -37,11 +38,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 " Setup Ctrl + P
 let g:ctrlp_show_hidden = 1
 " Setup SnipMate (<tab> used by ycm use <ss>)
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
+" Setup vim-jsx
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
