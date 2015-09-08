@@ -24,6 +24,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'MarcWeber/vim-addon-mw-utils' "required by garbas/vim-snipmate
 Plug 'tomtom/tlib_vim' "required by garbas/vim-snipmate
 Plug 'honza/vim-snippets' "required by garbas/vim-snipmate
+Plug 'justinj/vim-react-snippets'
 Plug 'mxw/vim-jsx'
 call plug#end()
 
