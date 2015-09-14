@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/syntastic'
@@ -26,6 +27,8 @@ Plug 'tomtom/tlib_vim' "required by garbas/vim-snipmate
 Plug 'honza/vim-snippets' "required by garbas/vim-snipmate
 Plug 'justinj/vim-react-snippets'
 Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
 call plug#end()
 
 " Setup vim airline
@@ -145,6 +148,9 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" saving read only files (sudo tee trick)
+cmap w!! w !sudo tee % >/dev/null
 
 " trim trailing whitespaces
 function! TrimWhiteSpace()
