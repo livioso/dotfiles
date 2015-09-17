@@ -20,5 +20,8 @@ eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
 # Colorize grep
 alias grep "grep -n --color"
 
+# Little helper alias for SyncMe
+alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
+
 # run fish in vim mode
 fish_vi_mode
