@@ -108,6 +108,10 @@ nnoremap <cr> :nohlsearch<cr> " clear search on when hitting return
 nnoremap gp :bp<CR> " move to the previous buffer with gp
 nnoremap gn :bn<CR> " move to the next buffer with gn
 
+" split view settings
+set splitbelow " open below instead of above
+set splitright " open right instead of left
+
 " folding setting using za, zm and zr
 set foldmethod=indent "fold based on indent
 set foldnestmax=10    "deepest fold is 10 levels
