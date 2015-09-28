@@ -17,7 +17,12 @@
 	changed = red bold
 	untracked = magenta bold
 [color "branch"]
-	remote = yellow
+  remote = yellow
+[color "diff-highlight"]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
@@ -36,4 +41,6 @@
 [push]
 	default = simple
 [core]
-	editor = vim
+  editor = vim
+  pager = bash -lc 'diff-highlight | less -r' -
+
