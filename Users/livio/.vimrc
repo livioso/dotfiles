@@ -156,6 +156,10 @@ autocmd BufWinLeave * call clearmatches()
 " saving read only files (sudo tee trick)
 cmap w!! w !sudo tee % >/dev/null
 
+function! ES6Linting()
+  let g:syntastic_javascript_checkers = ['jslint']
+endfunction
+
 " trim trailing whitespaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
