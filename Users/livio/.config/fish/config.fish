@@ -1,4 +1,4 @@
-set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /usr/local/MacGPG2/bin /usr/texbin/ /Users/livio/Android/sdk/platform-tools/ /Users/livio/Android/sdk/tools/ /usr/local/share/git-core/contrib/diff-highlight/
+set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /Users/livio/Android/sdk/platform-tools/ /Users/livio/Android/sdk/tools/ /usr/local/share/git-core/contrib/diff-highlight/
 
 # OS-specific settings
 if [ (uname) = 'Linux' ]
