@@ -29,6 +29,7 @@ Plug 'justinj/vim-react-snippets'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'terryma/vim-expand-region'
 call plug#end()
 
 " Setup vim airline
@@ -50,6 +51,9 @@ imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
 " Setup vim-jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+" Setup vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
@@ -83,8 +87,8 @@ set noerrorbells " no beep on error
 set t_vb=        " no beep on <ESC>
 set novisualbell " no flashing screen on error
 
-" set leader key to comma
-let mapleader = ","
+" set leader key to space
+let mapleader = "\<Space>"
 
 " indentation settings
 set autoindent
@@ -121,6 +125,15 @@ set foldlevel=1       "this is just what i use
 " scroll 4x faster
 nnoremap <C-e> 4<C-e>
 nnoremap <C-y> 4<C-y>
+
+" copy and paste from system clipboard
+" with <leader>y and <leader>p
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " remove annoying startup message
 set shortmess+=I
