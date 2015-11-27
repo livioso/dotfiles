@@ -44,4 +44,5 @@
   editor = vim
   pager = bash -lc 'diff-highlight | less -r' -
 	ignorecase = false
-
+[branch "master"]
+    mergeoptions = --no-ff
