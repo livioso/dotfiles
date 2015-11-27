@@ -1,21 +1,21 @@
 [user]
-	name = Livio Bieri
-	email = livio@livio.li
+  name = Livio Bieri
+  email = livio@livio.li
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 [color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	pager = true
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  pager = true
 [color "status"]
-	added = green
-	changed = red bold
-	untracked = magenta bold
+  added = green
+  changed = red bold
+  untracked = magenta bold
 [color "branch"]
   remote = yellow
 [color "diff-highlight"]
@@ -24,25 +24,25 @@
   newNormal = "green bold"
   newHighlight = "green bold 22"
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	df = diff
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  df = diff
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
 [push]
-	default = simple
+  default = simple
 [core]
   editor = vim
   pager = bash -lc 'diff-highlight | less -r' -
-	ignorecase = false
+  ignorecase = false
 [branch "master"]
-    mergeoptions = --no-ff
+  mergeoptions = --no-ff
