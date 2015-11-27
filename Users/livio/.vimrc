@@ -135,6 +135,9 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+" save with <leader>w
+nnoremap <Leader>w :w<CR>
+
 " remove annoying startup message
 set shortmess+=I
 
