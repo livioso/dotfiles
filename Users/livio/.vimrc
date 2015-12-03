@@ -46,6 +46,7 @@ let g:syntastic_check_on_wq = 0
 " let g:syntastic_javascript_checkers = ['jslint'] " todo: change to eslint
 " Setup Ctrl + P
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 0
 " Setup SnipMate (<tab> used by ycm use <ss>)
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
