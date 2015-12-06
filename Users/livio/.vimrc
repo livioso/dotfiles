@@ -30,6 +30,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'terryma/vim-expand-region'
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " Setup vim airline
@@ -176,8 +177,10 @@ cmap w!! w !sudo tee % >/dev/null
 function! ES6Linting()
   let g:syntastic_javascript_checkers = ['jslint']
 endfunction
+nnoremap <Leader>2 :call ES6Linting() <CR>
 
 " trim trailing whitespaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
+nnoremap <Leader>1 :call TrimWhiteSpace() <CR>
