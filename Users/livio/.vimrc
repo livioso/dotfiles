@@ -75,7 +75,7 @@ syntax on
 
 " highlight current line
 set cursorline
-hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
+hi CursorLineNr ctermfg=DarkGreen
 
 " no need for it ~
 set nobackup
