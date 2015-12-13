@@ -75,7 +75,7 @@ syntax on
 
 " highlight current line
 set cursorline
-hi CursorLineNr ctermfg=DarkGreen
+hi CursorLineNr cterm=Bold ctermfg=DarkBlue
 
 " no need for it ~
 set nobackup
@@ -168,7 +168,7 @@ autocmd BufReadPost *
   \ endif
 
 " show trailing whitespaces
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=DarkRed guibg=DarkRed
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
