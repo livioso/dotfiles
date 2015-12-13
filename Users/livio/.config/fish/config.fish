@@ -1,4 +1,4 @@
-set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /Users/livio/Android/sdk/platform-tools/ /Users/livio/Android/sdk/tools/ /usr/local/share/git-core/contrib/diff-highlight/
+set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /usr/local/share/git-core/contrib/diff-highlight/
 
 # OS-specific settings
 if [ (uname) = 'Linux' ]
@@ -16,6 +16,9 @@ end
 # to have a working color scheme for more information see:
 # https://github.com/chriskempson/base16-shell
 eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
+
+# Anroid Home
+set -x ANDROID_HOME /usr/local/opt/android-sdk
 
 # Colorize grep
 alias grep "grep -n --color"
