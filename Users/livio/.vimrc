@@ -44,11 +44,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['jslint'] " todo: change to eslint
+let g:syntastic_javascript_checkers = ['jslint'] " eslint is too slow :(
 " Setup Ctrl + P
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
-" Setup SnipMate (<tab> used by ycm use <ss>)
+" Setup SnipMates(<tab> used by ycm use <ss>)
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
 " Setup vim-jsx
@@ -72,6 +72,10 @@ set cmdheight=8
 set scrolloff=4
 set nowrap
 syntax on
+
+" highlight current line
+set cursorline
+hi CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 " no need for it ~
 set nobackup
@@ -108,7 +112,7 @@ set laststatus=2 " always show the statusline
 " searching settings
 set ignorecase  " ignore case in search
 set incsearch   " incremental search
-nnoremap <cr> :nohlsearch<cr> " clear search on when hitting return
+nnoremap <CR> :nohlsearch<CR> " clear search on when hitting return
 
 " buffer settings
 nnoremap gp :bp<CR> " move to the previous buffer with gp
@@ -124,9 +128,22 @@ set foldnestmax=10    "deepest fold is 10 levels
 set nofoldenable      "dont fold by default
 set foldlevel=1       "this is just what i use
 
-" scroll 4x faster
-nnoremap <C-e> 4<C-e>
-nnoremap <C-y> 4<C-y>
+" scroll up / down fast(er) using ctrl+(jk)
+nnoremap <C-j> 4<C-e>
+nnoremap <C-k> 4<C-y>
+
+" personal <Leader> mappings
+map <Leader>w :w <CR>
+map <Leader>f <C-w><C-w>
+map <Leader>j <C-p>
+map <Leader>v :vsplit .<CR>
+map <Leader>q :q <CR>
+map <Leader>Q :q! <CR>
+map <Leader>erc :e ~/.vimrc <CR>
+map <Leader>src :source ~/.vimrc <CR>
+map <Leader>spr :vertical resize 100 <CR>
+map <Leader>trim :call TrimWhiteSpace() <CR>
+map <Leader>c :SyntasticCheck<CR>
 
 " copy and paste from system clipboard
 " with <leader>y and <leader>p
@@ -137,21 +154,8 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" save with <leader>w
-nnoremap <Leader>w :w<CR>
-
-" remove annoying startup message
+" remove startup message
 set shortmess+=I
-
-if has("gui_running")
-  set guifont=Inconsolata\ zi4\ bold:h18
-  set guitablabel=%t
-  set guioptions-=r
-  set cursorline
-  set fullscreen
-  set vb t_vb=
-  highlight NonText ctermfg=bg guifg=bg
-endif
 
 " printing options (print using :hardcopy)
 set printoptions=portrait:n "landscape
@@ -174,13 +178,7 @@ autocmd BufWinLeave * call clearmatches()
 " saving read only files (sudo tee trick)
 cmap w!! w !sudo tee % >/dev/null
 
-function! ES6Linting()
-  let g:syntastic_javascript_checkers = ['jslint']
-endfunction
-nnoremap <Leader>2 :call ES6Linting() <CR>
-
 " trim trailing whitespaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
-nnoremap <Leader>1 :call TrimWhiteSpace() <CR>
