@@ -112,7 +112,11 @@ set laststatus=2 " always show the statusline
 " searching settings
 set ignorecase  " ignore case in search
 set incsearch   " incremental search
-nnoremap <CR> :nohlsearch<CR> " clear search on when hitting return
+nnoremap <CR> :nohlsearch <CR> " clear search on when hitting return
+
+" in the quickfix window, <CR> is used to jump to the
+" error under the cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " buffer settings
 nnoremap gp :bp<CR> " move to the previous buffer with gp
@@ -143,7 +147,13 @@ map <Leader>erc :e ~/.vimrc <CR>
 map <Leader>src :source ~/.vimrc <CR>
 map <Leader>spr :vertical resize 100 <CR>
 map <Leader>trim :call TrimWhiteSpace() <CR>
-map <Leader>c :SyntasticCheck<CR>
+map <Leader>es :call ESLint() <CR>
+
+" search for word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
+
+" jump to tag
+nnoremap t <C-]>
 
 " copy and paste from system clipboard
 " with <leader>y and <leader>p
@@ -178,7 +188,27 @@ autocmd BufWinLeave * call clearmatches()
 " saving read only files (sudo tee trick)
 cmap w!! w !sudo tee % >/dev/null
 
+" use ag over grep
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  " ag for ctrlp / fast enough. need to cache
+  let g:ctrlp_user_command = 'ag %s -l -g ""'
+  let g:ctrlp_use_caching = 0
+else
+  echohl ErrorMsg
+  echomsg 'Missing ag: brew install ag'
+  echohl NONE<Paste>
+endif
+
 " trim trailing whitespaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
+endfunction
+
+function! BeautifyJson()
+  %!python -m json.tool
+endfunction
+
+function! ESLint()
+  !./node_modules/eslint/bin/eslint.js %
 endfunction
