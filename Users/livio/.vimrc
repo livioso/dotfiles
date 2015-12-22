@@ -31,6 +31,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'terryma/vim-expand-region'
 Plug 'joshdick/onedark.vim'
+Plug 'https://github.com/ternjs/tern_for_vim.git'
 call plug#end()
 
 " Setup vim airline
