@@ -31,9 +31,7 @@ alias sl "ls" # :-/
 # helper alias for SyncMe
 alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
 
-# helper alias for often used routes
-alias gofw "cd ~/Fashwell/karl/src/apps/reactnative-fashwell-app/Fashwell/"
-alias goip "cd ~/Dropbox/FHNW/ip5-foliage-engine/github/foliage-engine/"
-
 # run fish in vim mode
 fish_vi_mode
+
+source ~/.config/fish/fishmarks.fish
