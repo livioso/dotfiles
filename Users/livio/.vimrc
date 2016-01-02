@@ -62,7 +62,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let base16colorspace=256 " Access colors present in 256 colorspace
 set t_Co=256
 set background=dark
-colorscheme base16-ocean
+colorscheme base16-default
 set backspace=indent,eol,start
 set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
@@ -76,7 +76,7 @@ syntax on
 
 " highlight current line
 set cursorline
-hi CursorLineNr cterm=Bold ctermfg=DarkBlue
+hi CursorLineNr cterm=Bold ctermfg=LightRed
 
 " no need for it ~
 set nobackup
@@ -135,6 +135,7 @@ set foldlevel=1       "this is just what i use
 
 " scroll up / down fast(er) using ctrl+(jk)
 nnoremap <C-j> 4<C-e>
+
 nnoremap <C-k> 4<C-y>
 
 " personal <Leader> mappings

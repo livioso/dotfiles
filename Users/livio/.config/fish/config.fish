@@ -12,7 +12,7 @@ end
 # using Base16-Shell thus we need to do this in order to
 # to have a working color scheme for more information see:
 # https://github.com/chriskempson/base16-shell
-eval sh $HOME/.config/base16-shell/base16-ocean.dark.sh
+eval sh $HOME/.config/base16-shell/base16-default.dark.sh
 
 # colorize grep
 alias grep "grep -n --color"
