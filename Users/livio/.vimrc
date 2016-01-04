@@ -40,6 +40,8 @@ let g:airline_section_z="%L Lines : %P"
 let g:airline_section_y="Line\ %l\ : Column\ %c%)"
 let g:airline_section_x="[%{&ff} : %{strlen(&fenc)?&fenc:'none'}]"
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 " Setup Syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
