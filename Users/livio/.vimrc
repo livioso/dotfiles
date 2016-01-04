@@ -62,7 +62,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let base16colorspace=256 " Access colors present in 256 colorspace
 set t_Co=256
 set background=dark
-colorscheme base16-default
+colorscheme base16-eighties
 set backspace=indent,eol,start
 set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
@@ -76,7 +76,7 @@ syntax on
 
 " highlight current line
 set cursorline
-hi CursorLineNr cterm=Bold ctermfg=LightRed
+hi CursorLineNr cterm=Bold ctermfg=Blue
 
 " no need for it ~
 set nobackup
