@@ -43,6 +43,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " Setup Syntastic
+let g:syntastic_error_symbol = "E>"
+let g:syntastic_warning_symbol = "W>"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1

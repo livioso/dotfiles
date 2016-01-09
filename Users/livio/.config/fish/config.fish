@@ -27,6 +27,7 @@ alias n "nvim"
 alias n. "nvim ."
 alias n, "nvim ."
 alias sl "ls" # :-/
+alias claer "clear"
 
 # helper alias for SyncMe
 alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
