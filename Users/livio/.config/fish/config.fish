@@ -38,6 +38,9 @@ set fish_greeting ""
 # run fish in vim mode
 fish_vi_mode
 
+# corrects your previous console command
+eval (thefuck --alias | tr '\n' ';')
+
 function fish_mode_prompt --description "Displays the current mode"
   # Do nothing if not in vi mode
   if set -q __fish_vi_mode
