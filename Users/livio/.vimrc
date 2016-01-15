@@ -139,7 +139,6 @@ set foldlevel=1       "this is just what i use
 
 " scroll up / down fast(er) using ctrl+(jk)
 nnoremap <C-j> 4<C-e>
-
 nnoremap <C-k> 4<C-y>
 
 " personal <Leader> mappings

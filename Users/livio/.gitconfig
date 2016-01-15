@@ -34,6 +34,8 @@
   ci = commit
   st = status
   df = diff
+  psuh = push
+  # undo the last commit
   undo = reset --soft HEAD~
 [filter "lfs"]
   clean = git lfs clean %f
@@ -42,7 +44,7 @@
 [push]
   default = simple
 [core]
-  editor = vim
+  editor = nvim
   pager = bash -lc 'diff-highlight | less -r' -
   ignorecase = false
 [branch "master"]
