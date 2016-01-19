@@ -15,7 +15,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
-Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'Valloric/YouCompleteMe'
@@ -27,11 +26,12 @@ Plug 'tomtom/tlib_vim' "required by garbas/vim-snipmate
 Plug 'honza/vim-snippets' "required by garbas/vim-snipmate
 Plug 'justinj/vim-react-snippets'
 Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'sheerun/yajs.vim'
+Plug 'gavocanov/vim-js-indent'
+Plug 'othree/es.next.syntax.vim'
 Plug 'terryma/vim-expand-region'
-Plug 'joshdick/onedark.vim'
-Plug 'https://github.com/ternjs/tern_for_vim.git'
+Plug 'elzr/vim-json'
+Plug 'benekastah/neomake'
 call plug#end()
 
 " Setup vim airline
@@ -42,14 +42,21 @@ let g:airline_section_x="[%{&ff} : %{strlen(&fenc)?&fenc:'none'}]"
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-" Setup Syntastic
-let g:syntastic_error_symbol = "E>"
-let g:syntastic_warning_symbol = "W>"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jslint'] " eslint is too slow :(
+" Setup NeoMake
+autocmd! BufWritePost,BufWinEnter * Neomake
+let g:neomake_javascript_enabled_makers= ['eslint']
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+let g:neomake_open_list = 2
+let g:neomake_error_sign = {
+  \ 'text': '❯❯',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+highlight myWarningMsg ctermbg=0 ctermfg=3
+let g:neomake_warning_sign = {
+  \ 'text': '❯❯',
+  \ 'texthl': 'myWarningMsg',
+  \ }
 " Setup Ctrl + P
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
@@ -61,6 +68,8 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " Setup vim-expand-region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+" Setup vim-json
+let g:vim_json_syntax_conceal = 0
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
@@ -74,6 +83,7 @@ set number
 set history=1000
 set undolevels=1000
 set cmdheight=8
+set foldcolumn=2
 set scrolloff=4
 set nowrap
 syntax on
@@ -147,12 +157,9 @@ map <Leader>f <C-w><C-w>
 map <Leader>j <C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
-map <Leader>Q :q! <CR>
 map <Leader>erc :e ~/.vimrc <CR>
 map <Leader>src :source ~/.vimrc <CR>
-map <Leader>spr :vertical resize 100 <CR>
-map <Leader>trim :call TrimWhiteSpace() <CR>
-map <Leader>es :call ESLint() <CR>
+map <Leader>n :lnext<CR>
 
 " search for word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
@@ -212,8 +219,4 @@ endfunction
 
 function! BeautifyJson()
   %!python -m json.tool
-endfunction
-
-function! ESLint()
-  !./node_modules/eslint/bin/eslint.js %
 endfunction
