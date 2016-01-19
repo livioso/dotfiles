@@ -83,7 +83,7 @@ set number
 set history=1000
 set undolevels=1000
 set cmdheight=8
-set foldcolumn=2
+set foldcolumn=1
 set scrolloff=4
 set nowrap
 syntax on
