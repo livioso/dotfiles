@@ -70,6 +70,8 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " Setup vim-json
 let g:vim_json_syntax_conceal = 0
+" Setup gitguttelet
+g:gitgutter_sign_column_always = 1
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
