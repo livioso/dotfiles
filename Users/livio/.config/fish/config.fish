@@ -3,6 +3,7 @@ set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/
 
 # environment variables
 set -x ANDROID_HOME /usr/local/opt/android-sdk
+set -x PIP_REQUIRE_VIRTUALENV true
 
 # os specific settings
 if [ (uname) = 'Linux' ]
