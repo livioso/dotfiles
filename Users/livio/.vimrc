@@ -47,7 +47,7 @@ autocmd! BufWritePost,BufWinEnter * Neomake
 let g:neomake_javascript_enabled_makers= ['eslint']
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-let g:neomake_open_list = 2
+let g:neomake_open_list = 0
 let g:neomake_error_sign = {
   \ 'text': '❯❯',
   \ 'texthl': 'ErrorMsg',
@@ -70,8 +70,6 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " Setup vim-json
 let g:vim_json_syntax_conceal = 0
-" Setup gitguttelet
-g:gitgutter_sign_column_always = 1
 
 " General settings
 let base16colorspace=256 " Access colors present in 256 colorspace
@@ -85,7 +83,7 @@ set number
 set history=1000
 set undolevels=1000
 set cmdheight=8
-set foldcolumn=1
+set foldcolumn=0
 set scrolloff=4
 set nowrap
 syntax on
