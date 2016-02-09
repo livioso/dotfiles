@@ -60,6 +60,7 @@ let g:neomake_warning_sign = {
 " Setup Ctrl + P
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_mruf_last_entered = 1
 " Setup SnipMates(<tab> used by ycm use <ss>)
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
