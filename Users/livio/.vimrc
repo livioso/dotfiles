@@ -35,11 +35,12 @@ Plug 'benekastah/neomake'
 call plug#end()
 
 " Setup vim airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_z="%L Lines : %P"
-let g:airline_section_y="Line\ %l\ : Column\ %c%)"
-let g:airline_section_x="[%{&ff} : %{strlen(&fenc)?&fenc:'none'}]"
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#fnamemod = ':f'
+let g:airline_section_z="%l:%c"
+let g:airline_section_y=""
+let g:airline_section_x="%P"
+let g:airline_section_c="%t %m"
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " Setup NeoMake
@@ -83,7 +84,7 @@ set langmenu=en_US.UTF-8
 set number
 set history=1000
 set undolevels=1000
-set cmdheight=8
+set cmdheight=5
 set foldcolumn=0
 set scrolloff=4
 set nowrap
@@ -115,6 +116,9 @@ let mapleader = "\<Space>"
 " indentation settings
 set autoindent
 filetype plugin indent on
+
+" trailing whitespaces
+set list listchars=trail:·
 
 " tab settings
 set expandtab
@@ -152,6 +156,9 @@ set foldlevel=1       "this is just what i use
 nnoremap <C-j> 4<C-e>
 nnoremap <C-k> 4<C-y>
 
+" enable spellchecking for markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " personal <Leader> mappings
 map <Leader>w :w <CR>
 map <Leader>f <C-w><C-w>
@@ -180,6 +187,10 @@ vmap <Leader>P "+P
 " remove startup message
 set shortmess+=I
 
+" hide toolbar
+set showtabline=0
+set tabpagemax=0
+
 " printing options (print using :hardcopy)
 set printoptions=portrait:n "landscape
 
@@ -190,16 +201,11 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-" show trailing whitespaces
-highlight ExtraWhitespace ctermbg=DarkRed guibg=DarkRed
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
 " saving read only files (sudo tee trick)
 cmap w!! w !sudo tee % >/dev/null
+
+" use SX/Y<CR>
+nmap S :%s//g<LEFT><LEFT>
 
 " use ag over grep
 if executable('ag')
@@ -221,3 +227,4 @@ endfunction
 function! BeautifyJson()
   %!python -m json.tool
 endfunction
+
