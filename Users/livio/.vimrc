@@ -37,7 +37,7 @@ call plug#end()
 " Setup vim airline
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':f'
-let g:airline_section_z="%l:%c"
+let g:airline_section_z="%l·%c"
 let g:airline_section_y=""
 let g:airline_section_x="%P"
 let g:airline_section_c="%t %m"
@@ -50,12 +50,12 @@ let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 let g:neomake_open_list = 0
 let g:neomake_error_sign = {
-  \ 'text': '❯❯',
+  \ 'text': '‣‣',
   \ 'texthl': 'ErrorMsg',
   \ }
 highlight myWarningMsg ctermbg=0 ctermfg=3
 let g:neomake_warning_sign = {
-  \ 'text': '❯❯',
+  \ 'text': '‣‣',
   \ 'texthl': 'myWarningMsg',
   \ }
 " Setup Ctrl + P
@@ -82,17 +82,19 @@ set backspace=indent,eol,start
 set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
 set number
+set relativenumber
 set history=1000
 set undolevels=1000
 set cmdheight=5
 set foldcolumn=0
 set scrolloff=4
+set noshowmode
 set nowrap
 syntax on
 
 " highlight current line
 set cursorline
-hi CursorLineNr cterm=Bold ctermfg=Blue
+hi CursorLineNr cterm=Bold ctermfg=Green
 
 " no need for it ~
 set nobackup
@@ -228,3 +230,5 @@ function! BeautifyJson()
   %!python -m json.tool
 endfunction
 
+" pastetoggle
+set pastetoggle=<F2>
