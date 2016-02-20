@@ -1,80 +1,93 @@
 set nocompatible
 set shell=/bin/bash
 
-" Vim Plug (https://github.com/junegunn/vim-plug)
+" VimPlug (https://github.com/junegunn/vim-plug)
 if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-" Order is important
-" vim-fugitive before vim-airline!
 call plug#begin('~/.vim/plugged')
+Plug 'justinj/vim-react-snippets'
+Plug 'othree/es.next.syntax.vim'
+Plug 'gavocanov/vim-js-indent'
+Plug 'Lokaltog/vim-easymotion'
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
-Plug 'bling/vim-airline'
-Plug 'godlygeek/tabular'
 Plug 'Keithbsmiley/swift.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'Lokaltog/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'garbas/vim-snipmate'
-Plug 'MarcWeber/vim-addon-mw-utils' "required by garbas/vim-snipmate
-Plug 'tomtom/tlib_vim' "required by garbas/vim-snipmate
-Plug 'honza/vim-snippets' "required by garbas/vim-snipmate
-Plug 'justinj/vim-react-snippets'
-Plug 'mxw/vim-jsx'
 Plug 'sheerun/yajs.vim'
-Plug 'gavocanov/vim-js-indent'
-Plug 'othree/es.next.syntax.vim'
-Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
+Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
+Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
+Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
+
+  let base16colorspace = 256
+
+Plug 'mxw/vim-jsx'
+  let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
 Plug 'elzr/vim-json'
+  let g:vim_json_syntax_conceal = 0
+
+Plug 'terryma/vim-expand-region'
+  vmap v <Plug>(expand_region_expand)
+  vmap <C-v> <Plug>(expand_region_shrink)
+
+Plug 'garbas/vim-snipmate'
+  imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
+  smap <C-J> <Plug>snipMateNextOrTrigger
+
+Plug 'kien/ctrlp.vim'
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_mruf_last_entered = 1
+  let g:ctrlp_user_command = 'ag %s -l -g ""'
+  let g:ctrlp_use_caching = 0
+
+Plug 'Shougo/deoplete.nvim'
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#disable_auto_complete = 1
+  inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+  inoremap <Leader><Tab> <Space><Space>
+
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+  autocmd FileType javascript map <buffer> gd :TernDef<CR>
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+Plug 'bling/vim-airline'
+  let g:airline#extensions#tabline#enabled = 0
+  let g:airline#extensions#tabline#fnamemod = ':f'
+  let g:airline_section_z = "%l·%c"
+  let g:airline_section_y = ""
+  let g:airline_section_x = "%P"
+  let g:airline_section_c = "%t %m"
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
+
 Plug 'benekastah/neomake'
+  autocmd! BufWritePost,BufWinEnter * Neomake
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+  let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+  let g:neomake_open_list = 0
+  let g:neomake_error_sign = {
+    \ 'text': '‣‣',
+    \ 'texthl': 'ErrorMsg',
+    \ }
+  highlight myWarningMsg ctermbg=0 ctermfg=3
+  let g:neomake_warning_sign = {
+    \ 'text': '‣‣',
+    \ 'texthl': 'myWarningMsg',
+    \ }
 call plug#end()
 
-" Setup vim airline
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#fnamemod = ':f'
-let g:airline_section_z="%l·%c"
-let g:airline_section_y=""
-let g:airline_section_x="%P"
-let g:airline_section_c="%t %m"
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-" Setup NeoMake
-autocmd! BufWritePost,BufWinEnter * Neomake
-let g:neomake_javascript_enabled_makers= ['eslint']
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-let g:neomake_open_list = 0
-let g:neomake_error_sign = {
-  \ 'text': '‣‣',
-  \ 'texthl': 'ErrorMsg',
-  \ }
-highlight myWarningMsg ctermbg=0 ctermfg=3
-let g:neomake_warning_sign = {
-  \ 'text': '‣‣',
-  \ 'texthl': 'myWarningMsg',
-  \ }
-" Setup Ctrl + P
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_mruf_last_entered = 1
-" Setup SnipMates(<tab> used by ycm use <ss>)
-imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
-" Setup vim-jsx
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-" Setup vim-expand-region
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-" Setup vim-json
-let g:vim_json_syntax_conceal = 0
 
 " General settings
-let base16colorspace=256 " Access colors present in 256 colorspace
 set t_Co=256
 set background=dark
 colorscheme base16-eighties
@@ -87,10 +100,16 @@ set history=1000
 set undolevels=1000
 set cmdheight=5
 set foldcolumn=0
-set scrolloff=4
+set scrolloff=5
 set noshowmode
 set nowrap
 syntax on
+
+" disable preview scratch
+set completeopt-=preview
+
+" pastetoggle
+set pastetoggle=<F2>
 
 " highlight current line
 set cursorline
@@ -109,8 +128,8 @@ let g:netrw_liststyle=3
 
 " disable all bells
 set noerrorbells " no beep on error
-set t_vb=        " no beep on <ESC>
 set novisualbell " no flashing screen on error
+set t_vb=        " no beep on <ESC>
 
 " set leader key to space
 let mapleader = "\<Space>"
@@ -149,10 +168,10 @@ set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " folding setting using za, zm and zr
-set foldmethod=indent "fold based on indent
-set foldnestmax=10    "deepest fold is 10 levels
-set nofoldenable      "dont fold by default
-set foldlevel=1       "this is just what i use
+set foldmethod=indent " fold based on indent
+set foldnestmax=10    " deepest fold is 10 levels
+set nofoldenable      " dont fold by default
+set foldlevel=1       " this is just what i use
 
 " scroll up / down fast(er) using ctrl+(jk)
 nnoremap <C-j> 4<C-e>
@@ -170,12 +189,14 @@ map <Leader>q :q <CR>
 map <Leader>erc :e ~/.vimrc <CR>
 map <Leader>src :source ~/.vimrc <CR>
 map <Leader>n :lnext<CR>
+map <Leader>b <C-i> <CR>
+map <Leader>n <C-o> <CR>
 
 " search for word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 
 " jump to tag
-nnoremap t <C-]>
+nnoremap T <C-]>
 
 " copy and paste from system clipboard
 " with <leader>y and <leader>p
@@ -206,29 +227,24 @@ autocmd BufReadPost *
 " saving read only files (sudo tee trick)
 cmap w!! w !sudo tee % >/dev/null
 
-" use SX/Y<CR>
+" replace X with Y: SX/Y<CR>
 nmap S :%s//g<LEFT><LEFT>
 
 " use ag over grep
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-  " ag for ctrlp / fast enough. need to cache
-  let g:ctrlp_user_command = 'ag %s -l -g ""'
-  let g:ctrlp_use_caching = 0
 else
   echohl ErrorMsg
-  echomsg 'Missing ag: brew install ag'
+  echomsg 'Missing ag: install ag'
   echohl NONE<Paste>
 endif
 
 " trim trailing whitespaces
-function! TrimWhiteSpace()
+function! _TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-function! BeautifyJson()
+" make json beautiful
+function! _BeautifyJson()
   %!python -m json.tool
 endfunction
-
-" pastetoggle
-set pastetoggle=<F2>
