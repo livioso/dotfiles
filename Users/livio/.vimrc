@@ -7,22 +7,21 @@ if empty(glob("~/.vim/autoload/plug.vim"))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'justinj/vim-react-snippets'
+Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
+Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
+Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
+Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
-Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
-Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
-Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
-Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
 
+Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
 
 Plug 'mxw/vim-jsx'
@@ -49,12 +48,15 @@ Plug 'kien/ctrlp.vim'
 Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#disable_auto_complete = 1
-  inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
-  inoremap <Leader><Tab> <Space><Space>
+  let g:deoplete#max_list = 10
+  inoremap ,<Tab> <Space><Space>
+  inoremap <silent><expr> <Tab>
+    \ pumvisible() ? "\<C-n>" :
+    \ deoplete#mappings#manual_complete()
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-  let g:tern_show_argument_hints = 'on_hold'
   let g:tern_show_signature_in_pum = 1
+  let g:tern_show_argument_hints = 'on_hold'
   autocmd FileType javascript setlocal omnifunc=tern#Complete
   autocmd FileType javascript map <buffer> gd :TernDef<CR>
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
