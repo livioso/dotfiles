@@ -11,12 +11,14 @@ Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
 Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
 Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
+Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neopairs.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
@@ -61,15 +63,29 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   autocmd FileType javascript map <buffer> gd :TernDef<CR>
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#fnamemod = ':f'
+  let g:airline#extensions#hunks#non_zero_only = 1
   let g:airline_section_z = "%l·%c"
   let g:airline_section_y = ""
   let g:airline_section_x = "%P"
   let g:airline_section_c = "%t %m"
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
+  let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
 
 Plug 'benekastah/neomake'
   autocmd! BufWritePost,BufWinEnter * Neomake
