@@ -97,7 +97,7 @@ Plug 'benekastah/neomake'
     \ 'text': '‣‣',
     \ 'texthl': 'ErrorMsg',
     \ }
-  highlight myWarningMsg ctermbg=0 ctermfg=3
+  highlight myWarningMsg ctermbg=0 ctermfg=3 guibg=0 guifg=yellow
   let g:neomake_warning_sign = {
     \ 'text': '‣‣',
     \ 'texthl': 'myWarningMsg',
@@ -123,6 +123,12 @@ set noshowmode
 set nowrap
 syntax on
 
+" fancier colors in neovim
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" for some reason this
+" is not set properly. :(
+hi Normal guibg=3b3b3b
+
 " disable preview scratch
 set completeopt-=preview
 
@@ -131,7 +137,7 @@ set pastetoggle=<F2>
 
 " highlight current line
 set cursorline
-hi CursorLineNr cterm=Bold ctermfg=Green
+hi CursorLineNr cterm=Bold ctermfg=Green guifg=LightGreen gui=bold
 
 " no need for it ~
 set nobackup
@@ -266,3 +272,4 @@ endfunction
 function! _BeautifyJson()
   %!python -m json.tool
 endfunction
+

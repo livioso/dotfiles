@@ -14,6 +14,7 @@ end
 # to have a working color scheme for more information see:
 # https://github.com/chriskempson/base16-shell
 eval sh $HOME/.config/base16-shell/base16-eighties.dark.sh
+set -Ux fish_term256
 
 # colorize grep
 alias grep "grep -n --color"
