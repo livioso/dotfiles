@@ -28,6 +28,7 @@ alias n "nvim"
 alias n. "nvim ."
 alias n, "nvim ."
 alias sl "ls" # :-/
+alias gp "git push"
 alias claer "clear"
 alias jfw "j fw; nvim ."
 

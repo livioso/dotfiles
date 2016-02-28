@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
 Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
 Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
@@ -19,6 +20,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neopairs.vim'
+Plug 'Shougo/neoyank.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
@@ -40,12 +42,32 @@ Plug 'garbas/vim-snipmate'
   imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
   smap <C-J> <Plug>snipMateNextOrTrigger
 
-Plug 'kien/ctrlp.vim'
-  let g:ctrlp_show_hidden = 1
-  let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_mruf_last_entered = 1
-  let g:ctrlp_user_command = 'ag %s -l -g ""'
-  let g:ctrlp_use_caching = 0
+Plug 'Shougo/unite.vim'
+  let g:unite_data_directory='~/.config/nvim/.cache/unite'
+  let g:unite_source_rec_max_cache_files=5000
+  let g:unite_source_history_yank_enable = 1
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts =
+    \ '-i --vimgrep --hidden --ignore ' .
+    \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_prompt = ' ‣‣ '
+  let g:unite_winheight = 15
+  let g:unite_split_rule = 'botright'
+  " Unite // overwrite settings.
+  autocmd FileType unite call s:unite_my_settings()
+  function! s:unite_my_settings() "
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+    imap <silent><buffer><expr> <C-s> unite#do_action('split')
+    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  endfunction
+  nnoremap <space>/ :Unite grep:.<cr>
+  nnoremap <space>h :Unite history/yank -default-action=append<cr>
+  nnoremap <space>k :Unite file_rec/neovim<cr>
+  nnoremap <C-p> :Unite
+    \ -prompt-direction="top"
+    \ -winheight=8 -auto-resize
+    \ -start-insert file_rec/git <cr>
 
 Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
@@ -104,6 +126,9 @@ Plug 'benekastah/neomake'
     \ }
 call plug#end()
 
+" Unite // must be after plug#end!
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 " General settings
 set t_Co=256
@@ -209,9 +234,6 @@ map <Leader>src :source ~/.vimrc <CR>
 map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
-
-" search for word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR><CR>
 
 " jump to tag
 nnoremap T <C-]>

@@ -29,14 +29,17 @@
   required = true
 [alias]
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  upstream = push origin head
   tinder = add -p
   cim = commit -m
+  ciam = commit -am
   co = checkout
   br = branch
   ci = commit
   st = status
   df = diff
   psuh = push
+  p = push
   # undo the last commit
   undo = reset --soft HEAD~
 [filter "lfs"]
