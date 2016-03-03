@@ -63,7 +63,6 @@ Plug 'Shougo/unite.vim'
   endfunction
   nnoremap <space>/ :Unite grep:.<cr>
   nnoremap <space>h :Unite history/yank -default-action=append<cr>
-  nnoremap <space>k :Unite file_rec/neovim<cr>
   nnoremap <C-p> :Unite
     \ -prompt-direction="top"
     \ -winheight=8 -auto-resize
@@ -168,6 +167,7 @@ set wildignore+=*/node_modules/*
 
 " netrw show tree view
 let g:netrw_liststyle=3
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " disable all bells
 set noerrorbells " no beep on error
@@ -176,7 +176,6 @@ set t_vb=        " no beep on <ESC>
 
 " set leader key to space
 let mapleader = "\<Space>"
-
 " indentation settings
 set autoindent
 filetype plugin indent on
@@ -237,6 +236,10 @@ map <Leader>n <C-o> <CR>
 
 " jump to tag
 nnoremap T <C-]>
+
+" allow the . to execute once
+" for each line of a visual selection
+vnoremap . :normal .<CR>
 
 " copy and paste from system clipboard
 " with <leader>y and <leader>p
