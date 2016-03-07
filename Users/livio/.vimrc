@@ -72,7 +72,6 @@ Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#disable_auto_complete = 1
   let g:deoplete#max_list = 10
-  inoremap ,<Tab> <Space><Space>
   inoremap <silent><expr> <Tab>
     \ pumvisible() ? "\<C-n>" :
     \ deoplete#mappings#manual_complete()
@@ -239,6 +238,7 @@ map <Leader>src :source ~/.vimrc <CR>
 map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
+map <Leader>debug odebugger;<ESC>
 
 " jump to tag
 nnoremap T <C-]>
@@ -288,6 +288,17 @@ else
   echohl NONE<Paste>
 endif
 
+" different cursor in insert / normal mode (iTerm)
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+
 " trim trailing whitespaces
 function! _TrimWhiteSpace()
   %s/\s\+$//e
@@ -297,4 +308,6 @@ endfunction
 function! _BeautifyJson()
   %!python -m json.tool
 endfunction
+
+
 
