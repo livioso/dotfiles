@@ -16,6 +16,23 @@ end
 eval sh $HOME/.config/base16-shell/base16-eighties.dark.sh
 set -Ux fish_term256
 
+# colors used by fish
+set -g fish_color_normal      base0
+set -g fish_color_command     purple
+set -g fish_color_quote       cyan
+set -g fish_color_redirection base0
+set -g fish_color_end         base0
+set -g fish_color_error       red
+set -g fish_color_param       blue
+set -g fish_color_comment     base01
+set -g fish_color_match       cyan
+set -g fish_color_search_match "--background=$base02"
+set -g fish_color_operator    orange
+set -g fish_color_escape      cyan
+set -g fish_color_hostname    cyan
+set -g fish_color_cwd         yellow
+set -g fish_color_git         green
+
 # colorize grep
 alias grep "grep -n --color"
 
@@ -94,3 +111,6 @@ end
 
 
 source ~/.config/fish/fishmarks.fish
+set fisher_home ~/.local/share/fisherman
+set fisher_config ~/.config/fisherman
+source $fisher_home/config.fish

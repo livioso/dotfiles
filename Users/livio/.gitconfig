@@ -28,7 +28,7 @@
   smudge = git hawser smudge %f
   required = true
 [alias]
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
   upstream = push origin head
   tinder = add -p
   ciam = commit -am
@@ -55,3 +55,5 @@
   ignorecase = false
 [branch "master"]
   mergeoptions = --no-ff
+[help]
+	autocorrect = -1
