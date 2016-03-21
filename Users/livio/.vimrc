@@ -19,8 +19,10 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'Shougo/neoinclude.vim'
+Plug 'tpope/vim-commentary'
 Plug 'Shougo/neopairs.vim'
 Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
@@ -41,6 +43,11 @@ Plug 'terryma/vim-expand-region'
 Plug 'garbas/vim-snipmate'
   imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
   smap <C-J> <Plug>snipMateNextOrTrigger
+
+Plug 'tyru/open-browser.vim'
+  let g:netrw_nogx = 1 " disable netrw's gx mapping.
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
 
 Plug 'Shougo/unite.vim'
   let g:unite_data_directory='~/.config/nvim/.cache/unite'
