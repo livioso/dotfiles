@@ -1,0 +1,30 @@
+# Slate configuration file
+# Be sure to customize! See https://github.com/jigish/slate#configuring-slate
+
+
+### Aliases
+
+## Key aliases
+alias hyper ctrl;shift;alt;cmd
+
+## Application aliases
+alias browser 'Safari'
+alias finder  'Finder'
+
+## Position aliases
+alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
+alias lefthalf     move screenOriginX;screenOriginY                screenSizeX/2;screenSizeY
+alias righthalf    move screenOriginX+screenSizeX/2;screenOriginY  screenSizeX/2;screenSizeY
+
+## Location bindings
+# These are laid out to be used with the right hand
+# and to complement the focus bindings
+bind f:${hyper}  ${full}
+bind h:${hyper}  ${lefthalf}
+bind l:${hyper}  ${righthalf}
+
+## App bindings
+# These are laid out on the left hand
+bind s:${hyper}      focus ${browser}
+bind e:${hyper}      focus ${finder}
+
