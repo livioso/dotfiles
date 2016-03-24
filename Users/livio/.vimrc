@@ -151,6 +151,7 @@ set foldcolumn=0
 set scrolloff=5
 set noshowmode
 set nowrap
+set hidden
 syntax on
 
 " fancier colors in neovim
@@ -231,8 +232,8 @@ set foldlevel=1       " this is just what i use
 nnoremap <C-j> 4<C-e>
 nnoremap <C-k> 4<C-y>
 
-" enable spellchecking for markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
+" enable spellchecking
+set spell
 
 " personal <Leader> mappings
 map <Leader>w :w <CR>
