@@ -250,6 +250,13 @@ map <Leader>debug odebugger;<ESC>
 
 " jump to tag
 nnoremap T <C-]>
+nnoremap gt g<C-]>
+
+" generate tags (jsctags)
+" nnoremap <Leader>tags :! find . -type f -iregex .*\.js$
+"  \ -not -path "./node_modules/*" -exec jsctags {}
+"  \ -f \; | sed '/^$/d' | sort > tags &<CR>
+
 
 " allow the . to execute once
 " for each line of a visual selection
@@ -285,7 +292,7 @@ autocmd BufReadPost *
 cmap w!! w !sudo tee % >/dev/null
 
 " replace X with Y: SX/Y<CR>
-nmap S :%s//g<LEFT><LEFT>
+nmap S :%s//gc<LEFT><LEFT><LEFT>
 
 " use ag over grep
 if executable('ag')
