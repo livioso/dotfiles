@@ -253,10 +253,9 @@ nnoremap T <C-]>
 nnoremap gt g<C-]>
 
 " generate tags (jsctags)
-" nnoremap <Leader>tags :! find . -type f -iregex .*\.js$
-"  \ -not -path "./node_modules/*" -exec jsctags {}
-"  \ -f \; | sed '/^$/d' | sort > tags &<CR>
-
+nnoremap <silent> tags :!find . -type f -iregex .*\.js$
+   \ -not -path "./node_modules/*" -exec jsctags {} -f \;
+   \ \| sed '/^$/d' \| sort > tags & <CR>
 
 " allow the . to execute once
 " for each line of a visual selection
