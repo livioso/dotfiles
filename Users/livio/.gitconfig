@@ -50,6 +50,7 @@
 [push]
   default = simple
 [core]
+  untrackedCache = true
   editor = nvim
   pager = bash -lc 'diff-highlight | less -r' -
   ignorecase = false

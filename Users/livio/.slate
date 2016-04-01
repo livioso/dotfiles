@@ -12,6 +12,7 @@ alias safari  'Safari'
 alias finder  'Finder'
 alias iterm   'iTerm2'
 alias chrome  'Google Chrome'
+alias xcode   'Xcode'
 
 ## Position aliases
 alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
@@ -33,3 +34,4 @@ bind s:${hyper}          focus ${safari}
 bind g:${hyper}          focus ${chrome}
 bind e:${hyper}          focus ${finder}
 bind space:${hyper}      focus ${iterm}
+bind x:${hyper}          focus ${xcode}
