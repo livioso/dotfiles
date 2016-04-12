@@ -50,10 +50,11 @@
 [push]
   default = simple
 [core]
+  untrackedCache = true
   editor = nvim
   pager = bash -lc 'diff-highlight | less -r' -
   ignorecase = false
 [branch "master"]
   mergeoptions = --no-ff
 [help]
-	autocorrect = -1
+  autocorrect = -1

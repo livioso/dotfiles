@@ -19,8 +19,8 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'Shougo/neoinclude.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-Plug 'Shougo/neopairs.vim'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
@@ -91,6 +91,7 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 Plug 'vim-airline/vim-airline'
+  let g:airline_detect_spell=0 " changes mode from N > SPELL => N
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#fnamemod = ':f'
   let g:airline#extensions#hunks#non_zero_only = 1
@@ -151,6 +152,7 @@ set foldcolumn=0
 set scrolloff=5
 set noshowmode
 set nowrap
+set hidden
 syntax on
 
 " fancier colors in neovim
@@ -231,8 +233,8 @@ set foldlevel=1       " this is just what i use
 nnoremap <C-j> 4<C-e>
 nnoremap <C-k> 4<C-y>
 
-" enable spellchecking for markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
+" enable spellchecking
+set spell
 
 " personal <Leader> mappings
 map <Leader>w :w <CR>
@@ -249,6 +251,12 @@ map <Leader>debug odebugger;<ESC>
 
 " jump to tag
 nnoremap T <C-]>
+nnoremap gt g<C-]>
+
+" generate tags (jsctags)
+nnoremap <silent> tags :!find . -type f -iregex .*\.js$
+   \ -not -path "./node_modules/*" -exec jsctags {} -f \;
+   \ \| sed '/^$/d' \| sort > tags & <CR>
 
 " allow the . to execute once
 " for each line of a visual selection
@@ -284,7 +292,7 @@ autocmd BufReadPost *
 cmap w!! w !sudo tee % >/dev/null
 
 " replace X with Y: SX/Y<CR>
-nmap S :%s//g<LEFT><LEFT>
+nmap S :%s//gc<LEFT><LEFT><LEFT>
 
 " use ag over grep
 if executable('ag')
