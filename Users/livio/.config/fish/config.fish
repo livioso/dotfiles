@@ -42,14 +42,15 @@ alias g "git"
 alias v "nvim"
 alias v. "nvim ."
 alias v, "nvim ."
-alias n "nvim"
 alias n. "nvim ."
 alias n, "nvim ."
+alias n "nvim"
 alias sl "ls" # :-/
 alias gp "git push"
 alias gst "git status"
 alias claer "clear"
 alias jfw "j fw; nvim ."
+alias jba "j ba-frontend; nvim ."
 
 # helper alias for SyncMe
 alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
