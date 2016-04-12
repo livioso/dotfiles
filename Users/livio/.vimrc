@@ -91,6 +91,7 @@ Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 Plug 'vim-airline/vim-airline'
+  let g:airline_detect_spell=0 " changes mode from N > SPELL => N
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#fnamemod = ':f'
   let g:airline#extensions#hunks#non_zero_only = 1
