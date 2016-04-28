@@ -250,7 +250,7 @@ map <Leader>src :source ~/.vimrc <CR>
 map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
-map <Leader>debug odebugger;<ESC>
+map <Leader>dbg odebugger;<ESC>
 
 " jump to tag
 nnoremap T <C-]>
