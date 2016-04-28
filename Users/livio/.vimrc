@@ -26,6 +26,9 @@ Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
+Plug 'jparise/vim-graphql'
+" just for JS?
+" Plug 'facebook/vim-flow', { 'do': 'npm install -g flow-bin' }
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -247,7 +250,7 @@ map <Leader>src :source ~/.vimrc <CR>
 map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
-map <Leader>debug odebugger;<ESC>
+map <Leader>dbg odebugger;<ESC>
 
 " jump to tag
 nnoremap T <C-]>
