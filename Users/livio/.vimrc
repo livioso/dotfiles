@@ -222,6 +222,9 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 nnoremap gp :bp<CR> " move to the previous buffer with gp
 nnoremap gn :bn<CR> " move to the next buffer with gn
 
+" gf add .js suffix for modules
+set suffixesadd+=.js
+
 " split view settings
 set splitbelow " open below instead of above
 set splitright " open right instead of left
