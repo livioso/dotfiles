@@ -51,6 +51,7 @@ alias gst "git status"
 alias claer "clear"
 alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
+alias before "history | fzf-tmux"
 
 # helper alias for SyncMe
 alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
