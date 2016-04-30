@@ -142,7 +142,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 " General settings
 set t_Co=256
 set background=dark
-colorscheme base16-eighties
+colorscheme base16-ocean
 set backspace=indent,eol,start
 set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
@@ -171,8 +171,8 @@ set completeopt-=preview
 set pastetoggle=<F2>
 
 " highlight current line
-set cursorline
-hi CursorLineNr cterm=Bold ctermfg=Green guifg=LightGreen gui=bold
+" set cursorline
+hi CursorLineNr cterm=Bold ctermfg=White guifg=White gui=bold
 
 " no need for it ~
 set nobackup
