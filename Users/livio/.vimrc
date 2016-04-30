@@ -27,8 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'jparise/vim-graphql'
-" just for JS?
-" Plug 'facebook/vim-flow', { 'do': 'npm install -g flow-bin' }
+" Plug 'facebook/vim-flow', { 'do': 'npm install -g flow-bin@0.23.0' }
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -120,7 +119,8 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'benekastah/neomake'
   autocmd! BufWritePost,BufWinEnter * Neomake
-  let g:neomake_javascript_enabled_makers = ['eslint']
+  autocmd BufWritePost *.js silent Neomake eslint | Neomake flow
+  let g:neomake_javascript_enabled_makers = ['eslint, flow']
   let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
   let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
   let g:neomake_open_list = 0
