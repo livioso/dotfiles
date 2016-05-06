@@ -142,7 +142,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 " General settings
 set t_Co=256
 set background=dark
-colorscheme base16-ocean
+colorscheme base16-eighties
 set backspace=indent,eol,start
 set mouse=a " use mouse :)
 set langmenu=en_US.UTF-8
