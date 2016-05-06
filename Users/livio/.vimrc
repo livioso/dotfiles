@@ -153,6 +153,7 @@ set undolevels=1000
 set cmdheight=5
 set foldcolumn=0
 set scrolloff=5
+set sidescroll=1
 set noshowmode
 set nowrap
 set hidden
