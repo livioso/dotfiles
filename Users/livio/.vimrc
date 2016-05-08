@@ -219,6 +219,9 @@ nnoremap <CR> :nohlsearch <CR> " clear search on when hitting return
 " error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
+" automatically resize splits equally on resize
+autocmd VimResized * execute "normal \<C-w>="
+
 " buffer settings
 nnoremap gp :bp<CR> " move to the previous buffer with gp
 nnoremap gn :bn<CR> " move to the next buffer with gn
