@@ -234,10 +234,10 @@ set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " folding setting using za, zm and zr
-set foldmethod=indent " fold based on indent
-set foldnestmax=10    " deepest fold is 10 levels
-set nofoldenable      " dont fold by default
-set foldlevel=1       " this is just what i use
+set foldmethod=indent   " fold based on indent (faster than syntax)
+set foldlevelstart=0    " start folded
+set foldnestmax=10      " deepest fold is 10 levels
+let &fillchars='vert: ' " less cluttered vertical window separators
 
 " scroll up / down fast(er) using ctrl+(jk)
 nnoremap <C-j> 4<C-e>
