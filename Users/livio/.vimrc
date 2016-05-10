@@ -8,11 +8,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
-Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
-Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
-Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'Lokaltog/vim-easymotion'
@@ -27,7 +25,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'jparise/vim-graphql'
-" Plug 'facebook/vim-flow', { 'do': 'npm install -g flow-bin@0.23.0' }
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -42,9 +39,12 @@ Plug 'terryma/vim-expand-region'
   vmap v <Plug>(expand_region_expand)
   vmap <C-v> <Plug>(expand_region_shrink)
 
-Plug 'garbas/vim-snipmate'
-  imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
-  smap <C-J> <Plug>snipMateNextOrTrigger
+Plug 'Shougo/neosnippet'
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() 
+        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -194,12 +194,17 @@ set t_vb=        " no beep on <ESC>
 
 " set leader key to space
 let mapleader = "\<Space>"
+
 " indentation settings
 set autoindent
 filetype plugin indent on
 
 " trailing whitespaces
 set list listchars=trail:·
+
+" seems to be faster (scrolling)
+set lazyredraw
+set noshowcmd
 
 " tab settings
 set expandtab
@@ -239,10 +244,6 @@ set foldlevelstart=0    " start folded
 set foldnestmax=10      " deepest fold is 10 levels
 let &fillchars='vert: ' " less cluttered vertical window separators
 
-" scroll up / down fast(er) using ctrl+(jk)
-nnoremap <C-j> 4<C-e>
-nnoremap <C-k> 4<C-y>
-
 " enable spellchecking
 set spell
 
@@ -258,6 +259,8 @@ map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
+map <Leader>r zR <CR>
+map <Leader>m zM <CR>
 
 " jump to tag
 nnoremap T <C-]>
