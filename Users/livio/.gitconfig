@@ -28,7 +28,10 @@
   smudge = git hawser smudge %f
   required = true
 [alias]
+  fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
+  ba = !open -g https://github.com/livioso/HubApp/commits/master
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
+  uncommit = reset --soft HEAD^
   upstream = push origin head
   tinder = add -p
   ciam = commit -am
@@ -37,7 +40,7 @@
   ci = commit
   co = checkout
   br = branch
-  st = status
+  st = status --short --branch
   df = diff
   psuh = push
   p = push
@@ -54,6 +57,8 @@
   editor = nvim
   pager = bash -lc 'diff-highlight | less -r' -
   ignorecase = false
+[commit]
+  template = ~/.gitmessage
 [branch "master"]
   mergeoptions = --no-ff
 [help]

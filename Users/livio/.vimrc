@@ -6,13 +6,15 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
+if empty(glob("~/.vim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
-Plug 'MarcWeber/vim-addon-mw-utils' " <required> by garbas/vim-snipmate
-Plug 'honza/vim-snippets' " <required> by garbas/vim-snipmate
-Plug 'tomtom/tlib_vim' " <required> by garbas/vim-snipmate
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'Lokaltog/vim-easymotion'
@@ -27,8 +29,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'jparise/vim-graphql'
-" just for JS?
-" Plug 'facebook/vim-flow', { 'do': 'npm install -g flow-bin' }
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -43,9 +43,12 @@ Plug 'terryma/vim-expand-region'
   vmap v <Plug>(expand_region_expand)
   vmap <C-v> <Plug>(expand_region_shrink)
 
-Plug 'garbas/vim-snipmate'
-  imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
-  smap <C-J> <Plug>snipMateNextOrTrigger
+Plug 'Shougo/neosnippet'
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  smap <expr><TAB> neosnippet#expandable_or_jumpable()
+        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -120,9 +123,9 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'benekastah/neomake'
   autocmd! BufWritePost,BufWinEnter * Neomake
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-  let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+  autocmd BufWritePost *.js silent Neomake eslint
+  let g:neomake_javascript_eslint_exe = './node_modules/eslint/bin/eslint.js'
+  let g:neomake_javascript_enabled_makers = ['eslint, flow']
   let g:neomake_open_list = 0
   let g:neomake_error_sign = {
     \ 'text': '‣‣',
@@ -144,7 +147,7 @@ set t_Co=256
 set background=dark
 colorscheme base16-eighties
 set backspace=indent,eol,start
-set mouse=a " use mouse :)
+set mouse=a " use mouse 😬
 set langmenu=en_US.UTF-8
 set number
 set relativenumber
@@ -153,6 +156,7 @@ set undolevels=1000
 set cmdheight=5
 set foldcolumn=0
 set scrolloff=5
+set sidescroll=1
 set noshowmode
 set nowrap
 set hidden
@@ -171,8 +175,8 @@ set completeopt-=preview
 set pastetoggle=<F2>
 
 " highlight current line
-set cursorline
-hi CursorLineNr cterm=Bold ctermfg=Green guifg=LightGreen gui=bold
+" set cursorline
+hi CursorLineNr cterm=Bold ctermfg=White guifg=White gui=bold
 
 " no need for it ~
 set nobackup
@@ -193,6 +197,7 @@ set t_vb=        " no beep on <ESC>
 
 " set leader key to space
 let mapleader = "\<Space>"
+
 " indentation settings
 set autoindent
 filetype plugin indent on
@@ -200,11 +205,16 @@ filetype plugin indent on
 " trailing whitespaces
 set list listchars=trail:·
 
+" seems to be faster (scrolling)
+set lazyredraw
+set noshowcmd
+
 " tab settings
 set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set listchars=tab:\ \ 
 
 " status line settings
 set laststatus=2 " always show the statusline
@@ -218,23 +228,25 @@ nnoremap <CR> :nohlsearch <CR> " clear search on when hitting return
 " error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
+" automatically resize splits equally on resize
+autocmd VimResized * execute "normal \<C-w>="
+
 " buffer settings
 nnoremap gp :bp<CR> " move to the previous buffer with gp
 nnoremap gn :bn<CR> " move to the next buffer with gn
+
+" gf add .js suffix for modules
+set suffixesadd+=.js
 
 " split view settings
 set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " folding setting using za, zm and zr
-set foldmethod=indent " fold based on indent
-set foldnestmax=10    " deepest fold is 10 levels
-set nofoldenable      " dont fold by default
-set foldlevel=1       " this is just what i use
-
-" scroll up / down fast(er) using ctrl+(jk)
-nnoremap <C-j> 4<C-e>
-nnoremap <C-k> 4<C-y>
+set foldmethod=indent   " fold based on indent (faster than syntax)
+set foldlevelstart=0    " start folded
+set foldnestmax=10      " deepest fold is 10 levels
+let &fillchars='vert: ' " less cluttered vertical window separators
 
 " enable spellchecking
 set spell
@@ -251,6 +263,8 @@ map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
+map <Leader>r zR <CR>
+map <Leader>m zM <CR>
 
 " jump to tag
 nnoremap T <C-]>
