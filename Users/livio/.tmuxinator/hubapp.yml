@@ -35,5 +35,9 @@ windows:
       panes:
         - npm start
         - react-native run-ios
-  - server: cd ../../backend/HubApp; gradle build; gradle bootRun
+  - server:
+      layout: even-horizontal
+      panes:
+        - cd ../../backend/HubApp; gradle build; gradle bootRun
+        - cd ../../backend/HubApp; nvim
   - console:

@@ -203,7 +203,7 @@ set autoindent
 filetype plugin indent on
 
 " trailing whitespaces
-set list listchars=trail:·
+set list listchars=trail:·,tab:\ \ 
 
 " seems to be faster (scrolling)
 set lazyredraw
@@ -214,7 +214,6 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set listchars=tab:\ \ 
 
 " status line settings
 set laststatus=2 " always show the statusline
