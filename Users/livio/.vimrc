@@ -6,6 +6,10 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
+if empty(glob("~/.vim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -43,7 +47,7 @@ Plug 'Shougo/neosnippet'
   imap <C-k> <Plug>(neosnippet_expand_or_jump)
   smap <C-k> <Plug>(neosnippet_expand_or_jump)
   xmap <C-k> <Plug>(neosnippet_expand_target)
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() 
+  smap <expr><TAB> neosnippet#expandable_or_jumpable()
         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 Plug 'tyru/open-browser.vim'
@@ -119,10 +123,9 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'benekastah/neomake'
   autocmd! BufWritePost,BufWinEnter * Neomake
-  autocmd BufWritePost *.js silent Neomake eslint | Neomake flow
+  autocmd BufWritePost *.js silent Neomake eslint
+  let g:neomake_javascript_eslint_exe = './node_modules/eslint/bin/eslint.js'
   let g:neomake_javascript_enabled_makers = ['eslint, flow']
-  let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-  let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
   let g:neomake_open_list = 0
   let g:neomake_error_sign = {
     \ 'text': '‣‣',
@@ -144,7 +147,7 @@ set t_Co=256
 set background=dark
 colorscheme base16-eighties
 set backspace=indent,eol,start
-set mouse=a " use mouse :)
+set mouse=a " use mouse 😬
 set langmenu=en_US.UTF-8
 set number
 set relativenumber
@@ -211,6 +214,7 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set listchars=tab:\ \ 
 
 " status line settings
 set laststatus=2 " always show the statusline

@@ -1,5 +1,6 @@
 # path settings
 set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /usr/local/share/git-core/contrib/diff-highlight/
+set -Ux EDITOR nvim
 
 # environment variables
 set -x ANDROID_HOME /usr/local/opt/android-sdk
