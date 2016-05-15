@@ -229,6 +229,8 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
 
 " buffer settings
 nnoremap gp :bp<CR> " move to the previous buffer with gp
@@ -245,7 +247,7 @@ set splitright " open right instead of left
 set foldmethod=indent   " fold based on indent (faster than syntax)
 set foldlevelstart=0    " start folded
 set foldnestmax=10      " deepest fold is 10 levels
-let &fillchars='vert: ' " less cluttered vertical window separators
+set fillchars+=fold:\ 
 
 " enable spellchecking
 set spell

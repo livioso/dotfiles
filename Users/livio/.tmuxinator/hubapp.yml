@@ -39,5 +39,5 @@ windows:
       layout: even-horizontal
       panes:
         - cd ../../backend/HubApp; gradle build; gradle bootRun
-        - cd ../../backend/HubApp; nvim
+        - cd ../../backend/HubApp; nvim .
   - console:
