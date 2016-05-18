@@ -47,7 +47,6 @@ alias n. "nvim ."
 alias n, "nvim ."
 alias n "nvim"
 alias sl "ls" # :-/
-alias gp "git push"
 alias claer "clear"
 alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
@@ -110,7 +109,6 @@ function fish_prompt --description 'Write out the prompt'
 
   set_color normal
 end
-
 
 source ~/.config/fish/fishmarks.fish
 set fisher_home ~/.local/share/fisherman
