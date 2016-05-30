@@ -27,6 +27,7 @@ Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'rizzatti/dash.vim'
 Plug 'sheerun/yajs.vim'
 Plug 'jparise/vim-graphql'
 
@@ -74,12 +75,12 @@ Plug 'Shougo/unite.vim'
     imap <silent><buffer><expr> <C-s> unite#do_action('split')
     imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   endfunction
-  nnoremap <space>/ :Unite grep:.<cr>
-  nnoremap <space>h :Unite history/yank -default-action=append<cr>
+  nnoremap <space>/ :Unite grep:.<CR>
+  nnoremap <space>h :Unite history/yank -default-action=append<CR>
   nnoremap <C-p> :Unite
     \ -prompt-direction="top"
     \ -winheight=8 -auto-resize
-    \ -start-insert file_rec/git <cr>
+    \ -start-insert file_rec/git <CR>
 
 Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
@@ -244,6 +245,7 @@ set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " folding setting using za, zm and zr
+nnoremap <Tab> za       " toggle fold at current position
 set foldmethod=indent   " fold based on indent (faster than syntax)
 set foldlevelstart=0    " start folded
 set foldnestmax=10      " deepest fold is 10 levels

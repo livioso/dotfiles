@@ -62,4 +62,4 @@
 [branch "master"]
   mergeoptions = --no-ff
 [help]
-  autocorrect = -1
+  autocorrect = 10
