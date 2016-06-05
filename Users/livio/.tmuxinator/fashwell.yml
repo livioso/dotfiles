@@ -35,4 +35,6 @@ windows:
       panes:
         - npm start
         - react-native run-ios
+  - git: gitsh
   - console:
+        - clear
