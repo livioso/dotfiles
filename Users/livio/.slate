@@ -8,11 +8,12 @@
 alias hyper ctrl;shift;alt;cmd
 
 ## Application aliases
-alias safari  'Safari'
-alias finder  'Finder'
-alias iterm   'iTerm2'
-alias chrome  'Google Chrome'
-alias xcode   'Xcode'
+alias safari    'Safari'
+alias simulator 'Simulator'
+alias finder    'Finder'
+alias iterm     'iTerm2'
+alias chrome    'Google Chrome'
+alias xcode     'Xcode'
 
 ## Position aliases
 alias full         move screenOriginX;screenOriginY                screenSizeX;screenSizeY
@@ -30,7 +31,8 @@ bind c:${hyper}  ${center}
 
 ## App bindings
 # These are laid out on the left hand
-bind s:${hyper}          focus ${safari}
+bind s:${hyper}          focus ${simulator}
+bind b:${hyper}          focus ${safari}
 bind g:${hyper}          focus ${chrome}
 bind e:${hyper}          focus ${finder}
 bind space:${hyper}      focus ${iterm}

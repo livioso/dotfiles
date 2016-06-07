@@ -268,6 +268,7 @@ map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>r zR <CR>
 map <Leader>m zM <CR>
+map <Leader>todo :Todo <CR>
 
 " jump to tag
 nnoremap T <C-]>
@@ -344,5 +345,8 @@ function! _BeautifyJson()
   %!python -m json.tool
 endfunction
 
-
-
+function! Todo()
+  let today = strftime("// TODO (livioso %m.%d.%Y) ")
+  exe "normal a". today
+endfunction
+command! Todo :call Todo()

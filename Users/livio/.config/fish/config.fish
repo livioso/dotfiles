@@ -1,6 +1,5 @@
 # path settings
 set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /usr/local/share/git-core/contrib/diff-highlight/
-set -Ux EDITOR nvim
 
 # environment variables
 set -x ANDROID_HOME /usr/local/opt/android-sdk
@@ -38,6 +37,7 @@ set -g fish_color_git         green
 alias grep "grep -n --color"
 
 # using cway too much
+alias git "hub"
 alias c "clear"
 alias g "git"
 alias v "nvim"
@@ -50,6 +50,7 @@ alias sl "ls" # :-/
 alias claer "clear"
 alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
+alias jre "j re; nvim ."
 alias before "history | fzf-tmux"
 
 # helper alias for SyncMe
