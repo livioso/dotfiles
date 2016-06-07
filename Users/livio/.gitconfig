@@ -32,7 +32,7 @@
   ba = !open -g https://github.com/livioso/HubApp/commits/master
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
   uncommit = reset --soft HEAD^
-  upstream = push origin head
+  pushup = push origin head
   tinder = add -p
   ciam = commit -am
   cim = commit -m
