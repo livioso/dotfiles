@@ -29,7 +29,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'rizzatti/dash.vim'
 Plug 'sheerun/yajs.vim'
+" not-sure-if-I-will-use-longterm category
+" lets give them a try anyways :)
 Plug 'jparise/vim-graphql'
+Plug 'ElmCast/elm-vim'
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -247,8 +250,7 @@ set splitright " open right instead of left
 " folding setting using za, zm and zr
 nnoremap <Tab> za       " toggle fold at current position
 set foldmethod=indent   " fold based on indent (faster than syntax)
-set foldlevelstart=0    " start folded
-set foldnestmax=10      " deepest fold is 10 levels
+set foldlevel=99
 set fillchars+=fold:\ 
 
 " enable spellchecking
@@ -266,9 +268,8 @@ map <Leader>n :lnext<CR>
 map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
-map <Leader>r zR <CR>
-map <Leader>m zM <CR>
 map <Leader>todo :Todo <CR>
+map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
 
 " jump to tag
 nnoremap T <C-]>

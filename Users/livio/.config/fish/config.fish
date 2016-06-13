@@ -4,6 +4,7 @@ set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/
 # environment variables
 set -x ANDROID_HOME /usr/local/opt/android-sdk
 set -x PIP_REQUIRE_VIRTUALENV true
+set -x REACT_EDITOR=subl
 
 # os specific settings
 if [ (uname) = 'Linux' ]
@@ -52,6 +53,8 @@ alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
 alias before "history | fzf-tmux"
+alias !! "commandline -i '$history[1]'"
+alias subl "open -a /Applications/Sublime\ Text\ 3.app/"
 
 # helper alias for SyncMe
 alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
