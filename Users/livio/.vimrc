@@ -33,6 +33,7 @@ Plug 'sheerun/yajs.vim'
 " lets give them a try anyways :)
 Plug 'jparise/vim-graphql'
 Plug 'ElmCast/elm-vim'
+  let g:elm_setup_keybindings = 0
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -157,7 +158,7 @@ set number
 set relativenumber
 set history=1000
 set undolevels=1000
-set cmdheight=5
+set cmdheight=4
 set foldcolumn=0
 set scrolloff=5
 set sidescroll=1
@@ -223,9 +224,14 @@ set shiftwidth=2
 set laststatus=2 " always show the statusline
 
 " searching settings
-set ignorecase  " ignore case in search
 set incsearch   " incremental search
+set ignorecase  " ignore case in search
+set smartcase   " except we write it BOLD then don't ignore case
 nnoremap <CR> :nohlsearch <CR> " clear search on when hitting return
+
+" use very magic setting for search (to escape properly)
+nnoremap / /\v
+vnoremap / /\v
 
 " in the quickfix window, <CR> is used to jump to the
 " error under the cursor, so undefine the mapping there.
