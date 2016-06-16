@@ -254,7 +254,7 @@ set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " folding setting using za, zm and zr
-nnoremap <Tab> za       " toggle fold at current position
+nnoremap <Tab> zA       " toggle fold at current position
 set foldmethod=indent   " fold based on indent (faster than syntax)
 set foldlevel=99
 set fillchars+=fold:\ 
