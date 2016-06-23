@@ -34,6 +34,8 @@ Plug 'sheerun/yajs.vim'
 Plug 'jparise/vim-graphql'
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0
+Plug 'wincent/loupe'
+  let g:LoupeClearHighlightMap=0
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -127,7 +129,7 @@ Plug 'vim-airline/vim-airline'
       \ }
 
 Plug 'benekastah/neomake'
-  autocmd! BufWritePost,BufWinEnter * Neomake
+  autocmd! BufWritePost,BufWinEnter * silent Neomake
   autocmd BufWritePost *.js silent Neomake eslint
   let g:neomake_javascript_eslint_exe = './node_modules/eslint/bin/eslint.js'
   let g:neomake_javascript_enabled_makers = ['eslint, flow']
@@ -227,7 +229,7 @@ set laststatus=2 " always show the statusline
 set incsearch   " incremental search
 set ignorecase  " ignore case in search
 set smartcase   " except we write it BOLD then don't ignore case
-nnoremap <CR> :nohlsearch <CR> " clear search on when hitting return
+nnoremap <silent> <CR> :nohlsearch <CR> " clear search on when hitting return
 
 " use very magic setting for search (to escape properly)
 nnoremap / /\v
@@ -280,11 +282,6 @@ map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
 " jump to tag
 nnoremap T <C-]>
 nnoremap gt g<C-]>
-
-" generate tags (jsctags)
-nnoremap <silent> tags :!find . -type f -iregex .*\.js$
-   \ -not -path "./node_modules/*" -exec jsctags {} -f \;
-   \ \| sed '/^$/d' \| sort > tags & <CR>
 
 " allow the . to execute once
 " for each line of a visual selection
@@ -357,3 +354,10 @@ function! Todo()
   exe "normal a". today
 endfunction
 command! Todo :call Todo()
+
+function! GenerateJsctags()
+  jsctags :!find . -type f -iregex .*\.js$
+    \ -not -path "./node_modules/*" -exec jsctags {} -f \;
+    \ \| sed '/^$/d' \| sort > tags & <CR>
+endfunction
+command! GenerateJsctags :call GenerateJsctags()
