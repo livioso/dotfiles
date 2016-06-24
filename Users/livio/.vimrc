@@ -1,15 +1,6 @@
 set nocompatible
 set shell=/bin/bash
 
-" VimPlug (https://github.com/junegunn/vim-plug)
-if empty(glob("~/.vim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
-
-if empty(glob("~/.vim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
-
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
@@ -23,17 +14,17 @@ Plug 'Keithbsmiley/swift.vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
+Plug 'jparise/vim-graphql'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'rizzatti/dash.vim'
 Plug 'sheerun/yajs.vim'
-" not-sure-if-I-will-use-longterm category
-" lets give them a try anyways :)
-Plug 'jparise/vim-graphql'
+
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0
+
 Plug 'wincent/loupe'
   let g:LoupeClearHighlightMap=0
 
@@ -145,7 +136,7 @@ Plug 'benekastah/neomake'
     \ }
 call plug#end()
 
-" Unite // must be after plug#end!
+" Unite -> this must be after plug#end!
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
@@ -170,10 +161,10 @@ set hidden
 syntax on
 
 " fancier colors in neovim
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 " for some reason this
 " is not set properly. :(
-hi Normal guibg=3b3b3b
+hi Normal guibg = 3b3b3b
 
 " disable preview scratch
 set completeopt-=preview
@@ -194,7 +185,7 @@ set wildmenu
 set wildignore+=*/node_modules/*
 
 " netrw show tree view
-let g:netrw_liststyle=3
+let g:netrw_liststyle = 3
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " disable all bells
@@ -231,22 +222,18 @@ set ignorecase  " ignore case in search
 set smartcase   " except we write it BOLD then don't ignore case
 nnoremap <silent> <CR> :nohlsearch <CR> " clear search on when hitting return
 
-" use very magic setting for search (to escape properly)
+" use very magic setting for search
 nnoremap / /\v
 vnoremap / /\v
 
-" in the quickfix window, <CR> is used to jump to the
-" error under the cursor, so undefine the mapping there.
+" in the quick fix window, <CR> is used to jump to the
+" error under the cursor, so redefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
 set fillchars+=vert:│
 hi VertSplit ctermbg=NONE guibg=NONE
-
-" buffer settings
-nnoremap gp :bp<CR> " move to the previous buffer with gp
-nnoremap gn :bn<CR> " move to the next buffer with gn
 
 " gf add .js suffix for modules
 set suffixesadd+=.js
@@ -256,28 +243,13 @@ set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " folding setting using za, zm and zr
-nnoremap <Tab> zA       " toggle fold at current position
-set foldmethod=indent   " fold based on indent (faster than syntax)
+nnoremap <Tab> za         " toggle fold at current position
+set foldmethod=indent     " fold based on indent (faster than syntax)
 set foldlevel=99
 set fillchars+=fold:\ 
 
-" enable spellchecking
+" enable spell checker
 set spell
-
-" personal <Leader> mappings
-map <Leader>w :w <CR>
-map <Leader>f <C-w><C-w>
-map <Leader>j <C-p>
-map <Leader>v :vsplit .<CR>
-map <Leader>q :q <CR>
-map <Leader>erc :e ~/.vimrc <CR>
-map <Leader>src :source ~/.vimrc <CR>
-map <Leader>n :lnext<CR>
-map <Leader>b <C-i> <CR>
-map <Leader>n <C-o> <CR>
-map <Leader>dbg odebugger;<ESC>
-map <Leader>todo :Todo <CR>
-map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
 
 " jump to tag
 nnoremap T <C-]>
@@ -286,15 +258,6 @@ nnoremap gt g<C-]>
 " allow the . to execute once
 " for each line of a visual selection
 vnoremap . :normal .<CR>
-
-" copy and paste from system clipboard
-" with <leader>y and <leader>p
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
 
 " remove startup message
 set shortmess+=I
@@ -312,9 +275,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
-
-" saving read only files (sudo tee trick)
-cmap w!! w !sudo tee % >/dev/null
 
 " replace X with Y: SX/Y<CR>
 nmap S :%s//gc<LEFT><LEFT><LEFT>
@@ -338,26 +298,43 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
 " trim trailing whitespaces
 function! _TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" make json beautiful
-function! _BeautifyJson()
-  %!python -m json.tool
-endfunction
-
+" appends // TODO (livioso 12.05.2016)
 function! Todo()
   let today = strftime("// TODO (livioso %m.%d.%Y) ")
   exe "normal a". today
 endfunction
 command! Todo :call Todo()
 
-function! GenerateJsctags()
-  jsctags :!find . -type f -iregex .*\.js$
-    \ -not -path "./node_modules/*" -exec jsctags {} -f \;
-    \ \| sed '/^$/d' \| sort > tags & <CR>
-endfunction
-command! GenerateJsctags :call GenerateJsctags()
+" generate tags (jsctags)
+nnoremap <silent> tags :!find . -type f -iregex .*\.js$
+  \ -not -path "./node_modules/*" -exec jsctags {} -f \;
+  \ \| sed '/^$/d' \| sort > tags & <CR>
+
+" copy and paste from system clipboard
+" with <leader>y and <leader>p
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" personal <Leader> mappings
+map <Leader>w :w <CR>
+map <Leader>f <C-w><C-w>
+map <Leader>j <C-p>
+map <Leader>v :vsplit .<CR>
+map <Leader>q :q <CR>
+map <Leader>erc :e ~/.vimrc <CR>
+map <Leader>src :source ~/.vimrc <CR>
+map <Leader>n :lnext<CR>
+map <Leader>b <C-i> <CR>
+map <Leader>n <C-o> <CR>
+map <Leader>dbg odebugger;<ESC>
+map <Leader>todo :Todo <CR>
+map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
