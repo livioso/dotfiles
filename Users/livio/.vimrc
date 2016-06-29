@@ -21,6 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'rizzatti/dash.vim'
 Plug 'sheerun/yajs.vim'
+Plug 'tpope/vim-repeat'
 
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0

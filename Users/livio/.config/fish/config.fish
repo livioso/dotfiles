@@ -4,18 +4,7 @@ set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/
 # environment variables
 set -x ANDROID_HOME /usr/local/opt/android-sdk
 set -x PIP_REQUIRE_VIRTUALENV true
-set -x REACT_EDITOR=subl
-
-# os specific settings
-if [ (uname) = 'Linux' ]
-  set TERM screen-256color-bce
-end
-
-# using Base16-Shell thus we need to do this in order to
-# to have a working color scheme for more information see:
-# https://github.com/chriskempson/base16-shell
-eval sh $HOME/.config/base16-shell/base16-eighties.dark.sh
-set -Ux fish_term256
+set -x REACT_EDITOR subl
 
 # colors used by fish
 set -g fish_color_normal      base0
@@ -33,61 +22,42 @@ set -g fish_color_escape      cyan
 set -g fish_color_hostname    cyan
 set -g fish_color_cwd         yellow
 set -g fish_color_git         green
+set -U FZF_TMUX 1
 
-# colorize grep
-alias grep "grep -n --color"
+# os specific settings
+if [ (uname) = 'Linux' ]
+  set TERM screen-256color-bce
+end
 
-# using cway too much
-alias git "hub"
-alias c "clear"
-alias g "git"
-alias v "nvim"
-alias v. "nvim ."
-alias v, "nvim ."
-alias n. "nvim ."
-alias n, "nvim ."
-alias n "nvim"
-alias sl "ls" # :-/
-alias claer "clear"
-alias jfw "j fw; nvim ."
-alias jba "j ba; nvim ."
-alias jre "j re; nvim ."
-alias before "history | fzf-tmux"
-alias !! "commandline -i '$history[1]'"
-alias subl "open -a /Applications/Sublime\ Text\ 3.app/"
-
-# helper alias for SyncMe
-alias fhs "pushd .; cd ~/Dropbox/FHNW/SyncMe/SyncMe/; make -i | less; popd; clear"
+# using Base16-Shell thus we need to do this in order to
+# to have a working color scheme for more information see:
+# https://github.com/chriskempson/base16-shell
+eval sh $HOME/.config/base16-shell/base16-eighties.dark.sh
+set -Ux fish_term256
 
 # no greeting
 set fish_greeting ""
 
-# run fish in vim mode
-fish_vi_mode
-
-# corrects your previous console command
-eval (thefuck --alias | tr '\n' ';')
+# load fish marks
+source $HOME/.config/fish/fishmarks.fish
 
 function fish_mode_prompt --description "Displays the current mode"
-  # Do nothing if not in vi mode
-  if set -q __fish_vi_mode
-    switch $fish_bind_mode
-      case default
-        set_color --bold --background red white
-        echo ' N '
-      case insert
-        set_color --bold --background blue white
-        echo ' I '
-      case replace-one
-        set_color --bold --background green white
-        echo ' R '
-      case visual
-        set_color --bold --background magenta white
-        echo ' V '
-    end
-    set_color normal
-    echo -n ' '
+  switch $fish_bind_mode
+    case default
+      set_color --bold --background red white
+      echo ' N '
+    case insert
+      set_color --bold --background blue white
+      echo ' I '
+    case replace-one
+      set_color --bold --background green white
+      echo ' R '
+    case visual
+      set_color --bold --background magenta white
+      echo ' V '
   end
+  set_color normal
+  echo -n ' '
 end
 
 function fish_prompt --description 'Write out the prompt'
@@ -97,7 +67,6 @@ function fish_prompt --description 'Write out the prompt'
     set -g __fish_prompt_normal (set_color normal)
   end
 
-  # PWD
   set_color blue
   echo -n (prompt_pwd)
 
@@ -114,7 +83,28 @@ function fish_prompt --description 'Write out the prompt'
   set_color normal
 end
 
-source ~/.config/fish/fishmarks.fish
-set fisher_home ~/.local/share/fisherman
-set fisher_config ~/.config/fisherman
-source $fisher_home/config.fish
+function fish_user_key_bindings
+  # do this first!
+  fish_vi_key_bindings
+
+  # rebind fzf keys to appropriate functions.
+  source $HOME/.config/fish/functions/__fzf_ctrl_r.fish
+  bind \cr -M insert '__fzf_ctrl_r'
+end
+
+# aliases
+alias git "hub"
+alias c "clear"
+alias g "git"
+alias sl "ls"
+alias n "nvim"
+alias n. "nvim ."
+alias n, "nvim ."
+alias claer "clear"
+alias grep "grep -n --color"
+alias subl "open -a /Applications/Sublime\ Text\ 3.app/"
+
+# fish marks
+alias jfw "j fw; nvim ."
+alias jba "j ba; nvim ."
+alias jre "j re; nvim ."
