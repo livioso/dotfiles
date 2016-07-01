@@ -29,10 +29,8 @@ if [ (uname) = 'Linux' ]
   set TERM screen-256color-bce
 end
 
-# using Base16-Shell thus we need to do this in order to
-# to have a working color scheme for more information see:
-# https://github.com/chriskempson/base16-shell
-eval sh $HOME/.config/base16-shell/base16-eighties.dark.sh
+# color scheme
+eval sh $HOME/.config/base16-shell/scripts/base16-eighties.sh 
 set -Ux fish_term256
 
 # no greeting
