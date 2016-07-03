@@ -163,6 +163,7 @@ syntax on
 
 " fancier colors in neovim
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+
 " for some reason this
 " is not set properly. :(
 hi Normal guibg = 3b3b3b
@@ -315,6 +316,9 @@ command! Todo :call Todo()
 nnoremap <silent> tags :!find . -type f -iregex .*\.js$
   \ -not -path "./node_modules/*" -exec jsctags {} -f \;
   \ \| sed '/^$/d' \| sort > tags & <CR>
+
+" I always seem to write Wq instead of wq 
+command Wq wq
 
 " copy and paste from system clipboard
 " with <leader>y and <leader>p

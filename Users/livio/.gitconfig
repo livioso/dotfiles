@@ -45,6 +45,7 @@
   # undo the last commit
   undo = reset --soft HEAD~
   uncommit = reset --soft HEAD^
+  exit =
 [filter "lfs"]
   clean = git lfs clean %f
   smudge = git lfs smudge %f

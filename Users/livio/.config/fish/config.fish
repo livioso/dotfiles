@@ -29,12 +29,6 @@ if [ (uname) = 'Linux' ]
   set TERM screen-256color-bce
 end
 
-# using Base16-Shell thus we need to do this in order to
-# to have a working color scheme for more information see:
-# https://github.com/chriskempson/base16-shell
-eval sh $HOME/.config/base16-shell/base16-eighties.dark.sh
-set -Ux fish_term256
-
 # no greeting
 set fish_greeting ""
 
@@ -92,6 +86,12 @@ function fish_user_key_bindings
   bind \cr -M insert '__fzf_ctrl_r'
 end
 
+# cs => cd & ls
+function cs
+   cd $argv
+   ls
+end
+
 # aliases
 alias git "hub"
 alias c "clear"
@@ -108,3 +108,8 @@ alias subl "open -a /Applications/Sublime\ Text\ 3.app/"
 alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
+
+
+# color scheme
+eval sh $HOME/.config/base16-shell/scripts/base16-eighties.sh
+set -Ux fish_term256
