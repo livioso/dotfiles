@@ -35,8 +35,8 @@
   tinder = add -p
   ciam = commit -am
   cim = commit -m
-  cia = commit -a
-  ci = commit
+  cia = commit --verbose --untracked-files=no -a
+  ci = commit --verbose --untracked-files=no
   co = checkout
   br = branch
   st = status --short --branch

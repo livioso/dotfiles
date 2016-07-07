@@ -111,20 +111,29 @@ alias jre "j re; nvim ."
 
 # color scheme
 function reloadTheme
-  # use BASE16THEME if set (e.g. tmux new pane C-c)
-  set -q BASE16THEME; or set -g -x BASE16THEME oceanicnext
-  eval sh $HOME/.config/base16-shell/scripts/base16-$BASE16THEME.sh
+  if not set -q THEME
+    echo nset
+    set -gx THEME oceanicnext
+  else
+    echo set
+  end
+
+  eval sh $HOME/.config/base16-shell/scripts/base16-$THEME.sh
 end
 
 # use dark color scheme
 function dark
-  set -g -x BASE16THEME oceanicnext
+  set -e -g THEME
+  set -e -u THEME
+  set -gx THEME oceanicnext
   reloadTheme
 end
 
 # use light color scheme
 function light
-  set -g -x BASE16THEME tomorrow
+  set -e -g THEME
+  set -e -u THEME
+  set -gx THEME tomorrow
   reloadTheme
 end
 
