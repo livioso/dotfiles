@@ -109,7 +109,24 @@ alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
 
-
 # color scheme
-eval sh $HOME/.config/base16-shell/scripts/base16-eighties.sh
+function reloadTheme
+  # use BASE16THEME if set (e.g. tmux new pane C-c)
+  set -q BASE16THEME; or set -g -x BASE16THEME oceanicnext
+  eval sh $HOME/.config/base16-shell/scripts/base16-$BASE16THEME.sh
+end
+
+# use dark color scheme
+function dark
+  set -g -x BASE16THEME oceanicnext
+  reloadTheme
+end
+
+# use light color scheme
+function light
+  set -g -x BASE16THEME tomorrow
+  reloadTheme
+end
+
+reloadTheme
 set -Ux fish_term256
