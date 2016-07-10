@@ -45,7 +45,8 @@
   # undo the last commit
   undo = reset --soft HEAD~
   uncommit = reset --soft HEAD^
-  exit =
+  clear = !clear
+  exit = = !clear
 [filter "lfs"]
   clean = git lfs clean %f
   smudge = git lfs smudge %f
@@ -67,3 +68,5 @@
 	compactionHeuristic = true
 [interactive]
 	diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
+[gitsh]
+	prompt = git > %w%D %c(%b) $%w
