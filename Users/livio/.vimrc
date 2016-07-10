@@ -126,15 +126,6 @@ Plug 'benekastah/neomake'
   let g:neomake_javascript_eslint_exe = './node_modules/eslint/bin/eslint.js'
   let g:neomake_javascript_enabled_makers = ['eslint, flow']
   let g:neomake_open_list = 0
-  let g:neomake_error_sign = {
-    \ 'text': '‣‣',
-    \ 'texthl': 'ErrorMsg',
-    \ }
-  highlight myWarningMsg ctermbg=0 ctermfg=3 guibg=0 guifg=yellow
-  let g:neomake_warning_sign = {
-    \ 'text': '‣‣',
-    \ 'texthl': 'myWarningMsg',
-    \ }
 call plug#end()
 
 " Unite -> this must be after plug#end!
@@ -346,3 +337,11 @@ map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
 map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
+
+" NeomMake temporary solution see https://github.com/neomake/neomake/pull/248
+so ~/.fixNeoMakeDefaults.vim
+call NeoMakeDefaults()
+let g:neomake_error_sign = { 'text': "●", 'texthl': 'NeomakeErrorDefault' }
+let g:neomake_warning_sign = { 'text': "●", 'texthl': 'NeomakeWarningDefault' }
+let g:neomake_informational_sign = { 'text': "●", 'texthl': 'NeomakeInformationDefault' }
+let g:neomake_message_sign = { 'text': "●", 'texthl': 'NeomakeMessageDefault' }
