@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'livioso/neosnippet-snippets'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'Lokaltog/vim-easymotion'
@@ -56,7 +56,7 @@ Plug 'tyru/open-browser.vim'
 
 Plug 'Shougo/unite.vim'
   let g:unite_data_directory='~/.config/nvim/.cache/unite'
-  let g:unite_source_rec_max_cache_files=5000
+  let g:unite_source_rec_max_cache_files=10000
   let g:unite_source_history_yank_enable = 1
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts =
@@ -143,6 +143,7 @@ set mouse=a " use mouse 😬
 set langmenu=en_US.UTF-8
 set number
 set relativenumber
+set viminfo='1000,<500,:500,/500
 set history=1000
 set undolevels=1000
 set cmdheight=4
@@ -237,6 +238,12 @@ set suffixesadd+=.js
 " split view settings
 set splitbelow " open below instead of above
 set splitright " open right instead of left
+
+" navigate split easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " folding setting using za, zm and zr
 nnoremap <Tab> za         " toggle fold at current position

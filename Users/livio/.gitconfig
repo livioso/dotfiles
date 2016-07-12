@@ -69,4 +69,4 @@
 [interactive]
 	diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
 [gitsh]
-	prompt = git > %w%D %c(%b) $%w
+	prompt = git • %c%D (%b) $%w
