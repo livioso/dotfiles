@@ -35,6 +35,10 @@ windows:
       panes:
         - npm start
         - react-native run-ios
-  - git: gitsh
+  - git:
+      layout: even-horizontal
+      panes:
+        - tig
+        - gitsh; clear
   - console:
         - clear

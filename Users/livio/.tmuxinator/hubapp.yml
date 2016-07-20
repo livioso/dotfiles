@@ -40,5 +40,9 @@ windows:
       panes:
         - cd ../../backend/HubApp; gradle build; gradle bootRun
         - cd ../../backend/HubApp; nvim .
-  - git: gitsh
+  - git:
+      layout: even-horizontal
+      panes:
+        - tig
+        - gitsh; clear
   - console:
