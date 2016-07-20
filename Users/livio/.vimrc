@@ -1,34 +1,35 @@
 set nocompatible
 set shell=/bin/bash
 
-" VimPlug (https://github.com/junegunn/vim-plug)
-if empty(glob("~/.vim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
-
-if empty(glob("~/.vim/autoload/plug.vim"))
-  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
-endif
-
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'livioso/neosnippet-snippets'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
+Plug 'elixir-lang/vim-elixir'
 Plug 'Shougo/neoinclude.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
+Plug 'jparise/vim-graphql'
 Plug 'Shougo/neoyank.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'rizzatti/dash.vim'
 Plug 'sheerun/yajs.vim'
-Plug 'jparise/vim-graphql'
+Plug 'tpope/vim-repeat'
+Plug 'wincent/terminus'
+
+Plug 'ElmCast/elm-vim'
+  let g:elm_setup_keybindings = 0
+
+Plug 'wincent/loupe'
+  let g:LoupeClearHighlightMap=0
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -57,7 +58,7 @@ Plug 'tyru/open-browser.vim'
 
 Plug 'Shougo/unite.vim'
   let g:unite_data_directory='~/.config/nvim/.cache/unite'
-  let g:unite_source_rec_max_cache_files=5000
+  let g:unite_source_rec_max_cache_files=10000
   let g:unite_source_history_yank_enable = 1
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts =
@@ -74,12 +75,12 @@ Plug 'Shougo/unite.vim'
     imap <silent><buffer><expr> <C-s> unite#do_action('split')
     imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   endfunction
-  nnoremap <space>/ :Unite grep:.<cr>
-  nnoremap <space>h :Unite history/yank -default-action=append<cr>
+  nnoremap <space>/ :Unite grep:.<CR>
+  nnoremap <space>h :Unite history/yank -default-action=append<CR>
   nnoremap <C-p> :Unite
     \ -prompt-direction="top"
     \ -winheight=8 -auto-resize
-    \ -start-insert file_rec/git <cr>
+    \ -start-insert file_rec/git <CR>
 
 Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
@@ -122,38 +123,32 @@ Plug 'vim-airline/vim-airline'
       \ }
 
 Plug 'benekastah/neomake'
-  autocmd! BufWritePost,BufWinEnter * Neomake
+  autocmd! BufWritePost,BufWinEnter * silent Neomake
   autocmd BufWritePost *.js silent Neomake eslint
   let g:neomake_javascript_eslint_exe = './node_modules/eslint/bin/eslint.js'
   let g:neomake_javascript_enabled_makers = ['eslint, flow']
   let g:neomake_open_list = 0
-  let g:neomake_error_sign = {
-    \ 'text': '‣‣',
-    \ 'texthl': 'ErrorMsg',
-    \ }
-  highlight myWarningMsg ctermbg=0 ctermfg=3 guibg=0 guifg=yellow
-  let g:neomake_warning_sign = {
-    \ 'text': '‣‣',
-    \ 'texthl': 'myWarningMsg',
-    \ }
 call plug#end()
 
-" Unite // must be after plug#end!
+" Unite -> this must be after plug#end!
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 " General settings
 set t_Co=256
 set background=dark
-colorscheme base16-eighties
+" one of my all time favourites
+" colorscheme base16-eighties
+colorscheme base16-oceanicnext
 set backspace=indent,eol,start
 set mouse=a " use mouse 😬
 set langmenu=en_US.UTF-8
 set number
 set relativenumber
+set viminfo='1000,<500,:500,/500
 set history=1000
 set undolevels=1000
-set cmdheight=5
+set cmdheight=4
 set foldcolumn=0
 set scrolloff=5
 set sidescroll=1
@@ -163,10 +158,12 @@ set hidden
 syntax on
 
 " fancier colors in neovim
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+" set termguicolors
+
 " for some reason this
 " is not set properly. :(
-hi Normal guibg=3b3b3b
+hi Normal guibg = 3b3b3b
 
 " disable preview scratch
 set completeopt-=preview
@@ -187,7 +184,7 @@ set wildmenu
 set wildignore+=*/node_modules/*
 
 " netrw show tree view
-let g:netrw_liststyle=3
+let g:netrw_liststyle = 3
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " disable all bells
@@ -203,7 +200,7 @@ set autoindent
 filetype plugin indent on
 
 " trailing whitespaces
-set list listchars=trail:·
+set list listchars=trail:·,tab:\ \ 
 
 " seems to be faster (scrolling)
 set lazyredraw
@@ -214,26 +211,28 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set listchars=tab:\ \ 
 
 " status line settings
 set laststatus=2 " always show the statusline
 
 " searching settings
-set ignorecase  " ignore case in search
 set incsearch   " incremental search
-nnoremap <CR> :nohlsearch <CR> " clear search on when hitting return
+set ignorecase  " ignore case in search
+set smartcase   " except we write it BOLD then don't ignore case
+nnoremap <silent> <CR> :nohlsearch <CR> " clear search on when hitting return
 
-" in the quickfix window, <CR> is used to jump to the
-" error under the cursor, so undefine the mapping there.
+" use very magic setting for search
+nnoremap / /\v
+vnoremap / /\v
+
+" in the quick fix window, <CR> is used to jump to the
+" error under the cursor, so redefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
-
-" buffer settings
-nnoremap gp :bp<CR> " move to the previous buffer with gp
-nnoremap gn :bn<CR> " move to the next buffer with gn
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
 
 " gf add .js suffix for modules
 set suffixesadd+=.js
@@ -242,51 +241,28 @@ set suffixesadd+=.js
 set splitbelow " open below instead of above
 set splitright " open right instead of left
 
+" navigate split easier
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " folding setting using za, zm and zr
-set foldmethod=indent   " fold based on indent (faster than syntax)
-set foldlevelstart=0    " start folded
-set foldnestmax=10      " deepest fold is 10 levels
-let &fillchars='vert: ' " less cluttered vertical window separators
+nnoremap <Tab> za         " toggle fold at current position
+set foldmethod=indent     " fold based on indent (faster than syntax)
+set foldlevel=99
+set fillchars+=fold:\ 
 
-" enable spellchecking
+" enable spell checker
 set spell
-
-" personal <Leader> mappings
-map <Leader>w :w <CR>
-map <Leader>f <C-w><C-w>
-map <Leader>j <C-p>
-map <Leader>v :vsplit .<CR>
-map <Leader>q :q <CR>
-map <Leader>erc :e ~/.vimrc <CR>
-map <Leader>src :source ~/.vimrc <CR>
-map <Leader>n :lnext<CR>
-map <Leader>b <C-i> <CR>
-map <Leader>n <C-o> <CR>
-map <Leader>dbg odebugger;<ESC>
-map <Leader>r zR <CR>
-map <Leader>m zM <CR>
 
 " jump to tag
 nnoremap T <C-]>
 nnoremap gt g<C-]>
 
-" generate tags (jsctags)
-nnoremap <silent> tags :!find . -type f -iregex .*\.js$
-   \ -not -path "./node_modules/*" -exec jsctags {} -f \;
-   \ \| sed '/^$/d' \| sort > tags & <CR>
-
 " allow the . to execute once
 " for each line of a visual selection
 vnoremap . :normal .<CR>
-
-" copy and paste from system clipboard
-" with <leader>y and <leader>p
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
 
 " remove startup message
 set shortmess+=I
@@ -304,9 +280,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
-
-" saving read only files (sudo tee trick)
-cmap w!! w !sudo tee % >/dev/null
 
 " replace X with Y: SX/Y<CR>
 nmap S :%s//gc<LEFT><LEFT><LEFT>
@@ -330,16 +303,54 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-
 " trim trailing whitespaces
 function! _TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" make json beautiful
-function! _BeautifyJson()
-  %!python -m json.tool
+" appends // TODO (livioso 12.05.2016)
+function! Todo()
+  let today = strftime("// TODO (livioso %m.%d.%Y) ")
+  exe "normal a". today
 endfunction
+command! Todo :call Todo()
 
+" generate tags (jsctags)
+nnoremap <silent> tags :!find . -type f -iregex .*\.js$
+  \ -not -path "./node_modules/*" -exec jsctags {} -f \;
+  \ \| sed '/^$/d' \| sort > tags & <CR>
 
+" I always seem to write Wq instead of wq 
+command Wq wq
 
+" copy and paste from system clipboard
+" with <leader>y and <leader>p
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" personal <Leader> mappings
+map <Leader>w :w <CR>
+map <Leader>f <C-w><C-w>
+map <Leader>j <C-p>
+map <Leader>v :vsplit .<CR>
+map <Leader>q :q <CR>
+map <Leader>erc :e ~/.vimrc <CR>
+map <Leader>src :source ~/.vimrc <CR>
+map <Leader>n :lnext<CR>
+map <Leader>b <C-i> <CR>
+map <Leader>n <C-o> <CR>
+map <Leader>dbg odebugger;<ESC>
+map <Leader>todo :Todo <CR>
+map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
+
+" NeomMake temporary solution see https://github.com/neomake/neomake/pull/248
+so ~/.fixNeoMakeDefaults.vim
+call NeoMakeDefaults()
+let g:neomake_error_sign = { 'text': "●", 'texthl': 'NeomakeErrorDefault' }
+let g:neomake_warning_sign = { 'text': "●", 'texthl': 'NeomakeWarningDefault' }
+let g:neomake_informational_sign = { 'text': "●", 'texthl': 'NeomakeInformationDefault' }
+let g:neomake_message_sign = { 'text': "●", 'texthl': 'NeomakeMessageDefault' }

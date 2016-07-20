@@ -28,24 +28,26 @@
   smudge = git hawser smudge %f
   required = true
 [alias]
+  tig = !tig
   fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
   ba = !open -g https://github.com/livioso/HubApp/commits/master
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
-  uncommit = reset --soft HEAD^
-  upstream = push origin head
+  pushup = push origin head
   tinder = add -p
   ciam = commit -am
   cim = commit -m
-  cia = commit -a
-  ci = commit
+  cia = commit --verbose --untracked-files=no -a
+  ci = commit --verbose --untracked-files=no
   co = checkout
   br = branch
   st = status --short --branch
   df = diff
-  psuh = push
   p = push
   # undo the last commit
   undo = reset --soft HEAD~
+  uncommit = reset --soft HEAD^
+  clear = !clear
+  exit = = !clear
 [filter "lfs"]
   clean = git lfs clean %f
   smudge = git lfs smudge %f
@@ -55,11 +57,19 @@
 [core]
   untrackedCache = true
   editor = nvim
-  pager = bash -lc 'diff-highlight | less -r' -
   ignorecase = false
+  pager = diff-so-fancy --patch-mode | less --tabs=2 -RFX
 [commit]
   template = ~/.gitmessage
 [branch "master"]
   mergeoptions = --no-ff
 [help]
-  autocorrect = -1
+  autocorrect = 10
+[diff]
+	compactionHeuristic = true
+[interactive]
+	diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
+[gitsh]
+  prompt = git • %c%D (%b) $%w
+[tig]
+  mouse = true

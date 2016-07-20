@@ -1,0 +1,14 @@
+# ~/.tmuxinator/exorcism.yml
+
+name: Exorcism
+root: ~/Desktop/●/exorcism
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - nvim .
+        - cd bob; fswatch *.exs | xargs -n1 elixir *_test.exs
+  - iex: iex
+  - git: gitsh
+  - console: clear
