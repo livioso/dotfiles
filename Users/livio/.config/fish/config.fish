@@ -111,29 +111,19 @@ alias jre "j re; nvim ."
 
 # color scheme
 function reloadTheme
-  if set -q -U THEME
-    eval sh $HOME/.config/base16-shell/scripts/base16-$THEME.sh
-  else
-    set -e -U THEME
-    set -e -g THEME
-    set -Ux THEME oceanicnext
-    eval sh $HOME/.config/base16-shell/scripts/base16-$THEME.sh
-  end
+  cat ~/.theme | read theme
+  eval sh $HOME/.config/base16-shell/scripts/base16-$theme.sh
 end
 
 # use dark color scheme
 function dark
-  set -e -U THEME
-  set -e -g THEME
-  set -Ux THEME oceanicnext
+  echo oceanicnext > ~/.theme
   reloadTheme
 end
 
 # use light color scheme
 function light
-  set -e -U THEME
-  set -e -g THEME
-  set -Ux THEME harmonic16-light
+  echo harmonic16-light > ~/.theme
   reloadTheme
 end
 
