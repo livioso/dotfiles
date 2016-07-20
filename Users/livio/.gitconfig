@@ -28,6 +28,7 @@
   smudge = git hawser smudge %f
   required = true
 [alias]
+  tig = !tig
   fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
   ba = !open -g https://github.com/livioso/HubApp/commits/master
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20

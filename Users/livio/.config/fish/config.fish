@@ -93,6 +93,7 @@ function cs
 end
 
 # aliases
+alias e "exit"
 alias git "hub"
 alias c "clear"
 alias g "git"
