@@ -38,41 +38,32 @@ source $HOME/.config/fish/fishmarks.fish
 function fish_mode_prompt --description "Displays the current mode"
   switch $fish_bind_mode
     case default
-      set_color --bold --background red white
-      echo ' N '
+      set_color --bold --background black red
+      echo '●'
     case insert
-      set_color --bold --background blue white
-      echo ' I '
+      set_color --bold --background black green
+      echo '●'
     case replace-one
-      set_color --bold --background green white
-      echo ' R '
+      set_color --bold --background black magenta
+      echo '●'
     case visual
-      set_color --bold --background magenta white
-      echo ' V '
+      set_color --bold --background black blue
+      echo '●'
   end
   set_color normal
   echo -n ' '
 end
 
 function fish_prompt --description 'Write out the prompt'
-  set -l last_status $status
-
   if not set -q __fish_prompt_normal
     set -g __fish_prompt_normal (set_color normal)
   end
 
-  set_color blue
+  set_color green
   echo -n (prompt_pwd)
 
-  set_color green
-  printf '%s ' (__fish_git_prompt)
-
-  if not test $last_status -eq 0
-    set_color $fish_color_error
-  end
-
   set_color red
-  echo -n '$ '
+  printf ' > '
 
   set_color normal
 end
@@ -84,6 +75,11 @@ function fish_user_key_bindings
   # rebind fzf keys to appropriate functions.
   source $HOME/.config/fish/functions/__fzf_ctrl_r.fish
   bind \cr -M insert '__fzf_ctrl_r'
+end
+
+function fish_right_prompt -d "Write out the right prompt"
+  set_color blue
+  printf '%s' (__fish_git_prompt)
 end
 
 # cs => cd & ls
@@ -111,7 +107,7 @@ alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
 
 # color scheme
-function reloadTheme
+function loadBase16Theme
   cat ~/.theme | read theme
   eval sh $HOME/.config/base16-shell/scripts/base16-$theme.sh
 end
@@ -119,14 +115,14 @@ end
 # use dark color scheme
 function dark
   echo oceanicnext > ~/.theme
-  reloadTheme
+  loadBase16Theme
 end
 
 # use light color scheme
 function light
   echo harmonic16-light > ~/.theme
-  reloadTheme
+  loadBase16Theme
 end
 
 set -Ux fish_term256
-reloadTheme
+loadBase16Theme
