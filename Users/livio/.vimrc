@@ -84,11 +84,10 @@ Plug 'Shougo/unite.vim'
 
 Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#disable_auto_complete = 1
-  let g:deoplete#max_list = 10
+  let g:deoplete#disable_auto_complete = 0
+  let g:deoplete#max_list = 5
   inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" :
-    \ deoplete#mappings#manual_complete()
+    \ pumvisible() ? "\<C-n>" : "\<TAB>"
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   let g:tern_show_signature_in_pum = 1
@@ -133,6 +132,9 @@ call plug#end()
 " Unite -> this must be after plug#end!
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+
+" Depplete -> favour buffer over everything
+call deoplete#custom#set('buffer', 'rank', 9999)
 
 " General settings
 set t_Co=256
