@@ -73,3 +73,5 @@
   prompt = git • %c%D (%b) $%w
 [tig]
   mouse = true
+[pull]
+	rebase = true
