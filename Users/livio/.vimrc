@@ -25,6 +25,11 @@ Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 
+" not sure about this one yet
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0
 
@@ -348,6 +353,12 @@ map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
 map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
+
+" limelight and goyo
+map <Leader>g :Goyo <CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+map <Leader>l :Limelight!! <CR>
 
 " NeomMake temporary solution see https://github.com/neomake/neomake/pull/248
 so ~/.fixNeoMakeDefaults.vim

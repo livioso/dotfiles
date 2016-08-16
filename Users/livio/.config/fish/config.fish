@@ -100,6 +100,7 @@ alias n, "nvim ."
 alias claer "clear"
 alias grep "grep -n --color"
 alias subl "open -a /Applications/Sublime\ Text\ 3.app/"
+alias t "tree -L 1 -a ."
 
 # fish marks
 alias jfw "j fw; nvim ."
@@ -114,7 +115,8 @@ end
 
 # use dark color scheme
 function dark
-  echo oceanicnext > ~/.theme
+  # echo oceanicnext > ~/.theme
+  echo eighties > ~/.theme
   loadBase16Theme
 end
 

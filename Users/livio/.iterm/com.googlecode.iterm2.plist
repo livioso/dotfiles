@@ -1397,10 +1397,12 @@
 	<string>-961 1340 1060 94 -1129 900 3440 1440 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>359 419 606 456 0 0 1440 877 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>28 1069 937 465 -241 900 1920 1080 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-968 904 910 873 -1129 900 3440 1417 </string>
+	<string>0 0 910 1047 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -2343,7 +2345,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-12T15:47:57Z</date>
+	<date>2016-08-05T08:18:14Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20150412</string>
 	<key>SavePasteHistory</key>
@@ -2355,7 +2357,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
@@ -2399,13 +2401,13 @@
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
-	<string>/-+\~_.</string>
+	<string></string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.4</string>
+	<string>3.0.5</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
