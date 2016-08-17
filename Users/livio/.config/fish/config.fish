@@ -106,6 +106,7 @@ alias t "tree -L 1 -a ."
 alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
+alias jfw-python "j fw-python; nvim ."
 
 # color scheme
 function loadBase16Theme
@@ -128,3 +129,22 @@ end
 
 set -Ux fish_term256
 loadBase16Theme
+
+# Fashwell
+function fwPythonEnv
+  j fw-python
+  . ../env/bin/activate.fish
+  set -x PYTHONPATH .
+end
+
+function fwStartServer
+  fwPythonEnv
+  python -m frontend.manage runserver 0.0.0.0:8000 --configuration 'Development'
+end
+
+function fwDjangoShell
+    fwPythonEnv
+    python -m frontend.manage shell
+end
+
+
