@@ -134,7 +134,7 @@ loadBase16Theme
 function fwPythonEnv
   j fw-python
   . ../env/bin/activate.fish
-  set -x PYTHONPATH .
+  set -x PYTHONPATH /Users/livio/Fashwell/karl/src/python
 end
 
 function fwStartServer
