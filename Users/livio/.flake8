@@ -1,0 +1,13 @@
+[pycodestyle]
+ignore = E5,W391
+
+[pep8]
+ignore = E5,W391
+
+[pyflake8]
+ignore = E5,W391
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist
