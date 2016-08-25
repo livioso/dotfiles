@@ -107,6 +107,7 @@ alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
 alias jfw-python "j fw-python; nvim ."
+alias jba-slides "j ba-slides; nvim ."
 
 # color scheme
 function loadBase16Theme

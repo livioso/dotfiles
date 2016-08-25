@@ -25,10 +25,11 @@ Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 
-" not sure about this one yet
+" not sure about this one yet :)
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0
