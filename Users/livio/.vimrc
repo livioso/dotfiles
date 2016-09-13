@@ -318,10 +318,17 @@ endfunction
 
 " appends // TODO (livioso 12.05.2016)
 function! Todo()
-  let today = strftime("// TODO (livioso %m.%d.%Y) ")
+  let today = strftime("// TODO (livioso %d.%m.%Y) ")
   exe "normal a". today
 endfunction
 command! Todo :call Todo()
+
+" !npm run lint:fix and :w
+function! Lint()
+  echom ">>> lint:fix started. 🐒"
+  exe '!npm run lint:fix'
+endfunction
+command! Lint :call Lint()
 
 " generate tags (jsctags)
 nnoremap <silent> tags :!find . -type f -iregex .*\.js$
@@ -354,12 +361,18 @@ map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
 map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
+map <Leader>li :Lint <CR>
+map <Leader>rd :redraw! <CR>
 
 " limelight and goyo
 map <Leader>g :Goyo <CR>
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-map <Leader>l :Limelight!! <CR>
+map <Leader>ll :Limelight!! <CR>
+
+" toggle dark / light
+command Light :set background=light
+command Dark :set background=dark
 
 " NeomMake temporary solution see https://github.com/neomake/neomake/pull/248
 so ~/.fixNeoMakeDefaults.vim

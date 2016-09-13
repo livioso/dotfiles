@@ -90,17 +90,17 @@ end
 
 # aliases
 alias e "exit"
-alias git "hub"
 alias c "clear"
-alias g "git"
+alias g "hub"
 alias sl "ls"
-alias n "nvim"
-alias n. "nvim ."
-alias n, "nvim ."
+alias n "/usr/local/bin/nvim"
 alias claer "clear"
 alias grep "grep -n --color"
 alias subl "open -a /Applications/Sublime\ Text\ 3.app/"
 alias t "tree -L 1 -a ."
+alias ci "g ci"
+alias cia "g cia"
+alias st "g st"
 
 # fish marks
 alias jfw "j fw; nvim ."

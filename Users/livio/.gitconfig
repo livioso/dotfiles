@@ -34,6 +34,7 @@
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
   pushup = push origin head
   tinder = add -p
+  t = add -p
   ciam = commit -am
   cim = commit -m
   cia = commit --verbose --untracked-files=no -a
@@ -46,6 +47,7 @@
   # undo the last commit
   undo = reset --soft HEAD~
   uncommit = reset --soft HEAD^
+  c = !clear
   clear = !clear
   exit = = !clear
 [filter "lfs"]
