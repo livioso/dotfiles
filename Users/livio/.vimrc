@@ -166,7 +166,6 @@ set hidden
 syntax on
 
 " fancier colors in neovim
-" let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 " set termguicolors
 
 " for some reason this
