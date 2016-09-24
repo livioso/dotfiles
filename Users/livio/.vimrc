@@ -322,6 +322,12 @@ function! Todo()
 endfunction
 command! Todo :call Todo()
 
+function! Fixme()
+  let today = strftime("// FIXME (livioso %d.%m.%Y) ")
+  exe "normal a". today
+endfunction
+command! Fixme :call Fixme()
+
 " !npm run lint:fix and :w
 function! Lint()
   echom ">>> lint:fix started. 🐒"
@@ -359,7 +365,9 @@ map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
+map <Leader>fixme :Fixme <CR>
 map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
+map <Leader>noexp A // eslint-disable-next-line import/prefer-default-export<ESC>
 map <Leader>li :Lint <CR>
 map <Leader>rd :redraw! <CR>
 

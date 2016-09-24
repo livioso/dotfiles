@@ -106,6 +106,7 @@ alias st "g st"
 alias jfw "j fw; nvim ."
 alias jba "j ba; nvim ."
 alias jre "j re; nvim ."
+alias jha "j ha; nvim ."
 alias jfw-python "j fw-python; nvim ."
 alias jba-slides "j ba-slides; nvim ."
 
