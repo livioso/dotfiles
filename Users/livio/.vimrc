@@ -150,8 +150,8 @@ set background=dark
 colorscheme base16-oceanicnext
 set backspace=indent,eol,start
 set mouse=a " use mouse 😬
-set langmenu=en_US.UTF-8
 set number
+language C " LC=C where C is default
 set relativenumber
 set viminfo='1000,<500,:500,/500
 set history=1000
