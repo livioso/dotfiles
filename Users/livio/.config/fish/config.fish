@@ -145,8 +145,14 @@ function fwStartServer
 end
 
 function fwDjangoShell
-    fwPythonEnv
-    python -m frontend.manage shell
+  fwPythonEnv
+  python -m frontend.manage shell
 end
 
+function showHiddenFiles
+  defaults write com.apple.finder AppleShowAllFiles YES
+end
 
+function hideHiddenFiles
+  defaults write com.apple.finder AppleShowAllFiles NO
+end
