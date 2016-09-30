@@ -1,0 +1,18 @@
+name: Fashwell/Lamoda
+root: ~/Fashwell/karl/src/webapps/instashop
+
+windows:
+  - editor: nvim .
+  - tests: npm run lint
+  - packager:
+     layout: main-vertical
+     panes:
+       - npm start
+       - clear
+  - git:
+      layout: even-horizontal
+      panes:
+        - tig
+        - gitsh; clear
+  - console:
+        - clear

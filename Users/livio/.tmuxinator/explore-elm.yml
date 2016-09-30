@@ -1,7 +1,7 @@
-# ~/.tmuxinator/hubapp.yml
+# ~/.tmuxinator/Elm.yml
 
-name: Fashwell
-root: ~/Fashwell/karl/src/apps/reactnative-fashwell-app/Fashwell/
+name: explore-elm
+root: ~/Desktop/●/exploring-functional-programming/elm
 
 # Optional tmux socket
 # socket_name: foo
@@ -25,20 +25,13 @@ root: ~/Fashwell/karl/src/apps/reactnative-fashwell-app/Fashwell/
 # attach: false
 
 # Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t hubapp
-
+# post: tmux -CC attach -t Elm
 windows:
-  - editor: nvim .
-  - tests: npm run lint
-  - packager:
-      layout: main-vertical
-      panes:
-        - npm start
-        - react-native run-ios
-  - git:
+  - editor:
       layout: even-horizontal
       panes:
-        - tig
-        - gitsh; clear
-  - console:
-        - clear
+        - nvim Main.elm
+        - npm run watch
+  - reactor: elm reactor
+  - repl: elm repl
+  - console: clear

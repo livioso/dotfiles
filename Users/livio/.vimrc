@@ -25,6 +25,12 @@ Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 
+" not sure about this one yet :)
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'ekalinin/Dockerfile.vim'
+
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0
 
@@ -84,11 +90,10 @@ Plug 'Shougo/unite.vim'
 
 Plug 'Shougo/deoplete.nvim'
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#disable_auto_complete = 1
-  let g:deoplete#max_list = 10
+  let g:deoplete#disable_auto_complete = 0
+  let g:deoplete#max_list = 5
   inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" :
-    \ deoplete#mappings#manual_complete()
+    \ pumvisible() ? "\<C-n>" : "\<TAB>"
 
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
   let g:tern_show_signature_in_pum = 1
@@ -134,6 +139,9 @@ call plug#end()
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
+" Depplete -> favour buffer over everything
+call deoplete#custom#set('buffer', 'rank', 9999)
+
 " General settings
 set t_Co=256
 set background=dark
@@ -141,9 +149,10 @@ set background=dark
 " colorscheme base16-eighties
 colorscheme base16-oceanicnext
 set backspace=indent,eol,start
+set emoji
 set mouse=a " use mouse 😬
-set langmenu=en_US.UTF-8
 set number
+language C " LC=C where C is default
 set relativenumber
 set viminfo='1000,<500,:500,/500
 set history=1000
@@ -157,23 +166,15 @@ set nowrap
 set hidden
 syntax on
 
-" fancier colors in neovim
-" let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-" set termguicolors
-
-" for some reason this
-" is not set properly. :(
-hi Normal guibg = 3b3b3b
-
 " disable preview scratch
 set completeopt-=preview
 
 " pastetoggle
 set pastetoggle=<F2>
 
-" highlight current line
-" set cursorline
-hi CursorLineNr cterm=Bold ctermfg=White guifg=White gui=bold
+" highlight
+set highlight+=N:ColorColumn    " make current line number stand out a little
+set highlight+=@:DiffText
 
 " no need for it ~
 set nobackup
@@ -188,9 +189,13 @@ let g:netrw_liststyle = 3
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " disable all bells
+set belloff=all
 set noerrorbells " no beep on error
 set novisualbell " no flashing screen on error
 set t_vb=        " no beep on <ESC>
+
+" smart join comments (with j)
+set formatoptions+=j
 
 " set leader key to space
 let mapleader = "\<Space>"
@@ -200,7 +205,9 @@ set autoindent
 filetype plugin indent on
 
 " trailing whitespaces
-set list listchars=trail:·,tab:\ \ 
+set list listchars+=trail:•
+set list listchars+=tab:\ \ 
+set list listchars+=extends:»
 
 " seems to be faster (scrolling)
 set lazyredraw
@@ -231,7 +238,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
-set fillchars+=vert:│
+set fillchars=vert:┃
 hi VertSplit ctermbg=NONE guibg=NONE
 
 " gf add .js suffix for modules
@@ -274,6 +281,9 @@ set tabpagemax=0
 " printing options (print using :hardcopy)
 set printoptions=portrait:n "landscape
 
+" threat eslintrc as JSON
+autocmd BufNewFile,BufRead .eslintrc set ft=json
+
 " jump to last cursor position unless
 " it is invalid in a event handler
 autocmd BufReadPost *
@@ -310,10 +320,23 @@ endfunction
 
 " appends // TODO (livioso 12.05.2016)
 function! Todo()
-  let today = strftime("// TODO (livioso %m.%d.%Y) ")
+  let today = strftime("// TODO (livioso %d.%m.%Y) ")
   exe "normal a". today
 endfunction
 command! Todo :call Todo()
+
+function! Fixme()
+  let today = strftime("// FIXME (livioso %d.%m.%Y) ")
+  exe "normal a". today
+endfunction
+command! Fixme :call Fixme()
+
+" !npm run lint:fix and :w
+function! Lint()
+  echom ">>> lint:fix started. 🐒"
+  exe '!npm run lint:fix'
+endfunction
+command! Lint :call Lint()
 
 " generate tags (jsctags)
 nnoremap <silent> tags :!find . -type f -iregex .*\.js$
@@ -345,7 +368,21 @@ map <Leader>b <C-i> <CR>
 map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
+map <Leader>fixme :Fixme <CR>
 map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
+map <Leader>noexp A // eslint-disable-next-line import/prefer-default-export<ESC>
+map <Leader>li :Lint <CR>
+map <Leader>rd :redraw! <CR>
+
+" limelight and goyo
+map <Leader>g :Goyo <CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+map <Leader>ll :Limelight!! <CR>
+
+" toggle dark / light
+command Light :set background=light
+command Dark :set background=dark
 
 " NeomMake temporary solution see https://github.com/neomake/neomake/pull/248
 so ~/.fixNeoMakeDefaults.vim
@@ -354,3 +391,11 @@ let g:neomake_error_sign = { 'text': "●", 'texthl': 'NeomakeErrorDefault' }
 let g:neomake_warning_sign = { 'text': "●", 'texthl': 'NeomakeWarningDefault' }
 let g:neomake_informational_sign = { 'text': "●", 'texthl': 'NeomakeInformationDefault' }
 let g:neomake_message_sign = { 'text': "●", 'texthl': 'NeomakeMessageDefault' }
+
+" FIXME (livioso 29.09.2016) this all seems fixed! :)
+" No more need for it => if so delete all this shit.
+" set termguicolors
+" for some reason this
+" is not set properly. :(
+" hi Normal guibg = 3b3b3b
+

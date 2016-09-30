@@ -1,0 +1,12 @@
+{
+	"profiles": [
+		{
+			"name": "Livioso",
+			"selected": true,
+			"simple_modifications": {
+				"caps_lock": "escape",
+        "right_command": "left_control"
+ 			}
+		}
+	]
+}
