@@ -149,6 +149,7 @@ set background=dark
 " colorscheme base16-eighties
 colorscheme base16-oceanicnext
 set backspace=indent,eol,start
+set emoji
 set mouse=a " use mouse 😬
 set number
 language C " LC=C where C is default
@@ -165,22 +166,15 @@ set nowrap
 set hidden
 syntax on
 
-" fancier colors in neovim
-" set termguicolors
-
-" for some reason this
-" is not set properly. :(
-hi Normal guibg = 3b3b3b
-
 " disable preview scratch
 set completeopt-=preview
 
 " pastetoggle
 set pastetoggle=<F2>
 
-" highlight current line
-" set cursorline
-hi CursorLineNr cterm=Bold ctermfg=White guifg=White gui=bold
+" highlight
+set highlight+=N:ColorColumn    " make current line number stand out a little
+set highlight+=@:DiffText
 
 " no need for it ~
 set nobackup
@@ -195,9 +189,13 @@ let g:netrw_liststyle = 3
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " disable all bells
+set belloff=all
 set noerrorbells " no beep on error
 set novisualbell " no flashing screen on error
 set t_vb=        " no beep on <ESC>
+
+" smart join comments (with j)
+set formatoptions+=j
 
 " set leader key to space
 let mapleader = "\<Space>"
@@ -207,7 +205,9 @@ set autoindent
 filetype plugin indent on
 
 " trailing whitespaces
-set list listchars=trail:·,tab:\ \ 
+set list listchars+=trail:•
+set list listchars+=tab:\ \ 
+set list listchars+=extends:»
 
 " seems to be faster (scrolling)
 set lazyredraw
@@ -238,7 +238,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
-set fillchars+=vert:│
+set fillchars=vert:┃
 hi VertSplit ctermbg=NONE guibg=NONE
 
 " gf add .js suffix for modules
@@ -280,6 +280,9 @@ set tabpagemax=0
 
 " printing options (print using :hardcopy)
 set printoptions=portrait:n "landscape
+
+" threat eslintrc as JSON
+autocmd BufNewFile,BufRead .eslintrc set ft=json
 
 " jump to last cursor position unless
 " it is invalid in a event handler
@@ -388,3 +391,11 @@ let g:neomake_error_sign = { 'text': "●", 'texthl': 'NeomakeErrorDefault' }
 let g:neomake_warning_sign = { 'text': "●", 'texthl': 'NeomakeWarningDefault' }
 let g:neomake_informational_sign = { 'text': "●", 'texthl': 'NeomakeInformationDefault' }
 let g:neomake_message_sign = { 'text': "●", 'texthl': 'NeomakeMessageDefault' }
+
+" FIXME (livioso 29.09.2016) this all seems fixed! :)
+" No more need for it => if so delete all this shit.
+" set termguicolors
+" for some reason this
+" is not set properly. :(
+" hi Normal guibg = 3b3b3b
+
