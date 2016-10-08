@@ -118,8 +118,8 @@ end
 
 # use dark color scheme
 function dark
-  # echo oceanicnext > ~/.theme
-  echo eighties > ~/.theme
+  echo oceanicnext > ~/.theme
+  # echo eighties > ~/.theme
   loadBase16Theme
 end
 
