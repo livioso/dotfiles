@@ -318,7 +318,6 @@ function! _TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" appends // TODO (livioso 12.05.2016)
 function! Todo()
   let today = strftime("// TODO (livioso %d.%m.%Y) ")
   exe "normal a". today
@@ -330,6 +329,18 @@ function! Fixme()
   exe "normal a". today
 endfunction
 command! Fixme :call Fixme()
+
+function! Til()
+  let today = strftime("Updated %d.%m.%Y ")
+  exe "normal a". today
+endfunction
+command! Til :call Til()
+
+function! Date()
+  let today = strftime(" %d.%m.%Y ")
+  exe "normal a". today
+endfunction
+command! Date :call Date()
 
 " !npm run lint:fix and :w
 function! Lint()
@@ -369,6 +380,8 @@ map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
 map <Leader>fixme :Fixme <CR>
+map <Leader>til :Til <CR>
+map <Leader>date :Date <CR>
 map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
 map <Leader>noexp A // eslint-disable-next-line import/prefer-default-export<ESC>
 map <Leader>li :Lint <CR>
