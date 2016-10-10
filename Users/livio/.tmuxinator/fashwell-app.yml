@@ -19,7 +19,7 @@ root: ~/Fashwell/karl/src/apps/reactnative-fashwell-app/Fashwell/
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: logs
+startup_window: editor
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
