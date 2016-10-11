@@ -160,6 +160,7 @@ set undolevels=1000
 set cmdheight=4
 set foldcolumn=0
 set scrolloff=5
+set sidescrolloff=5
 set sidescroll=1
 set noshowmode
 set nowrap
@@ -175,6 +176,9 @@ set pastetoggle=<F2>
 " highlight
 set highlight+=N:ColorColumn    " make current line number stand out a little
 set highlight+=@:DiffText
+
+" block selection even if line is long enough
+set virtualedit=block
 
 " no need for it ~
 set nobackup
@@ -195,7 +199,8 @@ set novisualbell " no flashing screen on error
 set t_vb=        " no beep on <ESC>
 
 " smart join comments (with j)
-set formatoptions+=j
+set formatoptions+=j  " remove comment when joining lines
+set nojoinspaces      " always append one space instead of 2
 
 " set leader key to space
 let mapleader = "\<Space>"
@@ -207,7 +212,7 @@ filetype plugin indent on
 " trailing whitespaces
 set list listchars+=trail:•
 set list listchars+=tab:\ \ 
-set list listchars+=extends:»
+" set list listchars+=extends:»
 
 " seems to be faster (scrolling)
 set lazyredraw
@@ -223,9 +228,9 @@ set shiftwidth=2
 set laststatus=2 " always show the statusline
 
 " searching settings
-set incsearch   " incremental search
-set ignorecase  " ignore case in search
-set smartcase   " except we write it BOLD then don't ignore case
+  set incsearch   " incremental search
+  set ignorecase  " ignore case in search
+  set smartcase   " except we write it BOLD then don't ignore case
 nnoremap <silent> <CR> :nohlsearch <CR> " clear search on when hitting return
 
 " use very magic setting for search
@@ -260,8 +265,9 @@ set foldmethod=indent     " fold based on indent (faster than syntax)
 set foldlevel=99
 set fillchars+=fold:\ 
 
-" enable spell checker
-set spell
+" spell checker
+set spell " enable checking
+set spellcapcheck= " e.g. Choo => choo => same
 
 " jump to tag
 nnoremap T <C-]>
@@ -271,8 +277,10 @@ nnoremap gt g<C-]>
 " for each line of a visual selection
 vnoremap . :normal .<CR>
 
-" remove startup message
-set shortmess+=I
+" messages
+set shortmess+=I " remove startup message
+set shortmess+=w " [w] instead of written
+
 
 " hide toolbar
 set showtabline=0
