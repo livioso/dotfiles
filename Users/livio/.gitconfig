@@ -22,10 +22,10 @@
 [alias]
   tig = !tig
   fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
   tinder = add -p
   tt = add -p
-  rt = co -p
+  rt = checkout -p
   ciam = commit -am
   cim = commit -m
   cia = commit --verbose --untracked-files=no -a
