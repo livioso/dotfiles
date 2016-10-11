@@ -29,11 +29,15 @@ startup_window: editor
 
 windows:
   - editor: nvim .
-  - tests: npm run lint
+  - tests:
+      layout: even-horizontal
+      panes:
+        - yarn run lint
+        - yarn outdated
   - packager:
       layout: main-vertical
       panes:
-        - npm start
+        - yarn start
         - react-native run-ios
   - git:
       layout: even-horizontal
