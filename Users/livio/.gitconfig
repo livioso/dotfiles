@@ -1,10 +1,6 @@
 [user]
   name = Livio Bieri
   email = livio@livio.li
-[filter "media"]
-  required = true
-  clean = git media clean %f
-  smudge = git media smudge %f
 [color]
   ui = auto
   diff = auto
@@ -23,24 +19,18 @@
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
-[filter "hawser"]
-  clean = git hawser clean %f
-  smudge = git hawser smudge %f
-  required = true
 [alias]
   tig = !tig
   fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
-  ba = !open -g https://github.com/livioso/HubApp/commits/master
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -20
-  pushup = push origin head
   tinder = add -p
-  t = add -p
+  tt = add -p
+  rt = co -p
   ciam = commit -am
   cim = commit -m
   cia = commit --verbose --untracked-files=no -a
   ci = commit --verbose --untracked-files=no
   co = checkout
-  br = branch
   st = status --short --branch
   df = diff
   p = push
@@ -50,10 +40,6 @@
   c = !clear
   clear = !clear
   exit = = !clear
-[filter "lfs"]
-  clean = git lfs clean %f
-  smudge = git lfs smudge %f
-  required = true
 [push]
   default = simple
 [core]
