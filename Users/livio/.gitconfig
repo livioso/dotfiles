@@ -23,6 +23,7 @@
   tig = !tig
   fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
   lg = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
+  lga = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
   tinder = add -p
   tt = add -p
   rt = checkout -p
@@ -61,5 +62,10 @@
   prompt = git • %c%D (%b) $%w
 [tig]
   mouse = true
+  tab-size = 2
+  refresh-mode = auto
+  line-number-display = true
+[tig "color"]
+  cursor = black green
 [pull]
 	rebase = true
