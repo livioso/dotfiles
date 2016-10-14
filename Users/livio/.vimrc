@@ -413,6 +413,10 @@ let g:neomake_warning_sign = { 'text': "●", 'texthl': 'NeomakeWarningDefault' 
 let g:neomake_informational_sign = { 'text': "●", 'texthl': 'NeomakeInformationDefault' }
 let g:neomake_message_sign = { 'text': "●", 'texthl': 'NeomakeMessageDefault' }
 
+" minor color tweaks
+highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
+highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
+
 " FIXME (livioso 29.09.2016) this all seems fixed! :)
 " No more need for it => if so delete all this shit.
 " set termguicolors
