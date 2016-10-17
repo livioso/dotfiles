@@ -33,6 +33,7 @@
   ci = commit --verbose --untracked-files=no
   co = checkout
   st = status --short --branch
+  stu = status --short --branch -uno
   df = diff
   p = push
   # undo the last commit
@@ -63,8 +64,8 @@
 [tig]
   mouse = true
   tab-size = 2
-  refresh-mode = auto
-  line-number-display = true
+  refresh-mode = periodic
+  refresh-interval = 5
 [tig "color"]
   cursor = black green
 [pull]
