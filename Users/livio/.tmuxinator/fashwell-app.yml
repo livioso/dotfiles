@@ -7,7 +7,7 @@ root: ~/Fashwell/karl/src/apps/reactnative-fashwell-app/Fashwell/
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
+pre: buildJSCTags
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -19,7 +19,7 @@ root: ~/Fashwell/karl/src/apps/reactnative-fashwell-app/Fashwell/
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: editor
+startup_window: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
