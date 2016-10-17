@@ -96,7 +96,7 @@ Plug 'vim-airline/vim-airline'
   let g:airline_section_z = "%l·%c"
   let g:airline_section_y = ""
   let g:airline_section_x = "%P"
-  let g:airline_section_c = "%t %m"
+  let g:airline_section_c = "%f %m"
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
   let g:airline_mode_map = {
