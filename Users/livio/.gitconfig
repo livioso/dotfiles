@@ -29,7 +29,7 @@
   rt = checkout -p
   ciam = commit -am
   cim = commit -m
-  cia = commit --verbose --untracked-files=no -a
+  cia = commit --verbose --untracked-files=no --all
   ci = commit --verbose --untracked-files=no
   co = checkout
   st = status --short --branch
@@ -42,6 +42,8 @@
   c = !clear
   clear = !clear
   exit = = !clear
+  # experimental
+  review = log --patch --max-count=1
 [push]
   default = simple
 [core]

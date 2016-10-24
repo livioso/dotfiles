@@ -9,7 +9,6 @@ Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'airblade/vim-gitgutter'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'elixir-lang/vim-elixir'
@@ -26,11 +25,18 @@ Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 
+" not sure yet
+Plug 'tpope/vim-characterize'
+
+Plug 'airblade/vim-gitgutter'
+  let g:gitgutter_realtime = 1
+  let g:gitgutter_eager = 1
+
 Plug 'ElmCast/elm-vim'
   let g:elm_setup_keybindings = 0
 
 Plug 'wincent/loupe'
-  let g:LoupeClearHighlightMap=0
+  let g:LoupeClearHighlightMap = 0
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
@@ -46,7 +52,7 @@ Plug 'terryma/vim-expand-region'
   vmap <C-v> <Plug>(expand_region_shrink)
 
 Plug 'Shougo/neosnippet'
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  imap <C-f> <Plug>(neosnippet_expand_or_jump)
   smap <expr><TAB> neosnippet#expandable_or_jumpable()
         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
@@ -136,7 +142,8 @@ call deoplete#custom#set('buffer', 'rank', 9999)
 set background=dark
 colorscheme base16-oceanicnext    " also nice: base16-eighties
 language C                        " LC=C where C is default
-command! Wq wq                     " map Wq => wq
+command! Wq wq                    " map Wq => wq
+set updatetime=250                " snappier UI updates (git, etc.)
 set backspace=indent,eol,start
 set emoji
 set mouse=a " use mouse 😬
@@ -238,7 +245,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 autocmd VimResized * execute "normal \<C-w>="
 
 " split view separator
-highlight VertSplit ctermbg=NONE guibg=NONE
+highlight VertSplit ctermbg=NONE guibg=NONE " ctermfg=blue
 set fillchars=vert:│
 
 " add .js suffix for modules (enables gf)
@@ -249,8 +256,8 @@ set splitbelow " open below instead of above
 set splitright " open right instead of left
 
 " navigate split easier
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
@@ -284,10 +291,15 @@ set tabpagemax=0
 set printoptions=portrait:n "landscape
 
 " threat eslintrc as JSON
-autocmd BufNewFile,BufRead .eslintrc set ft=json
+autocmd BufNewFile,BufRead .eslintrc
+  \ set ft=json
 
 " jump to last cursor position when reopening file
 autocmd BufReadPost *
+  \ if &filetype == "gitcommit"
+  \   " git commit => jump to first line
+  \   call setpos('.', [0, 1, 1, 0])
+  \ endif
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
