@@ -36,6 +36,7 @@
   stu = status --short --branch -uno
   df = diff
   p = push
+  upstream = push --set-upstream origin HEAD
   # undo the last commit
   undo = reset --soft HEAD~
   uncommit = reset --soft HEAD^
