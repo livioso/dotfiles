@@ -101,6 +101,8 @@ alias t "tree -L 1 -a ."
 alias ci "g ci"
 alias cia "g cia"
 alias st "g st"
+alias pull "g pull"
+alias push "g push"
 
 # fish marks
 alias jfw "j fw; nvim ."
@@ -112,8 +114,10 @@ alias jba-slides "j ba-slides; nvim ."
 
 # color scheme
 function loadBase16Theme
-  cat ~/.theme | read theme
-  eval sh $HOME/.config/base16-shell/scripts/base16-$theme.sh
+  if status --is-interactive
+    cat ~/.theme | read theme
+    eval sh $HOME/.config/base16-shell/scripts/base16-$theme.sh
+  end
 end
 
 # use dark color scheme

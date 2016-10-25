@@ -2,9 +2,7 @@ set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'vim-airline/vim-airline-themes'
-Plug 'livioso/neosnippet-snippets'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'ekalinin/Dockerfile.vim'
@@ -12,21 +10,15 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'elixir-lang/vim-elixir'
-Plug 'Shougo/neoinclude.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'jparise/vim-graphql'
-Plug 'Shougo/neoyank.vim'
-Plug 'Shougo/denite.nvim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
-
-" not sure yet
-Plug 'tpope/vim-characterize'
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
@@ -51,48 +43,30 @@ Plug 'terryma/vim-expand-region'
   vmap v <Plug>(expand_region_expand)
   vmap <C-v> <Plug>(expand_region_shrink)
 
-Plug 'Shougo/neosnippet'
-  imap <C-f> <Plug>(neosnippet_expand_or_jump)
-  smap <expr><TAB> neosnippet#expandable_or_jumpable()
-        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
 
-Plug 'Shougo/unite.vim'
-  let g:unite_data_directory='~/.config/nvim/.cache/unite'
-  let g:unite_source_rec_max_cache_files=10000
-  let g:unite_source_history_yank_enable = 1
-  let g:unite_source_grep_command='ag'
-  let g:unite_source_grep_default_opts =
-    \ '-i --vimgrep --hidden --ignore ' .
-    \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-  let g:unite_prompt = ' ‣‣ '
-  let g:unite_winheight = 15
-  let g:unite_split_rule = 'botright'
-  " Unite // overwrite settings.
-  autocmd FileType unite call s:unite_my_settings()
-  function! s:unite_my_settings() "
-    nmap <buffer> <ESC> <Plug>(unite_exit)
-    imap <silent><buffer><expr> <C-s> unite#do_action('split')
-    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  endfunction
-  nnoremap <space>/ :Unite grep:.<CR>
-  nnoremap <C-p> :Unite
-    \ -prompt-direction="top"
-    \ -winheight=7 -auto-resize
-    \ -start-insert file_rec/git <CR>
+Plug 'junegunn/fzf',
+  \ { 'dir': '~/.fzf', 'do': './install --all' }
 
-Plug 'Shougo/deoplete.nvim'
-  " let g:deoplete#sources._ = ['buffer', 'tag']
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#disable_auto_complete = 0
-  let g:deoplete#max_list = 5
-  inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" : "\<TAB>"
+Plug 'junegunn/fzf.vim'
+  let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+  let g:fzf_layout = { 'down': '~25%' }
+  let g:fzf_colors =
+  \ { 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Exception'],
+    \ 'fg+':     ['fg', 'Normal', 'Normal', 'Normal'],
+    \ 'bg+':     ['bg', 'Exception', 'Normal'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'Keyword'],
+    \ 'prompt':  ['fg', 'Exception'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
 
 Plug 'vim-airline/vim-airline'
   let g:airline_detect_spell=0 " changes mode from N > SPELL => N
@@ -126,29 +100,34 @@ Plug 'benekastah/neomake'
   let g:neomake_javascript_enabled_makers = ['eslint, flow']
   let g:neomake_open_list = 0
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim'
+    " let g:deoplete#sources._ = ['buffer', 'tag']
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#disable_auto_complete = 0
+    let g:deoplete#max_list = 5
+    inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" : "\<TAB>"
+endif
+
 call plug#end()
 
-" Unite -> this must be after plug#end!
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-" Depplete -> favour buffer over everything
-call deoplete#custom#set('buffer', 'rank', 9999)
-
-
-" I always seem to write Wq instead of wq 
+if has('nvim')
+  " deoplete -> favour buffer over everything
+  call deoplete#custom#set('buffer', 'rank', 9999)
+endif
 
 " General settings
 set background=dark
 colorscheme base16-oceanicnext    " also nice: base16-eighties
 language C                        " LC=C where C is default
 command! Wq wq                    " map Wq => wq
+set mouse=a                       " a = all
 set updatetime=250                " snappier UI updates (git, etc.)
 set backspace=indent,eol,start
-set emoji
-set mouse=a " use mouse 😬
 set relativenumber
 set number
+set emoji
 set viminfo='1000,<500,:500,/500
 set history=1000
 set undolevels=1000
@@ -162,6 +141,9 @@ set nowrap
 set hidden
 syntax on
 
+" set leader key to space
+let mapleader = "\<Space>"
+
 " recursively look for files (e.g. :find)
 set path+=**
 
@@ -172,13 +154,13 @@ set completeopt-=preview
 set pastetoggle=<F2>
 
 " highlight
-set highlight+=N:ColorColumn    " make current line number stand out a little
+set highlight+=N:ColorColumn " current line stand out a little
 set highlight+=@:DiffText
 
 " block selection even if line is long enough
 set virtualedit=block
 
-" no need for it ~
+" no need for it
 set nobackup
 set noswapfile
 
@@ -186,13 +168,12 @@ set noswapfile
 set wildmenu
 set wildignore+=*/node_modules/*
 
-" Netrw show tree view
+" netrw show tree view
 let g:netrw_liststyle = 3
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let g:netrw_preview = 1   "(p)review on vertical split
 let g:netrw_winsize = 40
 let g:netrw_alto = 0
-let g:netrw_browsex_viewer = '-'
 
 " disable all bells
 set belloff=all
@@ -203,9 +184,6 @@ set novisualbell " no flashing screen on error
 set formatoptions+=j  " remove comment when joining lines
 set nojoinspaces      " always append one space instead of 2
 
-" set leader key to space
-let mapleader = "\<Space>"
-
 " indentation settings
 set autoindent
 filetype plugin indent on
@@ -214,7 +192,7 @@ filetype plugin indent on
 set list listchars+=trail:•
 set list listchars+=tab:\ \ 
 
-" faster scrolling)
+" faster scrolling
 set lazyredraw
 set noshowcmd
 
@@ -231,21 +209,9 @@ set laststatus=2 " always show the status line
 set incsearch   " incremental search
 set ignorecase  " ignore case in search
 set smartcase   " except we write it BOLD then don't ignore case
-nnoremap <silent> <CR> :nohlsearch <CR> " clear search on when hitting return
-
-" use very magic setting for search
-nnoremap / /\v
-vnoremap / /\v
-
-" in the quick fix window, <CR> is used to jump to the
-" error under the cursor, so redefine the mapping there.
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-
-" automatically resize splits equally on resize
-autocmd VimResized * execute "normal \<C-w>="
 
 " split view separator
-highlight VertSplit ctermbg=NONE guibg=NONE " ctermfg=blue
+highlight VertSplit ctermbg=NONE guibg=NONE
 set fillchars=vert:│
 
 " add .js suffix for modules (enables gf)
@@ -255,29 +221,14 @@ set suffixesadd+=.js
 set splitbelow " open below instead of above
 set splitright " open right instead of left
 
-" navigate split easier
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" folding setting using za, zm and zr
-nnoremap <Tab> za       " toggle fold at current position
-set foldmethod=indent   " fold based on indent (faster)
+" folding setting (za, zm and zr)
+set foldmethod=indent
 set foldlevel=99
 set fillchars+=fold:\ 
 
 " spell checker
 set spell " enable checking
 set spellcapcheck= " e.g. Choo => choo => same
-
-" jump to tag
-nnoremap T <C-]>
-nnoremap gt *g<C-]>
-
-" allow the . to execute once
-" for each line of a visual selection
-vnoremap . :normal .<CR>
 
 " messages
 set shortmess+=I " remove startup message
@@ -290,41 +241,39 @@ set tabpagemax=0
 " printing options (print using :hardcopy)
 set printoptions=portrait:n "landscape
 
+" clear search on when hitting return
+nnoremap <silent> <CR> :nohlsearch <CR>
+
+" except when in the quick fix window, <CR> is used to jump 
+" to the error under the cursor, so redefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" automatically resize splits equally on resize
+autocmd VimResized * execute "normal \<C-w>="
+
 " threat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
   \ set ft=json
 
-" jump to last cursor position when reopening file
+" jump to last cursor position when
+" reopening file, except if gitcommit
 autocmd BufReadPost *
-  \ if &filetype == "gitcommit"
-  \   " git commit => jump to first line
-  \   call setpos('.', [0, 1, 1, 0])
-  \ endif
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ if line("'\"") > 0
+  \ && line("'\"") <= line("$")
+  \ && &filetype != "gitcommit" |
   \   exe "normal g`\"" |
   \ endif
 
 " replace X with Y: SX/Y<CR>
 nmap S :%s//gc<LEFT><LEFT><LEFT>
 
-" use ag over grep
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-else
-  echohl ErrorMsg
-  echomsg 'Missing ag: install ag'
-  echohl NONE<Paste>
-endif
+" jump to tag
+nnoremap T <C-]>
+nnoremap gt *g<C-]>
 
-" different cursor in insert / normal mode (iTerm)
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
+" allow the . to execute once
+" for each line of a visual selection
+vnoremap . :normal .<CR>
 
 " <Leader> mappings
 vmap <Leader>y "+y
@@ -335,7 +284,6 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 map <Leader>w :w <CR>
 map <Leader>f <C-w><C-w>
-map <Leader>j <C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
 map <Leader>erc :e ~/.vimrc <CR>
@@ -354,7 +302,9 @@ map <Leader>li :Lint <CR>
 map <Leader>rd :redraw! <CR>
 map <Leader>ll :Limelight!! <CR>
 map <Leader>g gt
-map <Leader>r :UniteResume <CR>
+map <silent> <Leader>j :FZF <CR>
+map <silent> <Leader>/ :Ag <CR>
+map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
 
 " Functions
 "
@@ -399,6 +349,13 @@ function! Lint()
 endfunction
 command! Lint :call Lint()
 
+function! s:fzf_statusline()
+  highlight fzf1 ctermfg=black ctermbg=blue
+  setlocal statusline=%#fzf1#\ ≡\ fzf
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 " toggle dark / light
 command! Light :set background=light
 command! Dark :set background=dark
@@ -408,8 +365,30 @@ highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
 highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
 highlight EndOfBuffer ctermfg=black ctermbg=black
 
-" ---------------------------------------------------------------------------------------
+" use ag over grep
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+else
+  echohl ErrorMsg
+  echomsg 'Missing ag: install ag'
+  echohl NONE<Paste>
+endif
 
+" different cursor in insert / normal mode (iTerm)
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+if !has('nvim')
+  set nolist
+endif
+
+" ---------------------------------------------------------------------------------------
 " Neomake temporary solution see https://github.com/neomake/neomake/pull/248
 so ~/.fixNeoMakeDefaults.vim
 call NeoMakeDefaults()
@@ -417,23 +396,3 @@ let g:neomake_error_sign = { 'text': "●", 'texthl': 'NeomakeErrorDefault' }
 let g:neomake_warning_sign = { 'text': "●", 'texthl': 'NeomakeWarningDefault' }
 let g:neomake_informational_sign = { 'text': "●", 'texthl': 'NeomakeInformationDefault' }
 let g:neomake_message_sign = { 'text': "●", 'texthl': 'NeomakeMessageDefault' }
-
-
-" FIXME (livioso 29.09.2016) this all seems fixed! :)
-" No more need for it => if so delete all this shit.
-" set termguicolors
-" for some reason this
-" is not set properly. :(
-" hi Normal guibg = 3b3b3b
-
-" TODO (livioso 15.10.2016) Not used anymore, do I miss it?
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-"   let g:tern_show_signature_in_pum = 1
-"   let g:tern_show_argument_hints = 'on_hold'
-"   autocmd FileType javascript setlocal omnifunc=tern#Complete
-"   autocmd FileType javascript map <buffer> gd :TernDef<CR>
-"   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" " generate tags (jsctags)
-" nnoremap <silent> tags :!find . -type f -iregex .*\.js$
-"   \ -not -path "./node_modules/*" -exec jsctags {} -f \;
-"   \ \| sed '/^$/d' \| sort > tags & <CR>
