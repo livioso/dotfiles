@@ -21,30 +21,24 @@
   newHighlight = "green bold 22"
 [alias]
   tig = !tig
-  fw = !open -g https://bitbucket.org/mr_karl/karl/commits/all
   lg = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
   lga = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
-  tinder = add -p
-  tt = add -p
-  rt = checkout -p
-  ciam = commit -am
-  cim = commit -m
+  lgnm = log --color --graph --no-merges --pretty=format:\"%C(blue)%h %Creset- %C(green)(%cr) %Creset%s - %C(cyan)%an %C(magenta)%d\" --date=short
   cia = commit --verbose --untracked-files=no --all
   ci = commit --verbose --untracked-files=no
+  ll = log --cc
+  df = diff
   co = checkout
+  tt = add -p
+  rt = checkout -p
   st = status --short --branch
   stu = status --short --branch -uno
-  df = diff
-  p = push
-  upstream = push --set-upstream origin HEAD
-  # undo the last commit
-  undo = reset --soft HEAD~
-  uncommit = reset --soft HEAD^
-  c = !clear
+  pu = push
+  cl = !clear
   clear = !clear
-  exit = = !clear
-  # experimental
-  review = log --patch --max-count=1
+  exit = !clear
+  upstream = push --set-upstream origin HEAD
+  preview = log --patch --max-count=1
 [push]
   default = simple
 [core]
