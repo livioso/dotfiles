@@ -344,7 +344,7 @@ command! Date :call Date()
 
 " !npm run lint:fix and :w
 function! Lint()
-  echom ">>> lint:fix started. 🐒"
+  echom "》lint:fix started. 🐒"
   exe '!npm run lint:fix'
 endfunction
 command! Lint :call Lint()
