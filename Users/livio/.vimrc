@@ -296,8 +296,7 @@ map <Leader>todo :Todo <CR>
 map <Leader>fixme :Fixme <CR>
 map <Leader>til :Til <CR>
 map <Leader>date :Date <CR>
-map <Leader>nomut A // eslint-disable-line immutable/no-mutation<ESC>
-map <Leader>noexp A // eslint-disable-next-line import/prefer-default-export<ESC>
+map <Leader>dnl O// eslint-disable-next-line
 map <Leader>li :Lint <CR>
 map <Leader>rd :redraw! <CR>
 map <Leader>ll :Limelight!! <CR>
