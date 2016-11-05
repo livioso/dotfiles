@@ -282,6 +282,7 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+map <Leader>' i`
 map <Leader>w :w <CR>
 map <Leader>f <C-w><C-w>
 map <Leader>v :vsplit .<CR>
