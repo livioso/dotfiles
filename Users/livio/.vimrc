@@ -6,7 +6,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'Keithbsmiley/swift.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'elixir-lang/vim-elixir'
@@ -111,6 +110,7 @@ if has('nvim')
 endif
 
 call plug#end()
+
 
 if has('nvim')
   " deoplete -> favour buffer over everything
@@ -275,6 +275,10 @@ nnoremap gt *g<C-]>
 " for each line of a visual selection
 vnoremap . :normal .<CR>
 
+" see :help scroll-insert
+inoremap <C-E> <C-X><C-E>
+inoremap <C-Y> <C-X><C-Y>
+
 " <Leader> mappings
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -282,16 +286,16 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-map <Leader>' i`
+map <Leader>u :w <CR>
 map <Leader>w :w <CR>
 map <Leader>f <C-w><C-w>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
-map <Leader>erc :e ~/.vimrc <CR>
 map <Leader>src :source ~/.vimrc <CR>
+map <Leader>erc :e ~/.vimrc <CR>
+map <Leader>etc :e ~/.tmux.conf <CR>
+map <Leader>efc :e ~/.config/fish/config.fish <CR>
 map <Leader>n :lnext<CR>
-map <Leader>b <C-i> <CR>
-map <Leader>n <C-o> <CR>
 map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
 map <Leader>fixme :Fixme <CR>
@@ -305,6 +309,8 @@ map <Leader>g gt
 map <silent> <Leader>j :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
 map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
+imap <silent> '' `
+imap <silent> jj <ESC> <CR>
 
 " Functions
 "
