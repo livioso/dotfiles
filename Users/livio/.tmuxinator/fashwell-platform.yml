@@ -38,7 +38,7 @@ windows:
       layout: even-horizontal
       panes:
         - docker-compose up
-        - clear
+        - openChromeWithDebugger http://localhost:3000
   - git:
       layout: even-horizontal
       panes:
