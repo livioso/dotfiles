@@ -164,3 +164,23 @@ end
 function buildJSCTags
   bash -c "find . -type f -iregex '.*\.js' -not -path './node_modules/*' -exec jsctags {} -f \; | sed '/^\$/d' | sort > tags" &
 end
+
+function goodmorning
+  tmuxinator start fashwell-platform
+end
+
+function goodevening
+  tmuxinator stop fashwell-platform
+end
+
+function sourcefish
+  source ~/.config/fish/config.fish
+end
+
+function openChromeWithDebugger
+  open -a "Google Chrome.app" $argv --args -auto-open-devtools-for-tabs -start-fullscreen
+end
+
+function fwpw
+  cat ~/.fwpassword | pbcopy
+end
