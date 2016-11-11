@@ -104,13 +104,10 @@ alias st "g st"
 alias pull "g pull"
 alias push "g push"
 
-# fish marks
+# editor fish marks
 alias jfw "j fw; nvim ."
-alias jba "j ba; nvim ."
-alias jre "j re; nvim ."
-alias jha "j ha; nvim ."
-alias jfw-python "j fw-python; nvim ."
-alias jba-slides "j ba-slides; nvim ."
+alias jfw-app "j fw/app; nvim ."
+alias jfw-server "j fw-server; nvim ."
 
 # color scheme
 function loadBase16Theme
@@ -138,14 +135,22 @@ loadBase16Theme
 
 # Fashwell
 function fwPythonEnv
-  j fw-python
+  j fw/server
   . ../env/bin/activate.fish
-  set -x PYTHONPATH /Users/livio/Fashwell/karl/src/python
+  set -x PYTHONPATH /Users/livio/Fashwell/karl-server/src/python
 end
 
-function fwStartServer
+function fwStartServerDevelopment
   fwPythonEnv
+  echo $PYTHONPATH
+  pwd
+  which python
   python -m frontend.manage runserver 0.0.0.0:8000 --configuration 'Development'
+end
+
+function fwStartServerProduction
+  fwPythonEnv
+  python -m frontend.manage runserver 0.0.0.0:8000 --configuration 'Production'
 end
 
 function fwDjangoShell
@@ -169,7 +174,7 @@ function goodmorning
   tmuxinator start fashwell-platform
 end
 
-function goodevening
+function goodbye
   tmuxinator stop fashwell-platform
 end
 

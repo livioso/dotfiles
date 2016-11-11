@@ -1,16 +1,14 @@
-# ~/.tmuxinator/hubapp.yml
-
-name: Fashwell/Platform
-root: ~/Fashwell/karl/src/webapps/platform/
+name: Fashwell/Server
+root: ~/Fashwell/karl-server/src/python/
 
 # Optional tmux socket
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: buildJSCTags
+# pre: sudo /etc/rc.d/mysqld start
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-# pre_window: rbenv shell 2.0.0-p247
+pre_window: fwPythonEnv
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -19,7 +17,7 @@ root: ~/Fashwell/karl/src/webapps/platform/
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: 1
+startup_window: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -29,20 +27,23 @@ root: ~/Fashwell/karl/src/webapps/platform/
 
 windows:
   - editor: nvim .
-  - tests:
+  - server:
       layout: even-horizontal
       panes:
-        - yarn run lint
-        - yarn test --watch-all
-  - docker:
-      layout: even-horizontal
-      panes:
-        - docker-compose up
-        - openChromeWithDebugger http://localhost:3000
+        - fwStartServer
+        - fwDjangoShell
   - git:
       layout: even-horizontal
       panes:
         - tig
         - gitsh; clear
+  - linting: flake8 .
+  - ipython:
+        - ipython
+  - logtails:
+      layout: even-horizontal
+      panes:
+        - j fw/server; fab prod logtail
+        - j fw/server; fab staging logtail
   - console:
         - clear
