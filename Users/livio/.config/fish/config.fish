@@ -133,10 +133,8 @@ end
 set -Ux fish_term256
 loadBase16Theme
 
-# Fashwell
+# Fashwell Stuff :)
 function fwPythonEnv
-  echo "Setting environment using fwPythonEnv"
-  echo "🔧  Setting up Python Environment..."
   j fw/server
   . ../env/bin/activate.fish
   set -x PYTHONPATH .

@@ -289,6 +289,7 @@ vmap <Leader>P "+P
 map <Leader>u :w <CR>
 map <Leader>w :w <CR>
 map <Leader>f <C-w><C-w>
+map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
 map <Leader>src :source ~/.vimrc <CR>

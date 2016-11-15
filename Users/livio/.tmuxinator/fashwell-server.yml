@@ -17,7 +17,7 @@ pre_window: fwPythonEnv
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-startup_window: 1
+# startup_window: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -30,7 +30,7 @@ windows:
   - server:
       layout: even-horizontal
       panes:
-        - fwStartServer
+        - fwStartServerProductionLocal
         - fwDjangoShell
   - git:
       layout: even-horizontal
