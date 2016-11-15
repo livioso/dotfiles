@@ -135,21 +135,61 @@ loadBase16Theme
 
 # Fashwell
 function fwPythonEnv
+  echo "Setting environment using fwPythonEnv"
+  echo "🔧  Setting up Python Environment..."
   j fw/server
   . ../env/bin/activate.fish
-  set -x PYTHONPATH /Users/livio/Fashwell/karl-server/src/python
+  set -x PYTHONPATH .
+end
+
+function fwStartServerProductionLocal
+  echo (set_color green)
+  echo "┌─────────────────────────────────────────────────────────────────────────┐"
+  echo "│ 🚚  Run server in <Production Local>...                                  │"
+  echo "│ 🔧  Setting up Python Environment...                                     │"
+
+  j fw/server
+  . ../env/bin/activate.fish
+  set -x PYTHONPATH .
+
+  echo "│ 🍹  Done. Server running as <Production Local> on http://127.0.0.1:8000  │"
+  echo "└─────────────────────────────────────────────────────────────────────────┘"
+  echo (set_color normal)
+
+  python -m frontend.manage runserver 0.0.0.0:8000 --configuration 'ProductionLocal'
 end
 
 function fwStartServerDevelopment
-  fwPythonEnv
-  echo $PYTHONPATH
-  pwd
-  which python
+  echo (set_color green)
+  echo "┌─────────────────────────────────────────────────────────────────────────┐"
+  echo "│ 🚚  Run server in <Development>...                                       │"
+  echo "│ 🔧  Setting up Python Environment...                                     │"
+
+  j fw/server
+  . ../env/bin/activate.fish
+  set -x PYTHONPATH .
+
+  echo "│ 🍹  Done. Server running as <Development> on http://127.0.0.1:8000       │"
+  echo "└─────────────────────────────────────────────────────────────────────────┘"
+  echo (set_color normal)
+
   python -m frontend.manage runserver 0.0.0.0:8000 --configuration 'Development'
 end
 
 function fwStartServerProduction
-  fwPythonEnv
+  echo (set_color red)
+  echo "┌─────────────────────────────────────────────────────────────────────────┐"
+  echo "│ 🚚  Run server in <Production>...                                        │"
+  echo "│ 🔧  Setting up Python Environment...                                     │"
+
+  j fw/server
+  . ../env/bin/activate.fish
+  set -x PYTHONPATH .
+
+  echo "│ 🍹  Done. Server running as <Production> on http://127.0.0.1:8000        │"
+  echo "└─────────────────────────────────────────────────────────────────────────┘"
+  echo (set_color normal)
+
   python -m frontend.manage runserver 0.0.0.0:8000 --configuration 'Production'
 end
 
