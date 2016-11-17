@@ -5,7 +5,7 @@ root: ~/Fashwell/karl-server/src/python/
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
+pre: ssh-add ~/.ssh/fashwell
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 pre_window: fwPythonEnv
