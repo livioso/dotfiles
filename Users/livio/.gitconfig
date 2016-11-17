@@ -21,7 +21,8 @@
   newHighlight = "green bold 22"
 [alias]
   tig = !tig
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
+  lg = log --color --pretty=format:' %Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
+  standup = log --branches="*" --author="Livio" --since="24hours" --color --pretty=format:' %Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
   lga = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
   lgnm = log --color --graph --no-merges --pretty=format:\"%C(blue)%h %Creset- %C(green)(%cr) %Creset%s - %C(cyan)%an %C(magenta)%d\" --date=short
   cia = commit --verbose --untracked-files=no --all
