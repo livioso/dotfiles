@@ -68,3 +68,5 @@
   cursor = black green
 [pull]
 	rebase = true
+[merge]
+	conflictstyle = diff3
