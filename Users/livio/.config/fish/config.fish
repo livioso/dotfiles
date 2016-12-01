@@ -37,6 +37,7 @@ set fish_greeting ""
 source $HOME/.config/fish/fishmarks.fish
 
 function fish_mode_prompt --description "Displays the current mode"
+  echo -n ''
   switch $fish_bind_mode
     case default
       set_color --bold --background black red
@@ -63,7 +64,7 @@ function fish_prompt --description 'Write out the prompt'
   set_color green
   echo -n (prompt_pwd)
 
-  set_color red
+  set_color blue
   printf ' ❯ '
 
   set_color normal

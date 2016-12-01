@@ -2,6 +2,7 @@ set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
@@ -18,6 +19,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
+
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
