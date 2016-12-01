@@ -38,7 +38,7 @@
   cl = !clear
   clear = !clear
   exit = !clear
-  upstream = push --set-upstream origin HEAD
+  pushup = push --set-upstream origin HEAD
   preview = log --patch --max-count=1
 [push]
   default = simple

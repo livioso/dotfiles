@@ -1,10 +1,11 @@
 # path settings
-set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /usr/local/share/git-core/contrib/diff-highlight/ /Users/livio/.yarn/bin
+set PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /opt/X11/bin /Library/TeX/texbin /usr/local/share/git-core/contrib/diff-highlight/ /Users/livio/.yarn/bin /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/
 
 # environment variables
 set -x ANDROID_HOME /usr/local/opt/android-sdk
 set -x PIP_REQUIRE_VIRTUALENV true
 set -x REACT_EDITOR subl
+set -x GOOGLE_APPLICATION_CREDENTIALS /Users/livio/.credentials-gcloud.json
 
 # colors used by fish
 set -g fish_color_normal      base0
@@ -210,10 +211,12 @@ end
 
 function goodmorning
   tmuxinator start fashwell-platform
+  tmuxinator start fashwell-server
 end
 
 function goodbye
   tmuxinator stop fashwell-platform
+  tmuxinator stop fashwell-server
 end
 
 function sourcefish

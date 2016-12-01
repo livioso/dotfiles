@@ -7,7 +7,7 @@ root: ~/Fashwell/karl/src/webapps/platform/
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-# pre: buildJSCTags
+pre: openChromeWithDebugger http://localhost:3000
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
@@ -38,7 +38,7 @@ windows:
       layout: even-horizontal
       panes:
         - docker-compose up
-        - openChromeWithDebugger http://localhost:3000
+        - gcloud container clusters get-credentials funky-stuff --zone europe-west1-d --project fw-fastpath; echo "Open http://localhost:8001/ui"; kubectl proxy
   - git:
       layout: even-horizontal
       panes:
