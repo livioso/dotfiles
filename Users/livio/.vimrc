@@ -20,6 +20,8 @@ Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 
+" not sure yet :)
+Plug 'reasonml/vim-reason-loader'
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
@@ -265,6 +267,9 @@ autocmd BufReadPost *
   \ && &filetype != "gitcommit" |
   \   exe "normal g`\"" |
   \ endif
+
+" pretty print reason on file save
+autocmd BufWritePre *.re silent ReasonPrettyPrint
 
 " replace X with Y: SX/Y<CR>
 nmap S :%s//gc<LEFT><LEFT><LEFT>
