@@ -20,6 +20,7 @@
   newNormal = "green bold"
   newHighlight = "green bold 22"
 [alias]
+  alias = !git config -l | grep 'alias.' | cut -c 7- | sed 's/=/ → /' | sort
   tig = !tig
   lg = log --color --pretty=format:' %Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
   standup = log --branches="*" --author="Livio" --since="24hours" --color --pretty=format:' %Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
