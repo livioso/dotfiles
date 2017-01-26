@@ -327,6 +327,7 @@ map <Leader>ll :Limelight!! <CR>
 map <Leader>g gt
 map <silent> <Leader>j :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
