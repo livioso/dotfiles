@@ -76,7 +76,13 @@ Plug 'vim-airline/vim-airline'
   let g:airline_detect_spell=0 " changes mode from N > SPELL => N
   let g:airline#extensions#tabline#enabled = 0
   let g:airline#extensions#tabline#fnamemod = ':f'
-  let g:airline#extensions#hunks#non_zero_only = 1
+  let g:airline#extensions#hunks#enabled = 0
+  let g:airline#extensions#hunks#non_zero_only = 0
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#branch#enabled = 1
+  let g:airline#extensions#branch#format = 0
+  let g:airline_section_warning = ''
+  let g:airline_section_error = ''
   let g:airline_section_z = "%l·%c"
   let g:airline_section_y = ""
   let g:airline_section_x = "%P"
