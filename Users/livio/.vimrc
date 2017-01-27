@@ -268,7 +268,11 @@ autocmd VimResized * execute "normal \<C-w>="
 
 " threat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
-  \ set ft=json
+  \ set filetype=json
+
+" threat .docker as Dockerfile
+autocmd BufNewFile,BufRead *.docker
+  \ set filetype=dockerfile
 
 " jump to last cursor position when
 " reopening file, except if gitcommit
