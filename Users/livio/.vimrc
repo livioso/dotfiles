@@ -187,6 +187,10 @@ set virtualedit=block
 set nobackup
 set noswapfile
 
+" persistent undo
+set undofile
+set undodir=~/.vimundo/
+
 " show command completion
 set wildmenu
 set wildignore+=*/node_modules/*
