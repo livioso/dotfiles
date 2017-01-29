@@ -143,7 +143,6 @@ set backspace=indent,eol,start
 set relativenumber
 set number
 set emoji
-set viminfo='1000,<500,:500,/500
 set history=1000
 set undolevels=1000
 set cmdheight=4
@@ -155,6 +154,15 @@ set noshowmode
 set nowrap
 set hidden
 syntax on
+
+"           ┌── Disable hlsearch while loading viminfo
+"           │   ┌── Remember marks for last 500 files
+"           │   │     ┌── Remember up to 10000 lines in each register
+"           │   │     │     ┌── Remember up to 1MB in each register
+"           │   │     │     │     ┌── Remember last 1000 search patterns
+"           │   │     │     │     │     ┌── Remember last 1000 commands
+"           │   │     │     │     │     │
+set viminfo=h,'1000,<1000,s1000,/1000,:1000
 
 " set leader key to space
 let mapleader = "\<Space>"
