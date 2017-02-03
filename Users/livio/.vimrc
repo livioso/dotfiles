@@ -23,6 +23,7 @@ Plug 'wincent/terminus'
 
 " not sure yet :)
 Plug 'reasonml/vim-reason-loader'
+Plug 'dag/vim-fish'
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
@@ -144,7 +145,6 @@ set relativenumber
 set number
 set emoji
 set history=1000
-set undolevels=1000
 set cmdheight=4
 set foldcolumn=0
 set scrolloff=5
@@ -188,8 +188,9 @@ set nobackup
 set noswapfile
 
 " persistent undo
-set undofile
 set undodir=~/.vimundo/
+set undolevels=5000
+set undofile
 
 " show command completion
 set wildmenu
@@ -281,6 +282,10 @@ autocmd VimResized * execute "normal \<C-w>="
 " threat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
   \ set filetype=json
+
+" threat python-packages.txt as conf (→ REQUIREMENTS)
+autocmd BufNewFile,BufRead python-packages*.txt
+  \ set filetype=conf
 
 " threat .docker as Dockerfile
 autocmd BufNewFile,BufRead *.docker
@@ -384,17 +389,28 @@ function! Date()
 endfunction
 command! Date :call Date()
 
-" !npm run lint:fix and :w
-function! Lint()
-  echom "》lint:fix started. 🐒"
+function! LintFixJs()
+  echom " → lint:fix started..."
   exe '!npm run lint:fix'
 endfunction
-command! Lint :call Lint()
+command! LintFixJs :call LintFixJs()
 
+function! LintFixPy()
+  echom " → autopep8 % started..."
+  exe '!autopep8 --in-place --aggressive --aggressive %'
+endfunction
+command! LintFixPy :call LintFixPy()
+
+command! LintFixJs :call LintFixJs()
 function! s:fzf_statusline()
   highlight fzf1 ctermfg=black ctermbg=blue
   setlocal statusline=%#fzf1#\ ≡\ fzf
 endfunction
+
+function! FormatJSON()
+  exe '%!python -m json.tool'
+endfunction
+command! FormatJSON :call FormatJSON()
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
