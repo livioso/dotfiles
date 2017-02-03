@@ -7,7 +7,7 @@ root: ~/Fashwell/karl/src/webapps/platform/
 # socket_name: foo
 
 # Runs before everything. Use it to start daemons etc.
-pre: openChromeWithDebugger http://localhost:3000
+# pre: openChromeWithDebugger http://localhost:3000
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
 # pre_window: rbenv shell 2.0.0-p247
