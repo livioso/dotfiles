@@ -20,12 +20,11 @@
   newNormal = "green bold"
   newHighlight = "green bold 22"
 [alias]
-  alias = !git config -l | grep 'alias.' | cut -c 7- | sed 's/=/ → /' | sort
+  alias = !fish -c "git-alias"
   tig = !tig
-  lg = log --color --pretty=format:' %Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit -7
-  standup = log --branches="*" --author="Livio" --since="24hours" --color --pretty=format:' %Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
-  lga = log --color --graph --pretty=format:'%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s' --abbrev-commit
-  lgnm = log --color --graph --no-merges --pretty=format:\"%C(blue)%h %Creset- %C(green)(%cr) %Creset%s - %C(cyan)%an %C(magenta)%d\" --date=short
+  lg = !fish -c "git-lg"
+  lga = !fish -c "git-lga"
+  standup = !fish -c "git-standup"
   cia = commit --verbose --untracked-files=no --all
   ci = commit --verbose --untracked-files=no
   ll = log --cc
@@ -35,12 +34,13 @@
   rt = checkout -p
   st = status --short --branch
   stu = status --short --branch -uno
-  pu = push
   cl = !clear
   clear = !clear
   exit = !clear
   pushup = push --set-upstream origin HEAD
   preview = log --patch --max-count=1
+  review-branch = log --patch --first-parent
+  rebase-unpushed = !fish -c "git-rebase-unpushed"
 [push]
   default = simple
 [core]
