@@ -8,7 +8,7 @@ root: ~/Fashwell/karl-server/src/python/
 pre: ssh-add ~/.ssh/fashwell
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-pre_window: fwPythonEnv
+pre_window: fw-python-env
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -30,8 +30,8 @@ windows:
   - server:
       layout: even-horizontal
       panes:
-        - fwStartServerProductionLocal
-        - fwDjangoShell
+        - fw-start-server
+        - fw-django-shell
   - git:
       layout: even-horizontal
       panes:
@@ -41,9 +41,6 @@ windows:
   - ipython:
         - ipython
   - logtails:
-      layout: even-horizontal
-      panes:
         - j fw/server; fab prod logtail
-        - j fw/server; fab staging logtail
   - console:
         - clear
