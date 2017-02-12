@@ -85,6 +85,7 @@ Plug 'vim-airline/vim-airline'
   let g:airline#extensions#hunks#enabled = 0
   let g:airline#extensions#hunks#non_zero_only = 0
   let g:airline_powerline_fonts = 1
+  let g:airline_symbols = { 'notexists': '' }
   let g:airline#extensions#branch#enabled = 1
   let g:airline#extensions#branch#format = 0
   let g:airline_section_warning = ''
@@ -145,9 +146,9 @@ language C                        " LC=C where C is default
 command! Wq wq                    " map Wq => wq
 set mouse=a                       " a = all
 set updatetime=250                " snappier UI updates (git, etc.)
+set number                        " works also with set relativenumber
+set regexpengine=1                " older but faster engine
 set backspace=indent,eol,start
-set relativenumber
-set number
 set emoji
 set history=1000
 set cmdheight=4
@@ -223,7 +224,7 @@ filetype plugin indent on
 
 " trailing white spaces
 set list listchars+=trail:•
-set list listchars+=tab:\ \ 
+set list listchars+=tab:\›\ 
 
 " faster scrolling
 set lazyredraw
@@ -276,10 +277,12 @@ set printoptions=portrait:n "landscape
 
 " clear search on when hitting return
 nnoremap <silent> <CR> :nohlsearch <CR>
-
-" except when in the quick fix window, <CR> is used to jump 
+" → except when in the quick fix window, <CR> is used to jump
 " to the error under the cursor, so redefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+" → and except when we are in command line history, <CR>
+" is used to run the command under cursor (q:, q/ etc.)
+autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
@@ -305,8 +308,10 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 
-" pretty print reason on file save
-autocmd BufWritePre *.re silent ReasonPrettyPrint
+" let self keyword in python stand out a bit
+autocmd FileType python
+  \   syn keyword pythonSelf self
+  \ | highlight def link pythonSelf Special
 
 " replace X with Y: SX/Y<CR>
 nmap S :%s//gc<LEFT><LEFT><LEFT>
@@ -341,7 +346,6 @@ map <Leader>erc :e ~/.vimrc <CR>
 map <Leader>etc :e ~/.tmux.conf <CR>
 map <Leader>efc :e ~/.config/fish/config.fish <CR>
 map <Leader>n :lnext<CR>
-map <Leader>dbg odebugger;<ESC>
 map <Leader>todo :Todo <CR>
 map <Leader>fixme :Fixme <CR>
 map <Leader>til :Til <CR>
@@ -350,10 +354,11 @@ map <Leader>dnl O// eslint-disable-next-line
 map <Leader>li :Lint <CR>
 map <Leader>rd :redraw! <CR>
 map <Leader>ll :Limelight!! <CR>
+map <Leader>b :VimuxRunLastCommand <CR>
 map <Leader>g gt
 map <silent> <Leader>j :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+map <silent> <Leader>ag :Ag <CR>
 map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
@@ -412,10 +417,10 @@ function! s:fzf_statusline()
   setlocal statusline=%#fzf1#\ ≡\ fzf
 endfunction
 
-function! FormatJSON()
+function! PrettyPrintJSON()
   exe '%!python -m json.tool'
 endfunction
-command! FormatJSON :call FormatJSON()
+command! PrettyPrintJSON :call PrettyPrintJSON()
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
@@ -428,9 +433,10 @@ highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
 highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
 highlight EndOfBuffer ctermfg=black ctermbg=black
 
-" use ag over grep
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
+" use rg over grep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
 else
   echohl ErrorMsg
   echomsg 'Missing ag: install ag'
