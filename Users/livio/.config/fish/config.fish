@@ -1,7 +1,3 @@
-#################
-### Functions ###
-#################
-
 function fish-set-path -d "PATH settings"
   set PATH \
     /bin \
@@ -19,7 +15,6 @@ end
 function fish-set-environment-variables -d "ENV variables"
   set -x ANDROID_HOME /usr/local/opt/android-sdk
   set -x PIP_REQUIRE_VIRTUALENV true
-  set -x REACT_EDITOR subl
   set -x GOOGLE_APPLICATION_CREDENTIALS /Users/livio/.credentials-gcloud.json
 end
 
@@ -39,32 +34,19 @@ function fish-set-colors -d "Set colors used by Fish"
   set -g fish_color_hostname    cyan
   set -g fish_color_cwd         yellow
   set -g fish_color_git         green
-  set -U FZF_TMUX 1
 end
 
-function fish-colorful-man-pages -d "See http://blog.0x1fff.com/2009/11/linux-tip-color-enabled-pager-less.html"
-  setenv -x LESS_TERMCAP_mb (set_color -o red)
-  setenv -x LESS_TERMCAP_md (set_color -o red)
-  setenv -x LESS_TERMCAP_me (set_color normal)
-  setenv -x LESS_TERMCAP_se (set_color normal)
-  setenv -x LESS_TERMCAP_so (set_color -b blue -o yellow)
-  setenv -x LESS_TERMCAP_ue (set_color normal)
-  setenv -x LESS_TERMCAP_us (set_color -o green)
+function fish-set-fzf-environment-variables
+  set -U FZF_TMUX 1
+  set -U FZF_TMUX_HEIGHT 33%
+  # use 16 color for fzf
+  set -g -x FZF_DEFAULT_OPTS --color=16
 end
 
 function fish-set-arbitrary-settings
   set fish_greeting ""
   set -Ux fish_term256
   set -x EDITOR "nvim"
-
-  # less with colors
-  set -x LESS "-RSM~gIsw"
-
-  # use 16 color for fzf
-  set -g -x FZF_DEFAULT_OPTS --color=16
-
-  # load fish marks
-  source $HOME/.config/fish/fishmarks.fish
 end
 
 function fish-set-aliases
@@ -95,6 +77,14 @@ function source-🐟 -d "Source fish config."
   source ~/.config/fish/config.fish
 end
 
+function edotfiles
+
+end
+
+function !! -d "!! as in bash"
+  eval $history[1]
+end
+
 function cd -d "Auto ls for each cd."
   if [ -n $argv[1] ]
     builtin cd $argv[1]
@@ -105,10 +95,71 @@ function cd -d "Auto ls for each cd."
   end
 end
 
-function fd -d "Fuzzy find directories in all subdirectories from pwd."
-  set dir (find . -type d ! -path '**/\.*' ! -path '**/node_modules*' | fzf-tmux +m +s --color=16)
+function bd -d 'Fuzzy find directories in parent directories from pwd → backwards cd'
+  set dir (pwd | awk -v RS=/ '/\n/ {exit} {p=p $0 "/"; print p}' | __fzfcmd)
   if test $dir
     cd $dir
+  end
+end
+
+function fd -d "Fuzzy find directories in sub directories from pwd."
+  set dir (find . -type d ! -path '**/\.*' ! -path '**/node_modules*' | __fzfcmd)
+  if test $dir
+    cd $dir
+  end
+end
+
+function j -d "Like fish marks but self made with fzf support."
+  if test (count $argv) -ne 1
+    set dir (cat ~/.fishmarks | __fzfcmd | awk '{print $2}')
+    if test $dir
+      cd $dir
+    end
+  else
+    set search {$argv[1]}
+    while read name dir
+      if test $name = $search
+        builtin cd $dir
+      end
+    end < ~/.fishmarks
+  end
+end
+
+# completion for j
+complete -c j -c p --description Mark --no-files -a "
+    (cat ~/.fishmarks | cut -f 1 -d ' ')
+"
+
+function osx-msgme -d "Send a notification to OSX."
+  set notification ($argv[1])
+  set title (argv[2])
+  osascript -e "display notification $notification with title $title"
+end
+
+function osx-battery-percentage -d "Get battery percentage."
+  pmset -g batt | sed '1 d' | awk '{print $3}' | sed 's/;*$//'
+end
+
+function osx-set-https-proxies-to-mitmproxy -d "See docker_mitmproxy"
+  networksetup -setwebproxy Wi-Fi 127.0.0.1 6666
+  networksetup -setsecurewebproxy Wi-Fi 127.0.0.1 6666
+end
+
+function osx-turn-https-proxies-on -d "Network → Advanced → Proxies: HTTP & HTTPS Proxies"
+  networksetup -setwebproxystate Wi-Fi on
+  networksetup -setsecurewebproxystate Wi-Fi on
+end
+
+function osx-turn-https-proxies-off -d "Network → Advanced → Proxies: HTTP & HTTPS Proxies"
+  networksetup -setwebproxystate Wi-Fi off
+  networksetup -setsecurewebproxystate Wi-Fi off
+end
+
+function git-fzf-commits
+  set commit (git log --pretty=format:(git-pretty-format-2) | __fzfcmd | awk '{print $1}')
+  if test $commit
+    git clear
+    git show $commit
   end
 end
 
@@ -127,11 +178,19 @@ function git-rebase-unpushed -d "Git rebase -i the unpushed commits."
   end
 end
 
+function tmux-new-or-attach -d "Tmux attach if exising otherwise create."
+  bash -c "tmux attach-session -t $argv || tmux new-session -s $argv"
+end
+
 function git-pretty-format-1
   echo "%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s"
 end
 
-function git-alias
+function git-pretty-format-2
+  echo "%h • %cr %an ➟ %s"
+end
+
+function git-alias -d "Show all the git alias."
   set_color --bold --background black blue
   echo 'Available Git alias:'
   git config -l | grep 'alias.' | cut -c 10- | sed ' s/=/ → /' | sort
@@ -181,43 +240,58 @@ function light -d "Use the light color scheme."
   switch-base16-theme harmonic16-light
 end
 
+# for setup see: http://docs.mitmproxy.org/en/stable/transparent/osx.html
+function docker_mitmproxy -d "Run the mitmproxy docker on localhost:6666."
+  docker run --rm \
+    -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy \
+    -v ~/Downloads:/home/Downloads \
+    -p 6666:8080 \
+    -it mitmproxy/mitmproxy
+end
+
 function fish_mode_prompt -d "Displays the current mode."
   echo -n ''
   switch $fish_bind_mode
     case default
       set_color --bold --background black red
-      echo '▲'
-    case insert
-      set_color --bold --background black blue
       echo '●'
+    case insert
+      set_color --bold --background black brgrey
+      echo '❯'
     case replace-one
       set_color --bold --background black magenta
-      echo '▲'
+      echo '●'
     case visual
       set_color --bold --background black green
-      echo '▲'
+      echo '●'
   end
   set_color normal
   echo -n ' '
 end
 
-function fish_prompt -d 'Write out the prompt'
+function fish_prompt -d "Write out the prompt"
   if not set -q __fish_prompt_normal
     set -g __fish_prompt_normal (set_color normal)
   end
 
   set_color green
-  echo -n (prompt_pwd)
+  printf (basename (pwd))
+  set_color brgrey
+  printf ' on '
 
   set_color blue
-  printf ' ❯ '
+  printf (git rev-parse --abbrev-ref HEAD)
+
+  printf "\n"
+  set_color brgrey
+  printf '❯ '
 
   set_color normal
 end
 
-function fish_right_prompt -d
-  set_color blue
-  printf '%s' (__fish_git_prompt)
+function fish_right_prompt -d "Right prompt"
+  # set_color blue
+  # printf '%s' (__fish_git_prompt)
 end
 
 function fish_user_key_bindings
@@ -230,31 +304,27 @@ function fish_user_key_bindings
 end
 
 ### Work Related
-function fwPythonEnv
+function fw-python-env
   builtin cd ~/Fashwell/karl-server/src/python
   . ../env/bin/activate.fish
   set -x PYTHONPATH .
 end
 
-function __fw-start-server
-  echo (set_color $argv[2])
-  echo " → Run Server in «$argv[1]»"
-  echo (set_color normal)
-  builtin cd ~/Fashwell/karl-server/src/python
-  . ../env/bin/activate.fish
-  set -x PYTHONPATH .
-  python -m frontend.manage runserver 0.0.0.0:8000 --configuration $argv[1]
+function fw-start-server
+  set configuration (printf "%s\n" ProductionLocal Production Development | __fzfcmd -d 10)
+
+  if test $configuration
+    echo (set_color red)
+    echo " → Run Server in «$configuration»"
+    echo (set_color normal)
+    builtin cd ~/Fashwell/karl-server/src/python
+    . ../env/bin/activate.fish
+    set -x PYTHONPATH .
+    python -m frontend.manage runserver 0.0.0.0:8000 --configuration $configuration
+  end
 end
 
-function fwStartServerProductionLocal
-  __fw-start-server ProductionLocal green
-end
-
-function fwStartServerDevelopment
-  __fw-start-server Development purple
-end
-
-function fwDjangoShell
+function fw-django-shell
   fwPythonEnv
   python -m frontend.manage shell
 end
@@ -267,8 +337,8 @@ function main
   fish-set-path
   fish-set-aliases
   fish-set-colors
-  fish-colorful-man-pages
   fish-set-environment-variables
+  fish-set-fzf-environment-variables
   fish-set-arbitrary-settings
   load-base16-theme
 end
