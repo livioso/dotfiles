@@ -2,13 +2,10 @@ set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'othree/es.next.syntax.vim'
 Plug 'gavocanov/vim-js-indent'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'Keithbsmiley/swift.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/vim-peekaboo'
@@ -22,8 +19,16 @@ Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 
 " not sure yet :)
-Plug 'reasonml/vim-reason-loader'
 Plug 'dag/vim-fish'
+Plug 'benmills/vimux'
+Plug 'zchee/deoplete-jedi'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'SirVer/ultisnips'
+  let g:UltiSnipsExpandTrigger="<c-l>"
+  let g:UltiSnipsJumpForwardTrigger="<c-k>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+
+Plug 'https://github.com/livioso/vim-snippets.git'
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
@@ -445,4 +450,3 @@ endif
 if !has('nvim')
   set nolist
 endif
-
