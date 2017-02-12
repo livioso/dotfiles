@@ -1422,11 +1422,11 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>359 419 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>188 175 937 464 0 0 1440 900 </string>
+	<string>188 97 937 512 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 910 874 0 0 1440 878 </string>
+	<string>126 4 910 874 0 0 1440 878 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -2371,7 +2371,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-01-31T21:05:38Z</date>
+	<date>2017-02-04T16:16:33Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20150412</string>
 	<key>SavePasteHistory</key>
