@@ -54,7 +54,6 @@ function fish-set-aliases
   alias c "clear"
   alias g "hub"
   alias sl "ls"
-  alias n "/usr/local/bin/nvim"
   alias claer "clear"
   alias clare "clear"
   alias clera "clear"
@@ -77,8 +76,12 @@ function source-🐟 -d "Source fish config."
   source ~/.config/fish/config.fish
 end
 
-function edotfiles
-
+function n -d "(n)eovim with append . when no args."
+  if test (count $argv) -eq 0
+    /usr/local/bin/nvim .
+  else
+    /usr/local/bin/nvim $argv
+  end
 end
 
 function !! -d "!! as in bash"
