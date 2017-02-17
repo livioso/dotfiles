@@ -322,7 +322,8 @@ end
 
 function fish_user_key_bindings
   # do this first!
-  fish_vi_key_bindings
+  # https://github.com/fish-shell/fish-shell/issues/3556
+  # fish_hybrid_key_bindings
 
   # rebind fzf keys to appropriate functions.
   source $HOME/.config/fish/functions/__fzf_ctrl_r.fish
