@@ -236,11 +236,34 @@ function load-base16-theme -d "Load the colors scheme defined in ~/.theme"
 end
 
 function dark -d "Use the dark color scheme."
-  switch-base16-theme eighties
+  # switch-base16-theme eighties
+  switch-base16-theme oceanicnext
 end
 
 function light -d "Use the light color scheme."
   switch-base16-theme harmonic16-light
+end
+
+function docker-stop-all-container -d "Stop all running container."
+  docker kill (docker ps -q)
+end
+
+# connect mysql --host=127.0.0.1  --user=root --password=root
+function docker_mysql_dirtyfeets -d "Run the MySQL Server dirtyfeets docker."
+  docker run \
+    -e MYSQL_ROOT_PASSWORD=root \
+    -e MYSQL_DATABASE="dirtyfeets" \
+    -p 3306:3306 \
+    -it \
+    mysql:5.7
+end
+
+function docker_mysql -d "Run the MySQL Server dirtyfeets docker."
+  docker run \
+    -e MYSQL_ROOT_PASSWORD=root \
+    -p 3306:3306 \
+    -it \
+    mysql
 end
 
 # for setup see: http://docs.mitmproxy.org/en/stable/transparent/osx.html
