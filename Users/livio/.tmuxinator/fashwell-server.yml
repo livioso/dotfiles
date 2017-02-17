@@ -30,7 +30,7 @@ windows:
   - server:
       layout: even-horizontal
       panes:
-        - fw-start-server
+        - fw-start-server Development
         - fw-django-shell
   - git:
       layout: even-horizontal

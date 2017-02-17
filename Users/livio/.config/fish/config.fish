@@ -338,7 +338,11 @@ function fw-python-env
 end
 
 function fw-start-server
-  set configuration (printf "%s\n" ProductionLocal Production Development | __fzfcmd -d 10)
+  if test (count $argv) -eq 0
+    set configuration (printf "%s\n" ProductionLocal Production Development Staging | __fzfcmd -d 10)
+  else
+    set configuration (echo $argv)
+  end
 
   if test $configuration
     echo (set_color red)
@@ -354,6 +358,14 @@ end
 function fw-django-shell
   fwPythonEnv
   python -m frontend.manage shell
+end
+
+function fw-dirtyfeets-tests
+  fw-python-env
+  env \
+  PYTHONPATH=(pwd) \
+  DB_CONNECTION="mysql://root:root@127.0.0.1/dirtyfeets" \
+  python dirtyfeets/tests/tests.py
 end
 
 function buildJSCTags
