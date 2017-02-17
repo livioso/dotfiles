@@ -56,7 +56,7 @@
 [help]
   autocorrect = 10
 [diff]
-	compactionHeuristic = true
+  indentHeuristic = true
 [interactive]
 	diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
 [gitsh]
