@@ -283,7 +283,7 @@ function fish_mode_prompt -d "Displays the current mode."
       echo '●'
     case insert
       set_color --bold --background black brgrey
-      echo '❯'
+      echo '‥'
     case replace-one
       set_color --bold --background black magenta
       echo '●'
