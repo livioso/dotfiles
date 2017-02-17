@@ -1422,11 +1422,11 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>359 419 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>188 97 937 512 0 0 1440 900 </string>
+	<string>-37 979 918 512 -552 900 2560 1440 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>126 4 910 874 0 0 1440 878 </string>
+	<string>-552 900 910 1227 -552 900 2560 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -2371,7 +2371,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-04T16:16:33Z</date>
+	<date>2017-02-13T15:42:16Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20150412</string>
 	<key>SavePasteHistory</key>
@@ -2433,7 +2433,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.13</string>
+	<string>3.0.14</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
