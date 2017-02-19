@@ -360,6 +360,7 @@ map <silent> <Leader>j :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
 map <silent> <Leader>ag :Ag <CR>
 map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
+map <silent> <F12> :BuildCTags <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
 
@@ -398,6 +399,11 @@ function! Date()
   exe "normal a". today
 endfunction
 command! Date :call Date()
+
+function! BuildCTags()
+  exe ':!/usr/local/bin/ctags -R $PWD -o=$PWD/tags --exclude=.git --exclude=node_modules --python-kinds=-iv'
+endfunction
+command! BuildCTags :call BuildCTags()
 
 function! LintFixJs()
   echom " → lint:fix started..."
