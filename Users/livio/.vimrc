@@ -364,6 +364,11 @@ map <silent> <F12> :BuildCTags <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
 
+" use abbreviations to fix
+" common spelling mistakes
+iabbrev mispell misspell
+iabbrev prodcut product
+
 " Functions
 "
 " trim trailing white spaces
