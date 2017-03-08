@@ -8,8 +8,10 @@ function fish-set-path -d "PATH settings"
     /usr/local/bin \
     /Library/TeX/texbin \
     /Users/livio/.yarn/bin \
+    /Users/livio/.gem/ruby/2.0.0/bin \
     /usr/local/share/git-core/contrib/diff-highlight/ \
-    /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/
+    /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/ \
+    /usr/local/lib/python2.7/site-packages
 end
 
 function fish-set-environment-variables -d "ENV variables"
@@ -47,6 +49,9 @@ function fish-set-arbitrary-settings
   set fish_greeting ""
   set -Ux fish_term256
   set -x EDITOR "nvim"
+
+  export LC_ALL=en_US.UTF-8
+  export PIPENV_SHELL_COMPAT=1
 end
 
 function fish-set-aliases
@@ -70,6 +75,7 @@ function fish-set-aliases
   alias jfw "j fw; nvim ."
   alias jfw-app "j fw/app; nvim ."
   alias jfw-server "j fw/server; nvim ."
+  alias jfw-python "j fw/python; nvim ."
 end
 
 function source-🐟 -d "Source fish config."
