@@ -1,4 +1,4 @@
-install: perpare_dirs install_minimum install_bundle link cleanup
+install: perpare_dirs install_minimum install_brew install_gems install_pip link cleanup
 
 link:
 	ln -f .nvimrc ~/.config/nvim/init.vim
@@ -11,22 +11,30 @@ link:
 	ln -f .npmrc ~/.npmrc
 	ln -f .marks ~/.fishmarks
 	ln -f .flake8 ~/.config/flake8
+	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 prepare_dirs:
-	mkdir -p ~/Library/KeyBindings/
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.config/fish
 	mkdir -p ~/.tmuxinator
+	mkdir -p ~/.config/fish/completions
+	mkdir -p ~/.ipython/profile_default/ipython_config.py
+	mkdir -p ~/Library/KeyBindings/
 
-install_bundle:
-	# brew
+install_brew:
 	brew tap Homebrew/bundle
 	brew bundle
 
-	# gems
+install_gems:
 	gem install bundler
 	bundle install --system
+
+	# link fish autocompletion
+	ln -f ~/.bin/tmuxinator.fish ~/.config/fish/completions/
+
+install_pips:
+	pip install -r Pipfile
 
 install_minimum:
 	# make vim sensible
