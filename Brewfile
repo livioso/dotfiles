@@ -3,6 +3,7 @@ tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'neovim/neovim'
 tap 'thoughtbot/formulae'
+tap 'caskroom/fonts'
 brew 'ack'
 brew 'git'
 brew 'bash'
@@ -50,6 +51,7 @@ brew 'youtube-dl'
 brew 'neovim/neovim/neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/gitsh'
 
+# apps
 cask 'anybar'
 cask 'google-cloud-sdk'
 cask 'google-chrome'
@@ -77,9 +79,16 @@ cask 'filezilla'
 cask 'vienna'
 cask 'virtualbox'
 
-# manual
-# alfred v2
-# keepassx 0.4.x
-# diskwarrior
-# reeder
-# tweetbot
+# fonts
+cask 'font-inconsolata'
+cask 'font-inconsolata-nerd-font'
+cask 'font-inconsolata-nerd-font-mono'
+
+cask 'font-hack'
+cask 'font-hack-nerd-font'
+cask 'font-hack-nerd-font-mono'
+
+cask 'font-source-code-pro'
+cask 'font-source-code-pro-for-powerline'
+
+cask 'font-lato'
