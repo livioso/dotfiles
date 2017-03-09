@@ -15,3 +15,6 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 
 # Show Safari Favorites Bar
 defaults write com.apple.Safari ShowFavoritesBar -bool true
+
+# Change login shell
+chsh -s /usr/local/bin/fish
