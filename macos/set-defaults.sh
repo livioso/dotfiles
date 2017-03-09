@@ -1,5 +1,4 @@
 # Sets reasonable macOS defaults.
-#
 
 # Always open everything in Finder's list view. This is important.
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
@@ -7,8 +6,9 @@ defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 # Show the ~/Library folder.
 chflags nohidden ~/Library
 
-# Set a really fast key repeat.
-defaults write NSGlobalDomain KeyRepeat -int 1
+# Set a faster key repeat
+defaults write NSGlobalDomain InitialKeyRepeat 15
+defaults write NSGlobalDomain KeyRepeat 2
 
 # Set the Finder prefs for showing a few different volumes on the Desktop.
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false 
