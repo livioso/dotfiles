@@ -39,6 +39,9 @@ install_gems:
 install_pips:
 	pip install -r Pipfile
 
+install_npm:
+	npm install -g create-react-app
+
 install_vim:
 	# get vimplug
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
