@@ -71,6 +71,7 @@ function fish-set-aliases
   alias jfw-app "j fw/app; nvim ."
   alias jfw-server "j fw/server; nvim ."
   alias jfw-python "j fw/python; nvim ."
+  alias ff "j fw/python; nvim ."
 end
 
 function source-🐟 -d "Source fish config."

@@ -28,7 +28,7 @@ Plug 'SirVer/ultisnips'
   let g:UltiSnipsJumpForwardTrigger="<c-k>"
   let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
-Plug 'https://github.com/livioso/vim-snippets.git'
+Plug 'https://github.com/honza/vim-snippets.git'
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
@@ -342,9 +342,9 @@ map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
 map <Leader>src :source ~/.vimrc <CR>
-map <Leader>erc :e ~/.vimrc <CR>
-map <Leader>etc :e ~/.tmux.conf <CR>
-map <Leader>efc :e ~/.config/fish/config.fish <CR>
+map <Leader>erc :e ~/.dotfiles/.nvimrc <CR>
+map <Leader>etc :e ~/.dotfiles./.tmux.conf <CR>
+map <Leader>efc :e ~/.dotfiles/.fishrc <CR>
 map <Leader>n :lnext<CR>
 map <Leader>todo :Todo <CR>
 map <Leader>fixme :Fixme <CR>
