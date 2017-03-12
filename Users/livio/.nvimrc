@@ -1,1 +1,0 @@
-/Users/livio/.vimrc

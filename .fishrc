@@ -1,16 +1,14 @@
+# order is important: /usr/local/ before e.g. /usr/bin otherwise
+# we still use the pre-installed versions instead of brew's
 function fish-set-path -d "PATH settings"
   set PATH \
+    /usr/local/bin \
+    /usr/local/sbin \
     /bin \
     /sbin \
     /usr/bin \
     /usr/sbin \
-    /opt/X11/bin \
-    /usr/local/bin \
-    /Library/TeX/texbin \
-    /Users/livio/.yarn/bin \
-    /Users/livio/.gem/ruby/2.0.0/bin \
-    /usr/local/share/git-core/contrib/diff-highlight/ \
-    /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/ \
+    /usr/local/share/git-core/contrib/diff-highlight \
     /usr/local/lib/python2.7/site-packages
 end
 
@@ -48,7 +46,7 @@ end
 function fish-set-arbitrary-settings
   set fish_greeting ""
   set -Ux fish_term256
-  set -x EDITOR "nvim"
+  set -g -x EDITOR "nvim"
 
   export LC_ALL=en_US.UTF-8
   export PIPENV_SHELL_COMPAT=1
@@ -76,6 +74,7 @@ function fish-set-aliases
   alias jfw-app "j fw/app; nvim ."
   alias jfw-server "j fw/server; nvim ."
   alias jfw-python "j fw/python; nvim ."
+  alias ff "j fw/python; nvim ."
 end
 
 function source-🐟 -d "Source fish config."
@@ -128,7 +127,7 @@ function j -d "Like fish marks but self made with fzf support."
     set search {$argv[1]}
     while read name dir
       if test $name = $search
-        builtin cd $dir
+        builtin cd (eval echo "$dir")
       end
     end < ~/.fishmarks
   end
@@ -184,6 +183,12 @@ function git-rebase-unpushed -d "Git rebase -i the unpushed commits."
       set_color --bold --background black blue
       echo '✗ all commits are pushed: nothing to rebase.'
     end
+  end
+end
+
+function git-is-repo -d "Test if the current directory is a repository"
+  if not command git rev-parse --git-dir > /dev/null ^ /dev/null
+    return 1
   end
 end
 
@@ -247,7 +252,7 @@ function dark -d "Use the dark color scheme."
 end
 
 function light -d "Use the light color scheme."
-  switch-base16-theme harmonic16-light
+  switch-base16-theme harmonic-light
 end
 
 function docker-stop-all-container -d "Stop all running container."
@@ -308,11 +313,14 @@ function fish_prompt -d "Write out the prompt"
 
   set_color green
   printf (basename (pwd))
-  set_color brgrey
-  printf ' on '
 
-  set_color blue
-  printf (git rev-parse --abbrev-ref HEAD)
+  if git-is-repo
+    set_color brgrey
+    printf ' on '
+
+    set_color blue
+    printf (git rev-parse --abbrev-ref HEAD)
+  end
 
   printf "\n"
   set_color brgrey
@@ -327,13 +335,15 @@ function fish_right_prompt -d "Right prompt"
 end
 
 function fish_user_key_bindings
-  # do this first!
+  # I think I would love to use hybrid but it's currently broken.
   # https://github.com/fish-shell/fish-shell/issues/3556
   # fish_hybrid_key_bindings
 
+  fish_vi_key_bindings
+
   # rebind fzf keys to appropriate functions.
-  source $HOME/.config/fish/functions/__fzf_ctrl_r.fish
-  bind \cr -M insert '__fzf_ctrl_r'
+  source $HOME/.config/fish/functions/*.fish
+  bind \cr -M insert '__fzf_reverse_isearch'
 end
 
 ### Work Related

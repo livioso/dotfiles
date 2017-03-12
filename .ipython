@@ -1,0 +1,10 @@
+c = get_config()  # get the Config instance
+
+c.TerminalIPythonApp.display_banner = False 
+c.InteractiveShell.autoindent = True
+c.InteractiveShell.colors = 'Neutral'
+c.InteractiveShell.editor = 'nvim'
+c.InteractiveShell.xmode = 'Context'
+c.InteractiveShellApp.exec_lines = [
+    'import pprint',
+]
