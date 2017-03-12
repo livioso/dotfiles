@@ -1,11 +1,14 @@
+# order is important: /usr/local/ before e.g. /usr/bin otherwise
+# we still use the pre-installed versions instead of brew's
 function fish-set-path -d "PATH settings"
   set PATH \
+    /usr/local/bin \
+    /usr/local/sbin \
     /bin \
     /sbin \
     /usr/bin \
     /usr/sbin \
-    /usr/local/bin \
-    /usr/local/share/git-core/contrib/diff-highlight/ \
+    /usr/local/share/git-core/contrib/diff-highlight \
     /usr/local/lib/python2.7/site-packages
 end
 
@@ -43,7 +46,7 @@ end
 function fish-set-arbitrary-settings
   set fish_greeting ""
   set -Ux fish_term256
-  set -x EDITOR "nvim"
+  set -g -x EDITOR "nvim"
 
   export LC_ALL=en_US.UTF-8
   export PIPENV_SHELL_COMPAT=1
