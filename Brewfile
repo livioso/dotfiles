@@ -50,6 +50,7 @@ brew 'yarn'
 brew 'youtube-dl'
 brew 'neovim/neovim/neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/gitsh'
+brew 'hub'
 
 # apps
 cask 'anybar'
