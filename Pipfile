@@ -1,3 +1,4 @@
 virtualenv
 ipython
 neovim
+flake8
