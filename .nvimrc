@@ -287,6 +287,10 @@ autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
 
+" threat .fishrc as fish
+autocmd BufNewFile,BufRead .fishrc
+  \ set filetype=fish
+
 " threat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
   \ set filetype=json
