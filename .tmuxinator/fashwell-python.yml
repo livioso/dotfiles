@@ -1,4 +1,4 @@
-name: Fashwell/Server
+name: Fashwell/Python
 root: ~/Fashwell/karl-server/src/python/
 
 # Optional tmux socket
@@ -17,7 +17,7 @@ pre_window: fw-python-env
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: 1
+startup_window: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -27,20 +27,20 @@ pre_window: fw-python-env
 
 windows:
   - editor: nvim .
-  - server:
-      layout: even-horizontal
-      panes:
-        - fw-start-server Development
-        - fw-django-shell
+  - console:
+        - clear
   - git:
       layout: even-horizontal
       panes:
         - tig
-        - gitsh; clear
-  - linting: flake8 .
+        - gitsh
   - ipython:
+      layout: even-horizontal
+      panes:
+        - fw-django-shell
         - ipython
-  - logtails:
-        - j fw/server; fab prod logtail
-  - console:
-        - clear
+  - server:
+      layout: even-vertical
+      panes:
+        - fw-start-server ProductionLocal
+        - fab prod logtail
