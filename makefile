@@ -68,7 +68,7 @@ install_vim_min:
 install_fish:
 	# get fisher
 	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-	fish -c "fisher fzf barnybug/docker-fish-completion Doctusoft/google-cloud-sdk-fish-completion"
+	fish -c "fisher barnybug/docker-fish-completion Doctusoft/google-cloud-sdk-fish-completion"
 	# link fish autocompletion ln -f ~/.bin/tmuxinator.fish ~/.config/fish/completions/
 
 install_base16shell:

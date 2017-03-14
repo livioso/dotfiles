@@ -44,6 +44,10 @@ function fish-set-fzf-environment-variables
 end
 
 function fish-set-arbitrary-settings
+  # allow to use emacs style key bindings together with vi
+  # style key bindings, default behaviour before fish 2.4
+  # https://github.com/fish-shell/fish-shell/issues/3556
+  set -g -x fish_key_bindings "fish_hybrid_key_bindings"
   set fish_greeting ""
   set -Ux fish_term256
   set -g -x EDITOR "nvim"
@@ -104,14 +108,14 @@ function cd -d "Auto ls for each cd."
 end
 
 function bd -d 'Fuzzy find directories in parent directories from pwd → backwards cd'
-  set dir (pwd | awk -v RS=/ '/\n/ {exit} {p=p $0 "/"; print p}' | __fzfcmd)
+  set dir (pwd | awk -v RS=/ '/\n/ {exit} {p=p $0 "/"; print p}' | fzf-tmux)
   if test $dir
     cd $dir
   end
 end
 
 function fd -d "Fuzzy find directories in sub directories from pwd."
-  set dir (find . -type d ! -path '**/\.*' ! -path '**/node_modules*' | __fzfcmd)
+  set dir (find . -type d ! -path '**/\.*' ! -path '**/node_modules*' | fzf-tmux)
   if test $dir
     cd $dir
   end
@@ -119,9 +123,9 @@ end
 
 function j -d "Like fish marks but self made with fzf support."
   if test (count $argv) -ne 1
-    set dir (cat ~/.fishmarks | __fzfcmd | awk '{print $2}')
+    set dir (cat ~/.fishmarks | fzf-tmux | awk '{print $2}')
     if test $dir
-      cd $dir
+      builtin cd (eval echo "$dir")
     end
   else
     set search {$argv[1]}
@@ -130,6 +134,14 @@ function j -d "Like fish marks but self made with fzf support."
         builtin cd (eval echo "$dir")
       end
     end < ~/.fishmarks
+  end
+end
+
+function i-history -d "i-reverse history"
+  set cmd (history | fzf-tmux)
+  if test $cmd
+    commandline -rb  $cmd
+    commandline -f repaint
   end
 end
 
@@ -164,7 +176,7 @@ function osx-turn-https-proxies-off -d "Network → Advanced → Proxies: HTTP &
 end
 
 function git-fzf-commits
-  set commit (git log --pretty=format:(git-pretty-format-2) | __fzfcmd | awk '{print $1}')
+  set commit (git log --pretty=format:(git-pretty-format-2) | fzf-tmux | awk '{print $1}')
   if test $commit
     git clear
     git show $commit
@@ -335,15 +347,9 @@ function fish_right_prompt -d "Right prompt"
 end
 
 function fish_user_key_bindings
-  # I think I would love to use hybrid but it's currently broken.
-  # https://github.com/fish-shell/fish-shell/issues/3556
-  # fish_hybrid_key_bindings
-
-  fish_vi_key_bindings
-
-  # rebind fzf keys to appropriate functions.
-  source $HOME/.config/fish/functions/*.fish
-  bind \cr -M insert '__fzf_reverse_isearch'
+  for mode in default insert visual
+    bind -M $mode \cr "i-history"
+  end
 end
 
 ### Work Related
@@ -355,7 +361,7 @@ end
 
 function fw-start-server
   if test (count $argv) -eq 0
-    set configuration (printf "%s\n" ProductionLocal Production Development Staging | __fzfcmd -d 10)
+    set configuration (printf "%s\n" ProductionLocal Production Development Staging | fzf-tmux)
   else
     set configuration (echo $argv)
   end
