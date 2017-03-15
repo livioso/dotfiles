@@ -50,6 +50,7 @@ install_pips:
 
 install_npm:
 	npm install -g create-react-app
+	npm install -g create-react-native-app
 
 install_vim:
 	# get vimplug
