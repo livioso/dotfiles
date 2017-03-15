@@ -25,6 +25,7 @@
   lg = !fish -c "git-lg"
   lga = !fish -c "git-lga"
   standup = !fish -c "git-standup"
+  recap = !fish -c "git-recap"
   cia = commit --verbose --untracked-files=no --all
   ci = commit --verbose --untracked-files=no
   ll = log --cc

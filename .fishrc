@@ -236,6 +236,15 @@ function git-lga -d "Git improved log with graph."
     --pretty=format:(git-pretty-format-1)
 end
 
+function git-recap -d "Git recap the day"
+  git log \
+    --color \
+    --since="00:00:00" \
+    --no-merges \
+    --oneline \
+    --author=Livio
+end
+
 function git-standup -d "Git log over the last 24h."
   git log \
     --color \
