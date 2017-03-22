@@ -9,6 +9,7 @@ function fish-set-path -d "PATH settings"
     /usr/bin \
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
+    /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin \
     /usr/local/lib/python2.7/site-packages
 end
 

@@ -8,6 +8,7 @@ install: \
 	install_vim_min \
 	install_fish \
 	install_base16shell \
+	install_glcoud \
 	macos_set_defaults \
 	link \
 	cleanup
@@ -53,6 +54,9 @@ install_pips:
 install_npm:
 	npm install -g create-react-app
 	npm install -g create-react-native-app
+
+install_glcoud:
+	gcloud components install kubectl
 
 install_vim:
 	# get vimplug
