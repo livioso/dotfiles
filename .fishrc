@@ -122,6 +122,14 @@ function fd -d "Fuzzy find directories in sub directories from pwd."
   end
 end
 
+function i-history -d "i-reverse history"
+  set cmd (history | fzf-tmux)
+  if test $cmd
+    commandline -rb  $cmd
+    commandline -f repaint
+  end
+end
+
 function j -d "Like fish marks but self made with fzf support."
   if test (count $argv) -ne 1
     set dir (cat ~/.fishmarks | fzf-tmux | awk '{print $2}')
@@ -138,19 +146,10 @@ function j -d "Like fish marks but self made with fzf support."
   end
 end
 
-function i-history -d "i-reverse history"
-  set cmd (history | fzf-tmux)
-  if test $cmd
-    commandline -rb  $cmd
-    commandline -f repaint
-  end
-end
-
 # completion for j
 complete -c j -c p --description Mark --no-files -a "
     (cat ~/.fishmarks | cut -f 1 -d ' ')
 "
-
 function osx-msgme -d "Send a notification to OSX."
   set notification ($argv[1])
   set title (argv[2])
@@ -205,10 +204,6 @@ function git-is-repo -d "Test if the current directory is a repository"
   end
 end
 
-function tmux-new-or-attach -d "Tmux attach if exising otherwise create."
-  bash -c "tmux attach-session -t $argv || tmux new-session -s $argv"
-end
-
 function git-pretty-format-1
   echo "%Cred%h%Creset • %Cgreen%cr%Creset %Cblue%an %n ➟ %s"
 end
@@ -256,6 +251,10 @@ function git-standup -d "Git log over the last 24h."
     --pretty=format:(git-pretty-format-1)
 end
 
+function tmux-new-or-attach -d "Tmux attach if exising otherwise create."
+  bash -c "tmux attach-session -t $argv || tmux new-session -s $argv"
+end
+
 function switch-base16-theme
   echo $argv > ~/.theme
   load-base16-theme
@@ -269,8 +268,12 @@ function load-base16-theme -d "Load the colors scheme defined in ~/.theme"
 end
 
 function dark -d "Use the dark color scheme."
-  # switch-base16-theme eighties
+# switch-base16-theme eighties
   switch-base16-theme oceanicnext
+end
+
+function darkest -d "Use the darkest color scheme."
+  switch-base16-theme irblack
 end
 
 function light -d "Use the light color scheme."
@@ -316,7 +319,7 @@ function fish_mode_prompt -d "Displays the current mode."
       echo '●'
     case insert
       set_color --bold --background black brgrey
-      echo '‥'
+      echo 'ـ'
     case replace-one
       set_color --bold --background black magenta
       echo '●'
