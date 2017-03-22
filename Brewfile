@@ -80,6 +80,7 @@ cask 'flux'
 cask 'filezilla'
 cask 'vienna'
 cask 'virtualbox'
+cask 'paw'
 
 # fonts
 cask 'font-inconsolata'
