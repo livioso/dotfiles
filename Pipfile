@@ -1,5 +1,7 @@
 virtualenv
 ipython
+ipython-sql
+mysql-python
 neovim
 flake8
 pipenv
