@@ -55,6 +55,7 @@ function fish-set-arbitrary-settings
 
   export LC_ALL=en_US.UTF-8
   export PIPENV_SHELL_COMPAT=1
+  export GOPATH=/Users/livio/Desktop/●/go/
 end
 
 function fish-set-aliases
