@@ -52,6 +52,7 @@ brew 'neovim/neovim/neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/gitsh'
 brew 'hub'
 brew 'homebrew/dupes/less'
+brew 'shellcheck'
 
 # apps
 cask 'anybar'

@@ -6,5 +6,6 @@ c.InteractiveShell.colors = 'Linux'
 c.InteractiveShell.editor = 'nvim'
 c.InteractiveShell.xmode = 'Context'
 c.InteractiveShellApp.exec_lines = [
+    # '%load_ext sql',
     'import pprint',
 ]

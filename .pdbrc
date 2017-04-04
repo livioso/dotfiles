@@ -1,2 +1,3 @@
 alias exit import os; os.system('kill -9 %d' % os.getpid())
 alias kk import os; os.system('kill -9 %d' % os.getpid())
+alias vars pp locals()

@@ -1,6 +1,7 @@
 set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'vim-airline/vim-airline-themes'
 Plug 'othree/es.next.syntax.vim'
@@ -12,17 +13,15 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'jparise/vim-graphql'
+Plug 'zchee/deoplete-jedi'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
-
-" not sure yet :)
-Plug 'dag/vim-fish'
 Plug 'benmills/vimux'
-Plug 'zchee/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'dag/vim-fish'
+
 Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger="<c-l>"
   let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -436,6 +435,11 @@ function! PrettyPrintJSON()
   exe '%!python -m json.tool'
 endfunction
 command! PrettyPrintJSON :call PrettyPrintJSON()
+
+function! FashwellBootstrapPythonFile()
+  exe "read ~/Fashwell/fashwell.py"
+endfunction
+command! FashwellBootstrapPythonFile :call FashwellBootstrapPythonFile()
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
