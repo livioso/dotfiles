@@ -6,3 +6,4 @@ neovim
 flake8
 pipenv
 youtube-dl
+ptpython
