@@ -277,7 +277,7 @@ set printoptions=portrait:n "landscape
 " clear search on when hitting return
 nnoremap <silent> <CR> :nohlsearch <CR>
 " → except when in the quick fix window, <CR> is used to jump
-" to the error under the cursor, so redefine the mapping there.
+" to the file under the cursor, so redefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 " → and except when we are in command line history, <CR>
 " is used to run the command under cursor (q:, q/ etc.)
@@ -286,19 +286,19 @@ autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
 
-" threat .fishrc as fish
+" treat .fishrc as fish
 autocmd BufNewFile,BufRead .fishrc
   \ set filetype=fish
 
-" threat eslintrc as JSON
+" treat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
   \ set filetype=json
 
-" threat python-packages.txt as conf (→ REQUIREMENTS)
+" treat python-packages.txt as conf (→ same as REQUIREMENTS)
 autocmd BufNewFile,BufRead python-packages*.txt
   \ set filetype=conf
 
-" threat .docker as Dockerfile
+" treat .docker as Dockerfile
 autocmd BufNewFile,BufRead *.docker
   \ set filetype=dockerfile
 
