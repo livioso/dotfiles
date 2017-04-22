@@ -53,6 +53,7 @@ brew 'thoughtbot/formulae/gitsh'
 brew 'hub'
 brew 'homebrew/dupes/less'
 brew 'shellcheck'
+brew 'ranger'
 
 # apps
 cask 'anybar'
