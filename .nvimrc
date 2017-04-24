@@ -331,6 +331,9 @@ vnoremap . :normal .<CR>
 inoremap <C-E> <C-X><C-E>
 inoremap <C-Y> <C-X><C-Y>
 
+" because fuck you K
+map K <nop>
+
 " <Leader> mappings
 vmap <Leader>y "+y
 vmap <Leader>d "+d
