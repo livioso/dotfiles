@@ -14,6 +14,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'jparise/vim-graphql'
 Plug 'zchee/deoplete-jedi'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
@@ -27,7 +28,6 @@ Plug 'SirVer/ultisnips'
   let g:UltiSnipsJumpForwardTrigger="<c-k>"
   let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
-Plug 'https://github.com/honza/vim-snippets.git'
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
