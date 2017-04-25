@@ -23,6 +23,14 @@ Plug 'wincent/terminus'
 Plug 'benmills/vimux'
 Plug 'dag/vim-fish'
 
+" Give vim-jsx-pretty a try
+"
+" Plug 'mxw/vim-jsx'
+"   let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+"
+Plug 'maxmellon/vim-jsx-pretty'
+  let g:vim_jsx_pretty_colorful_config = 1
+
 Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger="<c-l>"
   let g:UltiSnipsJumpForwardTrigger="<c-k>"
@@ -41,9 +49,6 @@ Plug 'wincent/loupe'
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
-
-Plug 'mxw/vim-jsx'
-  let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
