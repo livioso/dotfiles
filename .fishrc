@@ -69,6 +69,7 @@ function fish-set-aliases
   alias grep "grep -n --color"
   alias subl "open -a /Applications/Sublime\ Text.app/"
   alias t "tree -L 1 -a ."
+  alias r "ranger"
   alias ci "g ci"
   alias cia "g cia"
   alias st "g st"
