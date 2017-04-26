@@ -25,10 +25,10 @@ link:
 	ln -f .marks ~/.fishmarks
 	ln -f .flake8 ~/.config/flake8
 	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
-	ln -f .ipython-fashwell ~/.ipython/profile_fashwell/ipython_config.py
 	ln -f .pdbrc ~/.pdbrc
 	ln -f .ctags ~/.ctags
 	ln -f .theme ~/.theme
+	ln -f hammerspoon/init.lua ~/.hammerspoon/init.lua
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 prepare_dirs:
@@ -39,6 +39,7 @@ prepare_dirs:
 	mkdir -p ~/.ipython/profile_default
 	mkdir -p ~/.ipython/profile_fashwell
 	mkdir -p ~/Library/KeyBindings
+	mkdir -p ~/.hammerspoon/
 
 install_brew:
 	brew tap Homebrew/bundle
