@@ -429,9 +429,15 @@ command! LintFixJs :call LintFixJs()
 
 function! LintFixPy()
   echom " → autopep8 % started..."
-  exe '!autopep8 --in-place --aggressive --aggressive %'
+  exe '!autopep8 --in-place %'
 endfunction
 command! LintFixPy :call LintFixPy()
+
+function! LintFixPyAggressive()
+  echom " → autopep8 % started..."
+  exe '!autopep8 --in-place --aggressive --aggressive %'
+endfunction
+command! LintFixPyAggressive :call LintFixPyAggressive()
 
 command! LintFixJs :call LintFixJs()
 function! s:fzf_statusline()
