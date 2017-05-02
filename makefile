@@ -55,6 +55,7 @@ install_pips:
 install_npm:
 	npm install -g create-react-app
 	npm install -g create-react-native-app
+	npm install -g @google-cloud/functions-emulator
 
 install_glcoud:
 	gcloud components install kubectl
