@@ -50,11 +50,12 @@ brew 'youtube-dl'
 brew 'neovim/neovim/neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/gitsh'
 brew 'hub'
-brew 'homebrew/dupes/less'
+brew 'less'
 brew 'shellcheck'
 brew 'ranger'
 brew 'mosh'
 brew 'moreutils'
+brew 'sshfs'
 
 # apps
 cask 'anybar'
@@ -84,6 +85,7 @@ cask 'filezilla'
 cask 'vienna'
 cask 'virtualbox'
 cask 'paw'
+cask 'ngrok'
 
 # fonts
 cask 'font-inconsolata'
