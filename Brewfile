@@ -1,9 +1,10 @@
 tap 'burntsushi/ripgrep', 'https://github.com/BurntSushi/ripgrep.git'
-tap 'caskroom/cask'
 tap 'homebrew/bundle'
-tap 'neovim/neovim'
-tap 'thoughtbot/formulae'
+tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'thoughtbot/formulae'
+tap 'neovim/neovim'
+
 brew 'ack'
 brew 'git'
 brew 'bash'
@@ -55,7 +56,6 @@ brew 'shellcheck'
 brew 'ranger'
 brew 'mosh'
 brew 'moreutils'
-brew 'sshfs'
 
 # apps
 cask 'anybar'
@@ -69,7 +69,7 @@ cask 'qlmarkdown'
 cask 'dropbox'
 cask 'arq'
 cask 'docker'
-cask 'pycharm'
+cask 'pycharm-ce'
 cask 'intellij-idea'
 cask 'bettertouchtool'
 cask 'calibre'
@@ -86,6 +86,7 @@ cask 'vienna'
 cask 'virtualbox'
 cask 'paw'
 cask 'ngrok'
+cask 'osxfuse' # for sshfs
 
 # fonts
 cask 'font-inconsolata'
