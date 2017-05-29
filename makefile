@@ -22,7 +22,6 @@ link:
 	ln -f .gitconfig ~/.gitconfig
 	ln -f .emacs ~/.emacs
 	ln -f .npmrc ~/.npmrc
-	ln -f .marks ~/.fishmarks
 	ln -f .flake8 ~/.config/flake8
 	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
 	ln -f .pdbrc ~/.pdbrc
