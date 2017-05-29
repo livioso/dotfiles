@@ -2,6 +2,7 @@ tap 'burntsushi/ripgrep', 'https://github.com/BurntSushi/ripgrep.git'
 tap 'homebrew/bundle'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'caskroom/versions'
 tap 'thoughtbot/formulae'
 tap 'neovim/neovim'
 
@@ -56,6 +57,7 @@ brew 'shellcheck'
 brew 'ranger'
 brew 'mosh'
 brew 'moreutils'
+brew 'highlight'
 
 # apps
 cask 'anybar'
@@ -87,6 +89,7 @@ cask 'virtualbox'
 cask 'paw'
 cask 'ngrok'
 cask 'osxfuse' # for sshfs
+cask 'caskroom/versions/google-chrome-canary'
 
 # fonts
 cask 'font-inconsolata'
