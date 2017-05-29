@@ -352,6 +352,7 @@ map <Leader>w :w <CR>
 map <Leader>f <C-w><C-w>
 map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
+map <Leader>t :vsplit <CR><ESC> :terminal<CR>
 map <Leader>q :q <CR>
 map <Leader>src :source ~/.vimrc <CR>
 map <Leader>erc :e ~/.dotfiles/.nvimrc <CR>
@@ -368,7 +369,8 @@ map <Leader>rd :redraw! <CR>
 map <Leader>ll :Limelight!! <CR>
 map <Leader>b :VimuxRunLastCommand <CR>
 map <Leader>g gt
-map <silent> <Leader>j :FZF <CR>
+map <silent> <Leader>j :GFiles <CR>
+map <silent> <Leader>J :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
 map <silent> <Leader>ag :Ag <CR>
 map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
