@@ -27,8 +27,9 @@ link:
 	ln -f .pdbrc ~/.pdbrc
 	ln -f .ctags ~/.ctags
 	ln -f .theme ~/.theme
-	ln -f hammerspoon/init.lua ~/.hammerspoon/init.lua
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+	ln -f karabiner/karabiner.json ~/.config/karabiner/
+	ln -f hammerspoon/init.lua ~/.hammerspoon/init.lua
 
 prepare_dirs:
 	mkdir -p ~/.config/nvim
@@ -38,6 +39,7 @@ prepare_dirs:
 	mkdir -p ~/.ipython/profile_default
 	mkdir -p ~/.ipython/profile_fashwell
 	mkdir -p ~/Library/KeyBindings
+	mkdir -p ~/.config/karabiner/
 	mkdir -p ~/.hammerspoon/
 
 install_brew:
