@@ -49,7 +49,7 @@
   editor = nvim
   ignorecase = false
   pager = diff-so-fancy --patch-mode | less --tabs=2 -RFX
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
 [commit]
   template = ~/.gitmessage
 [branch "master"]
@@ -59,7 +59,7 @@
 [diff]
   indentHeuristic = true
 [interactive]
-	diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
+  diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
 [gitsh]
   prompt = git • %c%D (%b) $%w
 [tig]
@@ -70,8 +70,8 @@
 [tig "color"]
   cursor = black green
 [pull]
-	rebase = true
+  rebase = true
 [merge]
-	conflictstyle = diff3
+  conflictstyle = diff3
 [rebase]
-	autosquash = true
+  autosquash = true
