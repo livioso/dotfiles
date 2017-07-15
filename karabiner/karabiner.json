@@ -10,34 +10,7 @@
                 "parameters": {
                     "basic.to_if_alone_timeout_milliseconds": 500
                 },
-                "rules": [
-                    {
-                        "description": "Change caps_lock to right_control. (Trigger escape if pressed alone)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_control"
-                                    }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "escape"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
+                "rules": []
             },
             "devices": [],
             "fn_function_keys": {
@@ -57,7 +30,8 @@
             "name": "Default profile",
             "selected": true,
             "simple_modifications": {
-                "right_command": "right_control"
+                "caps_lock": "escape",
+                "right_command": "left_control"
             },
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
