@@ -35,12 +35,6 @@ windows:
         - tig
         - gitsh
   - ipython:
-      layout: even-horizontal
-      panes:
-        - fw-django-shell
         - ipython
   - server:
-      layout: even-vertical
-      panes:
-        - fw-start-server ProductionLocal
-        - fab prod logtail
+        - fw-start-server Development
