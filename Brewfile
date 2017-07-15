@@ -90,6 +90,7 @@ cask 'paw'
 cask 'ngrok'
 cask 'osxfuse' # for sshfs
 cask 'caskroom/versions/google-chrome-canary'
+cask 'psequel'
 
 # fonts
 cask 'font-inconsolata'
