@@ -42,6 +42,7 @@
   preview = log --patch --max-count=1
   review-branch = log --patch --first-parent
   rebase-unpushed = !fish -c "git-rebase-unpushed"
+  pp = !git pull && git push
 [push]
   default = simple
 [core]
