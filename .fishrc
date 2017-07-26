@@ -79,6 +79,7 @@ function fish-set-aliases
   alias nd "nextd"
   alias jff "j fw/ue; nvim ."
   alias jpp "j fw/python; nvim ."
+  alias livioso "tmuxinator start livioso"
 end
 
 function source-🐟 -d "Source fish config."
