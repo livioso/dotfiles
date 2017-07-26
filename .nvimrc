@@ -132,7 +132,7 @@ if has('nvim')
     " let g:deoplete#sources._ = ['buffer', 'tag']
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#disable_auto_complete = 0
-    let g:deoplete#max_list = 5
+    let g:deoplete#max_list = 10
     inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" : "\<TAB>"
 endif
