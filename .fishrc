@@ -367,6 +367,9 @@ end
 
 ### Work Related
 function fw-python-env
+  # workaround: fixes an error on
+  # . ../env/bin/activate.fish
+  set --erase _OLD_FISH_PROMPT_OVERRIDE
   builtin cd ~/Fashwell/karl-server/src/python
   . ../env/bin/activate.fish
   set -x PYTHONPATH .
@@ -391,7 +394,7 @@ function fw-start-server
 end
 
 function fw-django-shell
-  fwPythonEnv
+  fw-python-env
   python -m frontend.manage shell
 end
 
