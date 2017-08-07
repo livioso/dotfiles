@@ -59,6 +59,7 @@ brew 'mosh'
 brew 'moreutils'
 brew 'highlight'
 brew 'geoip'
+brew 'exa'
 
 # apps
 cask 'anybar'
