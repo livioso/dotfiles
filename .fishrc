@@ -80,6 +80,7 @@ function fish-set-aliases
   alias jff "j fw/ue; nvim ."
   alias jpp "j fw/python; nvim ."
   alias livioso "tmuxinator start livioso"
+  alias lock "pmset displaysleepnow"
 end
 
 function source-🐟 -d "Source fish config."
