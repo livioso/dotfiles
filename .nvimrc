@@ -157,6 +157,7 @@ set mouse=a                       " a = all
 set updatetime=250                " snappier UI updates (git, etc.)
 set number                        " works also with set relativenumber
 set regexpengine=1                " older but faster engine
+set timeoutlen=500                " don't wait long next key press (ambiguous leader situations)
 set backspace=indent,eol,start
 set emoji
 set history=1000
