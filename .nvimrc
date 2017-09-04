@@ -30,8 +30,6 @@ Plug 'dag/vim-fish'
 " Plug 'mxw/vim-jsx'
 "   let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 "
-"
-Plug 'godlygeek/tabular'
 
 Plug 'maxmellon/vim-jsx-pretty'
   let g:vim_jsx_pretty_colorful_config = 1
