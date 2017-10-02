@@ -10,7 +10,8 @@ function fish-set-path -d "PATH settings"
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
     /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin \
-    /usr/local/lib/python2.7/site-packages
+    /usr/local/lib/python2.7/site-packages \
+    /usr/local/istio/istio-0.1.6/bin
 end
 
 function fish-set-environment-variables -d "ENV variables"
