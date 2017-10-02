@@ -92,17 +92,15 @@ cask 'ngrok'
 cask 'osxfuse' # for sshfs
 cask 'caskroom/versions/google-chrome-canary'
 cask 'psequel'
+cask 'minikube'
 
 # fonts
 cask 'font-inconsolata'
 cask 'font-inconsolata-nerd-font'
 cask 'font-inconsolata-nerd-font-mono'
-
 cask 'font-hack'
 cask 'font-hack-nerd-font'
 cask 'font-hack-nerd-font-mono'
-
 cask 'font-source-code-pro'
 cask 'font-source-code-pro-for-powerline'
-
 cask 'font-lato'
