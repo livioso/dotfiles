@@ -24,6 +24,7 @@
   tig = !tig
   lg = !fish -c "git-lg"
   lga = !fish -c "git-lga"
+  lgb = log --first-parent --no-merges
   standup = !fish -c "git-standup"
   recap = !fish -c "git-recap"
   cia = commit --verbose --untracked-files=no --all
