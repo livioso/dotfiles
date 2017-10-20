@@ -60,6 +60,7 @@ brew 'moreutils'
 brew 'highlight'
 brew 'geoip'
 brew 'exa'
+brew 'kubernetes-helm'
 
 # apps
 cask 'anybar'
