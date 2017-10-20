@@ -4,7 +4,6 @@ tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
 tap 'thoughtbot/formulae'
-tap 'neovim/neovim'
 
 brew 'ack'
 brew 'git'
@@ -49,7 +48,7 @@ brew 'watchman'
 brew 'wget'
 brew 'yarn'
 brew 'youtube-dl'
-brew 'neovim/neovim/neovim', args: ['HEAD']
+brew 'neovim', args: ['HEAD']
 brew 'thoughtbot/formulae/gitsh'
 brew 'hub'
 brew 'less'
