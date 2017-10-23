@@ -60,6 +60,8 @@ brew 'highlight'
 brew 'geoip'
 brew 'exa'
 brew 'kubernetes-helm'
+brew 'watch'
+brew 'rabbitmq'
 
 # apps
 cask 'anybar'
