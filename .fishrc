@@ -83,6 +83,9 @@ function fish-set-aliases
   alias jpp "j fw/python; nvim ."
   alias livioso "tmuxinator start livioso"
   alias lock "pmset displaysleepnow"
+
+  # read and merge history from disk
+  alias hr 'history --merge'
 end
 
 function source-🐟 -d "Source fish config."
