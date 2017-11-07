@@ -62,6 +62,7 @@ brew 'exa'
 brew 'kubernetes-helm'
 brew 'watch'
 brew 'rabbitmq'
+brew 'rename'
 
 # apps
 cask 'anybar'
