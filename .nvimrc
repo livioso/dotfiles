@@ -187,10 +187,6 @@ set completeopt-=preview
 " pastetoggle
 set pastetoggle=<F2>
 
-" highlight
-set highlight+=N:ColorColumn " current line stand out a little
-set highlight+=@:DiffText
-
 " block selection even if line is long enough
 set virtualedit=block
 
