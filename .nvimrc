@@ -13,7 +13,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'jparise/vim-graphql'
-Plug 'reasonml/vim-reason'
 Plug 'zchee/deoplete-jedi'
 Plug 'wellle/targets.vim'
 Plug 'honza/vim-snippets'
@@ -137,12 +136,6 @@ endif
 
 call plug#end()
 
-
-if has('nvim')
-  " deoplete -> favour buffer over everything
-  call deoplete#custom#set('buffer', 'rank', 9999)
-endif
-
 " General settings
 set background=dark
 colorscheme base16-oceanicnext    " also nice: base16-eighties
@@ -187,7 +180,8 @@ set completeopt-=preview
 " pastetoggle
 set pastetoggle=<F2>
 
-" block selection even if line is long enough
+" block selection even if line is
+" not long enough
 set virtualedit=block
 
 " no need for it
@@ -456,10 +450,6 @@ command! FashwellBootstrapPythonFile :call FashwellBootstrapPythonFile()
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-" toggle dark / light
-command! Light :set background=light
-command! Dark :set background=dark
-
 " minor color tweaks: search
 highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
 highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
@@ -487,4 +477,9 @@ endif
 
 if !has('nvim')
   set nolist
+endif
+
+if has('nvim')
+  " deoplete -> favour buffer over everything
+  call deoplete#custom#set('buffer', 'rank', 9999)
 endif
