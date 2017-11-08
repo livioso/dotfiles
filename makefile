@@ -58,6 +58,7 @@ install_npm:
 	npm install -g create-react-native-app
 	npm install -g @google-cloud/functions-emulator
 	npm install -g lighthouse
+	npm install -g yo
 
 install_glcoud:
 	gcloud components install kubectl
