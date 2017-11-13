@@ -461,7 +461,7 @@ if executable("rg")
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 else
   echohl ErrorMsg
-  echomsg 'Missing ag: install ag'
+  echomsg 'Missing rg: install rg'
   echohl NONE<Paste>
 endif
 
