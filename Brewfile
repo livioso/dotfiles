@@ -63,6 +63,7 @@ brew 'kubernetes-helm'
 brew 'watch'
 brew 'rabbitmq'
 brew 'rename'
+brew 'figlet'
 
 # apps
 cask 'anybar'
