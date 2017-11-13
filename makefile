@@ -87,6 +87,9 @@ install_base16shell:
 	git -C ~/.config/base16-shell pull || \
 		git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
+update_base16shell:
+	cd ~/.config/base16-shell && git pull
+
 macos_set_defaults:
 	sh macos/set-defaults.sh
 
