@@ -12,6 +12,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
+Plug 'robbles/logstash.vim'
 Plug 'jparise/vim-graphql'
 Plug 'zchee/deoplete-jedi'
 Plug 'wellle/targets.vim'
@@ -25,7 +26,8 @@ Plug 'benmills/vimux'
 Plug 'dag/vim-fish'
 
 " trail
-Plug 'robbles/logstash.vim'
+Plug 'machakann/vim-highlightedyank'
+  let g:highlightedyank_highlight_duration = 150
 
 Plug 'maxmellon/vim-jsx-pretty'
   let g:vim_jsx_pretty_colorful_config = 1
@@ -141,11 +143,19 @@ set background=dark
 colorscheme base16-oceanicnext    " also nice: base16-eighties
 language C                        " LC=C where C is default
 command! Wq wq                    " map Wq => wq
+let mapleader = "\<Space>"        " set leader key to space
 set mouse=a                       " a = all
 set updatetime=250                " snappier UI updates (git, etc.)
 set number                        " works also with set relativenumber
 set regexpengine=1                " older but faster engine
 set timeoutlen=500                " don't wait long next key press (ambiguous leader situations)
+set path+=**                      " recursively look for files (e.g. :find)
+set completeopt-=preview          " disable preview scratch
+set virtualedit=block             " block selection even if line is not long enough
+set laststatus=2                  " always show the status line
+set inccommand=nosplit            " live preview substitution
+set nobackup
+set noswapfile
 set backspace=indent,eol,start
 set emoji
 set history=1000
@@ -167,26 +177,6 @@ syntax on
 "           │   │     │     │     │     ┌── Remember last 1000 commands
 "           │   │     │     │     │     │
 set viminfo=h,'1000,<1000,s1000,/1000,:1000
-
-" set leader key to space
-let mapleader = "\<Space>"
-
-" recursively look for files (e.g. :find)
-set path+=**
-
-" disable preview scratch
-set completeopt-=preview
-
-" pastetoggle
-set pastetoggle=<F2>
-
-" block selection even if line is
-" not long enough
-set virtualedit=block
-
-" no need for it
-set nobackup
-set noswapfile
 
 " persistent undo
 set undodir=~/.vimundo/
@@ -230,9 +220,6 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
-" status line settings
-set laststatus=2 " always show the status line
 
 " searching settings
 set incsearch   " incremental search
