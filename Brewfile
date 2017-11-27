@@ -97,6 +97,7 @@ cask 'osxfuse' # for sshfs
 cask 'caskroom/versions/google-chrome-canary'
 cask 'psequel'
 cask 'minikube'
+cask 'caprine'
 
 # fonts
 cask 'font-inconsolata'
