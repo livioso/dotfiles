@@ -64,6 +64,7 @@ brew 'watch'
 brew 'rabbitmq'
 brew 'rename'
 brew 'figlet'
+brew 'openssl'
 
 # apps
 cask 'anybar'
