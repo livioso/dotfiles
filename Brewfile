@@ -49,7 +49,6 @@ brew 'wget'
 brew 'yarn'
 brew 'youtube-dl'
 brew 'neovim', args: ['HEAD']
-brew 'thoughtbot/formulae/gitsh'
 brew 'hub'
 brew 'less'
 brew 'shellcheck'
@@ -99,6 +98,8 @@ cask 'caskroom/versions/google-chrome-canary'
 cask 'psequel'
 cask 'minikube'
 cask 'caprine'
+cask 'firefox'
+cask 'adr-tools'
 
 # fonts
 cask 'font-inconsolata'
