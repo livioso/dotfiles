@@ -69,8 +69,6 @@ end
 function fish-set-aliases
   alias e "exit"
   alias c "clear"
-  alias g "hub"
-  alias sl "ls"
   alias claer "clear"
   alias clare "clear"
   alias clera "clear"
@@ -78,17 +76,9 @@ function fish-set-aliases
   alias subl "open -a /Applications/Sublime\ Text.app/"
   alias t "tree -L 1 -a ."
   alias r "ranger"
-  alias ci "g ci"
-  alias cia "g cia"
-  alias st "g st"
-  alias pull "g pull"
-  alias push "g push"
-  alias pd "prevd"
-  alias nd "nextd"
-  alias jff "j fw/ue; nvim ."
-  alias jpp "j fw/python; nvim ."
   alias livioso "tmuxinator start livioso"
   alias lock "pmset displaysleepnow"
+  alias ff "j fw/python; n ."
 
   # read and merge history from disk
   alias hr 'history --merge'
