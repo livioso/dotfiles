@@ -3,7 +3,7 @@ tap 'homebrew/bundle'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
-tap 'thoughtbot/formulae'
+tap 'ethereum/ethereum'
 
 brew 'ack'
 brew 'git'
@@ -64,6 +64,8 @@ brew 'rabbitmq'
 brew 'rename'
 brew 'figlet'
 brew 'openssl'
+brew 'adr-tools'
+brew 'ethereum'
 
 # apps
 cask 'anybar'
