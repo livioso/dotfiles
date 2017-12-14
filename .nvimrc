@@ -326,7 +326,7 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 map <Leader>u :w <CR>
 map <Leader>w :w <CR>
-map <Leader>f <C-w><C-w>
+map <Leader>f :Buffers <CR>
 map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>t :vsplit <CR><ESC> :terminal<CR>
