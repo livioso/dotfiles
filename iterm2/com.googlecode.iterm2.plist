@@ -1183,6 +1183,8 @@
 	<string>Arrangement 2</string>
 	<key>Default Bookmark Guid</key>
 	<string>097A428B-344B-4A5A-B43C-8CE0FA2D00D5</string>
+	<key>DetectPasswordInput</key>
+	<false/>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -1191,6 +1193,8 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
+	<key>EnableDivisionView</key>
+	<false/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
@@ -1333,6 +1337,10 @@
 	<true/>
 	<key>HideTab</key>
 	<true/>
+	<key>HideTabCloseButton</key>
+	<true/>
+	<key>HideTabNumber</key>
+	<true/>
 	<key>HighlightTabLabels</key>
 	<true/>
 	<key>HotKeyBookmark</key>
@@ -1412,9 +1420,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-1729 1566 620 392 -2379 1050 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-206 1485 918 512 -994 1050 3440 1440 </string>
+	<string>-205 1445 1018 447 -994 1050 3440 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-994 1050 3440 1418 -994 1050 3440 1440 </string>
+	<string>-994 1050 3440 1418 -994 1050 3440 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -1423,8 +1431,10 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<false/>
+			<true/>
 			<key>Allow Title Reporting</key>
+			<false/>
+			<key>Allow Title Setting</key>
 			<false/>
 			<key>Ambiguous Double Width</key>
 			<false/>
@@ -1666,7 +1676,7 @@
 			<key>Columns</key>
 			<integer>100</integer>
 			<key>Command</key>
-			<string>
+			<string>/usr/bin/fish
 /usr/local/bin/fish
 /usr/local/bin/fish</string>
 			<key>Cursor Boost</key>
@@ -1709,15 +1719,15 @@
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
-			<false/>
+			<true/>
 			<key>Disable Smcup Rmcup</key>
-			<false/>
+			<true/>
 			<key>Disable Window Resizing</key>
 			<true/>
 			<key>Flashing Bell</key>
@@ -1742,7 +1752,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string>tmux attach -t base || tmux new -s base</string>
+			<string></string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -2073,8 +2083,12 @@
 			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
+			<key>Place Prompt at First Column</key>
+			<false/>
 			<key>Prompt Before Closing 2</key>
 			<integer>0</integer>
+			<key>Reduce Flicker</key>
+			<true/>
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
@@ -2124,6 +2138,8 @@
 			<true/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Mark Indicators</key>
+			<false/>
 			<key>Silence Bell</key>
 			<true/>
 			<key>Smart Cursor Color</key>
@@ -2233,6 +2249,8 @@
 			<real>0.0</real>
 			<key>Triggers</key>
 			<array/>
+			<key>Unicode Version</key>
+			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
 			<true/>
 			<key>Use Bold Font</key>
@@ -2353,7 +2371,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-12-03T11:44:21Z</date>
+	<date>2017-12-07T12:04:21Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2364,8 +2382,10 @@
 	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
+	<key>ShowNewOutputIndicator</key>
+	<false/>
 	<key>ShowPaneTitles</key>
-	<true/>
+	<false/>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
@@ -3424,7 +3444,7 @@
 		</array>
 	</dict>
 	<key>WindowNumber</key>
-	<true/>
+	<false/>
 	<key>WindowStyle</key>
 	<integer>0</integer>
 	<key>WordCharacters</key>
