@@ -99,7 +99,7 @@ cask 'psequel'
 cask 'minikube'
 cask 'caprine'
 cask 'firefox'
-cask 'adr-tools'
+cask 'basictex'
 
 # fonts
 cask 'font-inconsolata'
