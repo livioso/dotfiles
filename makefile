@@ -28,7 +28,7 @@ link:
 	ln -f .ctags ~/.ctags
 	ln -f .theme ~/.theme
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
-	ln -f karabiner/karabiner.json ~/.config/karabiner/
+	ln -f karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -f hammerspoon/init.lua ~/.hammerspoon/init.lua
 
 prepare_dirs:
