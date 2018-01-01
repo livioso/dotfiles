@@ -102,6 +102,7 @@ cask 'minikube'
 cask 'caprine'
 cask 'firefox'
 cask 'basictex'
+cask 'eqmac'
 
 # fonts
 cask 'font-inconsolata'
