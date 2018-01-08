@@ -84,6 +84,11 @@ function fish-set-aliases
   alias hr 'history --merge'
 end
 
+function fish-set-abbreviations
+  abbr --add kcp "kubectl get pods -n"
+  abbr --add kcq "kubectl proxy"
+end
+
 function source-🐟 -d "Source fish config."
   source ~/.config/fish/config.fish
 end
@@ -415,6 +420,7 @@ end
 function main
   fish-set-path
   fish-set-aliases
+  fish-set-abbreviations
   fish-set-colors
   fish-set-environment-variables
   fish-set-fzf-environment-variables
