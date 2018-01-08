@@ -6,6 +6,8 @@
 	<true/>
 	<key>AboutToPasteTabsWithCancel_selection</key>
 	<integer>2</integer>
+	<key>AdaptiveFrameRateThroughputThreshold</key>
+	<integer>50000</integer>
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
@@ -20,6 +22,8 @@
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
+	<key>AutoCommandHistory</key>
+	<true/>
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
@@ -1420,9 +1424,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-1729 1566 620 392 -2379 1050 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-205 1445 1018 447 -994 1050 3440 1440 </string>
+	<string>68 1502 918 512 -459 1050 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-994 1050 3440 1418 -994 1050 3440 1418 </string>
+	<string>-459 1050 2560 1418 -459 1050 2560 1440 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -1676,7 +1680,7 @@
 			<key>Columns</key>
 			<integer>100</integer>
 			<key>Command</key>
-			<string>/usr/bin/fish
+			<string>/usr/local/bin/fish
 /usr/local/bin/fish
 /usr/local/bin/fish</string>
 			<key>Cursor Boost</key>
@@ -1719,7 +1723,7 @@
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
-			<string>Yes</string>
+			<string>No</string>
 			<key>Custom Directory</key>
 			<string>No</string>
 			<key>Default Bookmark</key>
@@ -2088,7 +2092,7 @@
 			<key>Prompt Before Closing 2</key>
 			<integer>0</integer>
 			<key>Reduce Flicker</key>
-			<true/>
+			<false/>
 			<key>Right Option Key Sends</key>
 			<integer>2</integer>
 			<key>Rows</key>
@@ -2371,7 +2375,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-12-07T12:04:21Z</date>
+	<date>2018-01-05T08:17:04Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2386,6 +2390,8 @@
 	<false/>
 	<key>ShowPaneTitles</key>
 	<false/>
+	<key>SlowFrameRate</key>
+	<real>30</real>
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
