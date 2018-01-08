@@ -396,6 +396,12 @@ function! Date()
 endfunction
 command! Date :call Date()
 
+function! LastGitCommit()
+  let hash = system("git log --oneline | head -n1 | awk '{print $1}'")
+  exe "normal a". hash
+endfunction
+command! LastGitCommit :call LastGitCommit()
+
 function! BuildCTags()
   exe ':!/usr/local/bin/ctags -R $PWD -o=$PWD/tags --exclude=.git --exclude=node_modules --python-kinds=-iv'
 endfunction
