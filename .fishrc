@@ -318,6 +318,16 @@ function docker_mitmproxy -d "Run the mitmproxy docker on localhost:6666."
     -it mitmproxy/mitmproxy
 end
 
+function __gcbuilds -d "Pretty print gcloud builds"
+  gcloud container builds list --limit=5 | \
+    awk '{print $6 ":" $5}' | \
+    awk -F ':' '{print $1 "\t" $2 "\t" $3}'
+end
+
+function gcbuilds -d "Watch gcloud builds"
+   watch fish -c __gcbuilds
+end
+
 function fish_mode_prompt -d "Displays the current mode."
   echo -n ''
   switch $fish_bind_mode
