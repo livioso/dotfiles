@@ -66,6 +66,7 @@ brew 'figlet'
 brew 'openssl'
 brew 'adr-tools'
 brew 'ethereum'
+brew 'asciinema'
 
 # apps
 cask 'anybar'
