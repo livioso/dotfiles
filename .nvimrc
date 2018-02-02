@@ -384,12 +384,6 @@ function! Fixme()
 endfunction
 command! Fixme :call Fixme()
 
-function! Til()
-  let today = strftime("Updated %d.%m.%Y ")
-  exe "normal a". today
-endfunction
-command! Til :call Til()
-
 function! Date()
   let today = strftime(" %d.%m.%Y ")
   exe "normal a". today
@@ -407,39 +401,16 @@ function! BuildCTags()
 endfunction
 command! BuildCTags :call BuildCTags()
 
-function! LintFixJs()
-  echom " → lint:fix started..."
-  exe '!npm run lint:fix'
-endfunction
-command! LintFixJs :call LintFixJs()
-
-function! LintFixPy()
-  echom " → autopep8 % started..."
-  exe '!autopep8 --in-place %'
-endfunction
-command! LintFixPy :call LintFixPy()
-
-function! LintFixPyAggressive()
-  echom " → autopep8 % started..."
-  exe '!autopep8 --in-place --aggressive --aggressive %'
-endfunction
-command! LintFixPyAggressive :call LintFixPyAggressive()
-
-command! LintFixJs :call LintFixJs()
-function! s:fzf_statusline()
-  highlight fzf1 ctermfg=black ctermbg=blue
-  setlocal statusline=%#fzf1#\ ≡\ fzf
-endfunction
-
 function! PrettyPrintJSON()
   exe '%!python -m json.tool'
 endfunction
 command! PrettyPrintJSON :call PrettyPrintJSON()
 
-function! FashwellBootstrapPythonFile()
-  exe "read ~/Fashwell/fashwell.py"
+function! SafariTab()
+  let tab = system('osascript -e "tell application \"Safari\" to return URL of document 1"')
+  exe "normal a". tab
 endfunction
-command! FashwellBootstrapPythonFile :call FashwellBootstrapPythonFile()
+command! SafariTab :call SafariTab()
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
