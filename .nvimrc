@@ -26,6 +26,9 @@ Plug 'benmills/vimux'
 Plug 'dag/vim-fish'
 
 " trail
+Plug 'posva/vim-vue'
+Plug 'junegunn/goyo.vim'
+Plug 'uarun/vim-protobuf'
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 150
 
@@ -36,7 +39,6 @@ Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger="<c-l>"
   let g:UltiSnipsJumpForwardTrigger="<c-k>"
   let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-
 
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
@@ -411,8 +413,6 @@ function! SafariTab()
   exe "normal a". tab
 endfunction
 command! SafariTab :call SafariTab()
-
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " minor color tweaks: search
 highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
