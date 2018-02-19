@@ -104,6 +104,7 @@ cask 'caprine'
 cask 'firefox'
 cask 'basictex'
 cask 'eqmac'
+cask 'shades'
 
 # fonts
 cask 'font-inconsolata'
