@@ -78,6 +78,7 @@ function fish-set-aliases
   alias r "ranger"
   alias livioso "tmuxinator start livioso"
   alias lock "pmset displaysleepnow"
+  alias http_server "python3 -m http.server 8888"
   alias ff "j fw/python; n ."
 
   # read and merge history from disk
