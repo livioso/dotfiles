@@ -29,7 +29,7 @@ link:
 	ln -f .theme ~/.theme
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 	ln -f karabiner/karabiner.json ~/.config/karabiner/karabiner.json
-	ln -f hammerspoon/init.lua ~/.hammerspoon/init.lua
+	ln -f hammerspoon/*.lua ~/.hammerspoon/
 
 prepare_dirs:
 	mkdir -p ~/.config/nvim

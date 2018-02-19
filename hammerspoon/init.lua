@@ -1,47 +1,13 @@
+local window_manager = require('window_manager')
+local util = require('util')
+
 hyper = {"cmd", "alt", "ctrl"}
 
-function windowHalfScreenLeft()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
-end
+-- Window Key Bindings
+hs.hotkey.bind(hyper, "Left", window_manager.windowHalfScreenLeft)
+hs.hotkey.bind(hyper, "Right", window_manager.windowHalfScreenRight)
+hs.hotkey.bind(hyper, "Up", window_manager.windowFullScreen)
 
-function windowHalfScreenRight()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-  f.x = max.x + (max.w / 2)
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
-end
-
-function windowFullScreen()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h
-  win:setFrame(f)
-end
-
--- Window Hints
-hs.hints.style = 'vimperator'
-
--- Key Bindings
-hs.hotkey.bind(hyper, "Left", windowHalfScreenLeft)
-hs.hotkey.bind(hyper, "Right", windowHalfScreenRight)
-hs.hotkey.bind(hyper, "Up", windowFullScreen)
-hs.hotkey.bind(hyper, "L", hs.caffeinate.lockScreen)
-hs.hotkey.bind(hyper, "S", "Show window hints", hs.hints.windowHints)
+--- Quick Open Applications
+hs.hotkey.bind({"alt"}, "1", util.launchOrFocusApp("iTerm"))
+hs.hotkey.bind({"alt"}, "2", util.launchOrFocusApp("Safari"))
