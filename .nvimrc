@@ -26,6 +26,7 @@ Plug 'benmills/vimux'
 Plug 'dag/vim-fish'
 
 " trail
+Plug 'rizzatti/dash.vim'
 Plug 'posva/vim-vue'
 Plug 'junegunn/goyo.vim'
 Plug 'uarun/vim-protobuf'
