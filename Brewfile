@@ -105,6 +105,7 @@ cask 'firefox'
 cask 'basictex'
 cask 'eqmac'
 cask 'shades'
+cask 'wireshark'
 
 # fonts
 cask 'font-inconsolata'
