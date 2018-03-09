@@ -18,6 +18,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'wellle/targets.vim'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
+Plug 'uarun/vim-protobuf'
 Plug 'tpope/vim-vinegar'
 Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
@@ -26,10 +27,6 @@ Plug 'benmills/vimux'
 Plug 'dag/vim-fish'
 
 " trail
-Plug 'rizzatti/dash.vim'
-Plug 'posva/vim-vue'
-Plug 'junegunn/goyo.vim'
-Plug 'uarun/vim-protobuf'
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 150
 
@@ -280,10 +277,6 @@ autocmd BufNewFile,BufRead .fishrc
 autocmd BufNewFile,BufRead .eslintrc
   \ set filetype=json
 
-" treat python-packages.txt as conf (→ same as REQUIREMENTS)
-autocmd BufNewFile,BufRead python-packages*.txt
-  \ set filetype=conf
-
 " treat .docker as Dockerfile
 autocmd BufNewFile,BufRead *.docker
   \ set filetype=dockerfile
@@ -415,7 +408,7 @@ function! SafariTab()
 endfunction
 command! SafariTab :call SafariTab()
 
-" minor color tweaks: search
+" minor color tweaks: search coloring
 highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
 highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
 highlight EndOfBuffer ctermfg=black ctermbg=black
