@@ -83,6 +83,12 @@ Plug 'junegunn/fzf.vim'
     \ 'spinner': ['fg', 'Label'],
     \ 'header':  ['fg', 'Comment'] }
 
+    function! s:fzf_statusline()
+      setlocal statusline=\ 
+    endfunction
+
+    autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 Plug 'vim-airline/vim-airline'
   let g:airline_detect_spell=0 " changes mode from N > SPELL => N
   let g:airline#extensions#tabline#enabled = 0
