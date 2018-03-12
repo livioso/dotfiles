@@ -15,5 +15,9 @@ hs.hotkey.bind({"alt"}, "§", util.launchOrFocusApp("iTerm"))
 hs.hotkey.bind({"alt"}, "1", util.launchOrFocusApp("Safari"))
 hs.hotkey.bind({"alt"}, "2", util.launchOrFocusApp("Google Chrome Canary"))
 
+-- Focus next screen, move mouse to center of next screen
+hs.hotkey.bind(hyper, "j", window_manager.focusNextScreen)
+
 --- show a little indicator when we lost internet
 connectivity.setupMenubar()
+

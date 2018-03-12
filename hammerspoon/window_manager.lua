@@ -34,8 +34,17 @@ function windowFullScreen()
   win:setFrame(f)
 end
 
+function focusNextScreen()
+  local screen = hs.mouse.getCurrentScreen()
+  local nextScreen = screen:next()
+  local rect = nextScreen:fullFrame()
+  local center = hs.geometry.rectMidPoint(rect)
+  hs.mouse.setAbsolutePosition(center)
+end
+
 return {
   windowHalfScreenLeft = windowHalfScreenLeft,
   windowHalfScreenRight = windowHalfScreenRight,
-  windowFullScreen = windowFullScreen
+  windowFullScreen = windowFullScreen,
+  focusNextScreen = focusNextScreen,
 }
