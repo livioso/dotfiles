@@ -67,6 +67,7 @@ brew 'openssl'
 brew 'adr-tools'
 brew 'ethereum'
 brew 'asciinema'
+brew 'asdf'
 
 # apps
 cask 'anybar'
