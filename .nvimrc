@@ -160,6 +160,7 @@ set completeopt-=preview          " disable preview scratch
 set virtualedit=block             " block selection even if line is not long enough
 set laststatus=2                  " always show the status line
 set inccommand=nosplit            " live preview substitution
+set nostartofline                 " keep cursor on same column on scrolling
 set nobackup
 set noswapfile
 set backspace=indent,eol,start
@@ -183,6 +184,9 @@ syntax on
 "           │   │     │     │     │     ┌── Remember last 1000 commands
 "           │   │     │     │     │     │
 set viminfo=h,'1000,<1000,s1000,/1000,:1000
+
+" cursor styling, blinking cursor in insert mode
+set guicursor=i-ci:ver30-iCursor-blinkwait10-blinkon150-blinkoff150
 
 " persistent undo
 set undodir=~/.vimundo/
@@ -326,44 +330,28 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-map <Leader>u :w <CR>
 map <Leader>w :w <CR>
-map <Leader>f :Buffers <CR>
 map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>t :vsplit <CR><ESC> :terminal<CR>
 map <Leader>q :q <CR>
 map <Leader>src :source ~/.vimrc <CR>
 map <Leader>erc :e ~/.dotfiles/.nvimrc <CR>
-map <Leader>etc :e ~/.dotfiles./.tmux.conf <CR>
-map <Leader>efc :e ~/.dotfiles/.fishrc <CR>
 map <Leader>n :lnext<CR>
-map <Leader>todo :Todo <CR>
-map <Leader>fixme :Fixme <CR>
-map <Leader>til :Til <CR>
-map <Leader>date :Date <CR>
-map <Leader>dnl O// eslint-disable-next-line
-map <Leader>li :Lint <CR>
-map <Leader>rd :redraw! <CR>
 map <Leader>ll :Limelight!! <CR>
 map <Leader>b :VimuxRunLastCommand <CR>
-map <Leader>g gt
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
 map <silent> <Leader>ag :Ag <CR>
-map <silent> <Leader>* * :exec 'Ag' expand('<cword>') <CR>
-map <silent> <F12> :BuildCTags <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
 
-" use abbreviations to fix
 " common spelling mistakes
 iabbrev mispell misspell
 iabbrev prodcut product
 
 " Functions
-"
 " trim trailing white spaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
@@ -398,11 +386,6 @@ function! LastGitCommit()
 endfunction
 command! LastGitCommit :call LastGitCommit()
 
-function! BuildCTags()
-  exe ':!/usr/local/bin/ctags -R $PWD -o=$PWD/tags --exclude=.git --exclude=node_modules --python-kinds=-iv'
-endfunction
-command! BuildCTags :call BuildCTags()
-
 function! PrettyPrintJSON()
   exe '%!python -m json.tool'
 endfunction
@@ -427,16 +410,6 @@ else
   echohl ErrorMsg
   echomsg 'Missing rg: install rg'
   echohl NONE<Paste>
-endif
-
-" different cursor in insert / normal mode (iTerm)
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 if !has('nvim')
