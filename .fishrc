@@ -292,24 +292,6 @@ function docker-stop-all-container -d "Stop all running container."
   docker kill (docker ps -q)
 end
 
-# connect mysql --host=127.0.0.1  --user=root --password=root
-function docker_mysql_dirtyfeets -d "Run the MySQL Server dirtyfeets docker."
-  docker run \
-    -e MYSQL_ROOT_PASSWORD=root \
-    -e MYSQL_DATABASE="dirtyfeets" \
-    -p 3306:3306 \
-    -it \
-    mysql:5.7
-end
-
-function docker_mysql -d "Run the MySQL Server dirtyfeets docker."
-  docker run \
-    -e MYSQL_ROOT_PASSWORD=root \
-    -p 3306:3306 \
-    -it \
-    mysql
-end
-
 # for setup see: http://docs.mitmproxy.org/en/stable/transparent/osx.html
 function docker_mitmproxy -d "Run the mitmproxy docker on localhost:6666."
   docker run --rm \
@@ -416,13 +398,6 @@ function fw-django-shell
   python -m frontend.manage shell
 end
 
-function fw-dirtyfeets-tests
-  fw-python-env
-  env \
-  PYTHONPATH=(pwd) \
-  DB_CONNECTION="mysql://root:root@127.0.0.1/dirtyfeets" \
-  python dirtyfeets/tests/tests.py
-end
 
 function buildJSCTags
   bash -c "find . -type f -iregex '.*\.js' -not -path './node_modules/*' -exec jsctags {} -f \; | sed '/^\$/d' | sort > tags" &
