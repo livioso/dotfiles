@@ -49,23 +49,25 @@ install_pips:
 	pip install -r Pipfile
 
 install_vim:
-	# get vimplug
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	# install all plugins
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	nvim +PlugInstall +qall
-	# update remote plugins
 	nvim +UpdateRemotePlugins +qall
 
 install_vim_min:
-	# make vim sensible
 	wget https://raw.githubusercontent.com/livioso/vim-sensible/master/plugin/sensible.vim
 	mv sensible.vim ~/.vimrc
 
 install_fish:
-	# get fisher
 	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 	fish -c "fisher barnybug/docker-fish-completion Doctusoft/google-cloud-sdk-fish-completion"
+
+setup_asdf:
+	asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
+	asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+	asdf install python 3.6.5
+	asdf install python 2.7
+	asdf global python 3.5.6
 
 install_base16shell:
 	git -C ~/.config/base16-shell pull || \

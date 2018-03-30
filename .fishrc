@@ -61,6 +61,9 @@ function fish-set-arbitrary-settings
   export LDFLAGS="-L/usr/local/opt/openssl/lib"
   export CPPFLAGS="-I/usr/local/opt/openssl/include"
   export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
+  # asdf
+  source /usr/local/opt/asdf/asdf.fish
 end
 
 function fish-set-aliases
@@ -87,7 +90,7 @@ function fish-set-abbreviations
   abbr --add kcq "kubectl proxy"
 end
 
-function source-🐟 -d "Source fish config."
+function source-fish -d "Source fish config."
   source ~/.config/fish/config.fish
 end
 
