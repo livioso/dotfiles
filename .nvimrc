@@ -256,6 +256,16 @@ set fillchars+=fold:\
 set spell " enable checking
 set spellcapcheck= " e.g. Choo => choo => same
 
+" only underline spelling issues, don't change colors
+hi clear SpellBad
+hi clear SpellRare
+hi clear SpellCap
+hi clear SpellLocal
+hi SpellBad cterm=underline
+hi SpellRare cterm=underline
+hi SpellCap cterm=underline
+hi SpellLocal cterm=underline
+
 " messages
 set shortmess+=I " remove startup message
 set shortmess+=w " [w] instead of written
