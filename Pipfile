@@ -1,13 +1,9 @@
 virtualenv
 ipython
-ipython-sql
-mysql-python
 neovim
 flake8
 pipenv
 youtube-dl
 ptpython
 autopep8
-snakeviz
 jupyter
-pockyt

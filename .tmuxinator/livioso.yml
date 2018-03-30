@@ -28,4 +28,4 @@ startup_window: 1
 # post: tmux -CC attach -t hubapp
 
 windows:
-  - console:
+  - console: builtin cd ~/

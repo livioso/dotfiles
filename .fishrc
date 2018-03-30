@@ -9,10 +9,7 @@ function fish-set-path -d "PATH settings"
     /usr/bin \
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
-    /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin \
-    /usr/local/lib/python2.7/site-packages \
-    /usr/local/istio/istio-0.5.0/bin \
-    /Library/TeX/texbin/
+    /usr/local/lib/python2.7/site-packages
 end
 
 function fish-set-environment-variables -d "ENV variables"
@@ -79,7 +76,7 @@ function fish-set-aliases
   alias livioso "tmuxinator start livioso"
   alias lock "pmset displaysleepnow"
   alias http_server "python3 -m http.server 8888"
-  alias ff "j fw/python; n ."
+  alias ff "j cc/code; n ."
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -363,39 +360,6 @@ function fish_user_key_bindings
   for mode in default insert visual
     bind -M $mode \cr "i-history"
   end
-end
-
-### Work Related
-function fw-python-env
-  # workaround: fixes an error on
-  # . ../env/bin/activate.fish
-  set --erase _OLD_FISH_PROMPT_OVERRIDE
-  builtin cd ~/Fashwell/karl-server/src/python
-  . ../env/bin/activate.fish
-  set -x PYTHONPATH .
-end
-
-function fw-start-server
-  if test (count $argv) -eq 0
-    set configuration (printf "%s\n" ProductionLocal Production Development Staging | fzf-tmux)
-  else
-    set configuration (echo $argv)
-  end
-
-  if test $configuration
-    echo (set_color red)
-    echo " → Run Server in «$configuration»"
-    echo (set_color normal)
-    builtin cd ~/Fashwell/karl-server/src/python
-    . ../env/bin/activate.fish
-    set -x PYTHONPATH .
-    python -m frontend.manage runserver 0.0.0.0:8000 --configuration $configuration
-  end
-end
-
-function fw-django-shell
-  fw-python-env
-  python -m frontend.manage shell
 end
 
 

@@ -418,5 +418,5 @@ endif
 
 if has('nvim')
   " deoplete -> favour buffer over everything
-  call deoplete#custom#set('buffer', 'rank', 9999)
+  " call deoplete#custom#set('buffer', 'rank', 9999)
 endif

@@ -1375,8 +1375,6 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/.dotfiles/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -1412,21 +1410,10 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
-	<dict>
-		<key>TB Is Shown</key>
-		<integer>1</integer>
-	</dict>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>0 37 1680 879 0 0 1680 1050 </string>
-	<key>NSWindow Frame ProfilesPanel</key>
-	<string>-206 2007 735 382 -994 1050 3440 1418 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 493 620 392 0 0 1680 1050 </string>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>-190 1176 606 469 -459 1050 2560 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>264 329 796 473 0 0 1680 1050 </string>
+	<string>426 127 918 512 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1680 1028 0 0 1680 1028 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
@@ -1682,7 +1669,7 @@
 			<key>Columns</key>
 			<integer>100</integer>
 			<key>Command</key>
-			<string>/usr/local/bin/fish
+			<string>login -fpl livioso
 /usr/local/bin/fish
 /usr/local/bin/fish</string>
 			<key>Cursor Boost</key>
@@ -1727,7 +1714,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -2282,23 +2269,19 @@
 			<key>Window Type</key>
 			<integer>1</integer>
 			<key>Working Directory</key>
-			<string>/Users/livio</string>
+			<string>/Users/livioso</string>
 		</dict>
 	</array>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>5F47D0BF-A538-47FC-B806-0481C64C70AC</string>
+	<string>49655180-CE2A-4AC0-A50F-C9B46E4F675E</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>510691828.03702003</real>
-	<key>NoSyncTurnOffBracketedPasteOnHostChange</key>
-	<false/>
+	<real>544099715.376899</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -2351,7 +2334,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/livio/.dotfiles/iterm2</string>
+	<string>/Users/livioso/.dotfiles/iterm2</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnClose</key>
@@ -2373,11 +2356,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml?shard=82</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=42</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-02-17T20:02:15Z</date>
+	<date>2018-03-30T11:07:27Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -3363,7 +3346,7 @@
 											<key>Window Type</key>
 											<integer>1</integer>
 											<key>Working Directory</key>
-											<string>/Users/livio</string>
+											<string>/Users/livioso</string>
 										</dict>
 										<key>Bookmark Name</key>
 										<string>Default</string>
@@ -3373,13 +3356,13 @@
 										<array/>
 										<key>Directories</key>
 										<array>
-											<string>/Users/livio</string>
-											<string>/Users/livio</string>
+											<string>/Users/livioso</string>
+											<string>/Users/livioso</string>
 										</array>
 										<key>Environment</key>
 										<dict>
 											<key>PWD</key>
-											<string>/Users/livio</string>
+											<string>/Users/livioso</string>
 										</dict>
 										<key>Hosts</key>
 										<array/>
@@ -3388,7 +3371,7 @@
 										<key>Program</key>
 										<dict>
 											<key>Command</key>
-											<string>login -fp "livio"</string>
+											<string>login -fp "livioso"</string>
 											<key>Type</key>
 											<string>Command</string>
 										</dict>
@@ -3399,15 +3382,15 @@
 										<key>Session GUID</key>
 										<string>E2412793-2E4B-46A5-ACD6-17D961B51704</string>
 										<key>Session Name</key>
-										<string>fish  /Users/livio</string>
+										<string>fish  /Users/livioso</string>
 										<key>Session Window Title</key>
-										<string>fish  /Users/livio</string>
+										<string>fish  /Users/livioso</string>
 										<key>Shell Integration Ever Used</key>
 										<false/>
 										<key>Substitutions</key>
 										<dict/>
 										<key>Working Directory</key>
-										<string>/Users/livio</string>
+										<string>/Users/livioso</string>
 									</dict>
 									<key>View Type</key>
 									<string>SessionView</string>
@@ -3468,7 +3451,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.6beta3</string>
+	<string>3.1.6beta5</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>

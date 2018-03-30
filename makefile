@@ -1,14 +1,11 @@
 install: \
 	prepare_dirs \
 	install_brew \
-	install_gems \
 	install_pips \
-	install_npm \
+	install_gems \
 	install_vim \
-	install_vim_min \
 	install_fish \
 	install_base16shell \
-	install_glcoud \
 	macos_set_defaults \
 	link \
 	cleanup
@@ -20,7 +17,6 @@ link:
 	ln -f .tmuxinator/* ~/.tmuxinator/
 	ln -f .gitmessage ~/.gitmessage
 	ln -f .gitconfig ~/.gitconfig
-	ln -f .emacs ~/.emacs
 	ln -f .npmrc ~/.npmrc
 	ln -f .flake8 ~/.config/flake8
 	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
@@ -37,7 +33,6 @@ prepare_dirs:
 	mkdir -p ~/.tmuxinator
 	mkdir -p ~/.config/fish/completions
 	mkdir -p ~/.ipython/profile_default
-	mkdir -p ~/.ipython/profile_fashwell
 	mkdir -p ~/Library/KeyBindings
 	mkdir -p ~/.config/karabiner/
 	mkdir -p ~/.hammerspoon/
@@ -52,16 +47,6 @@ install_gems:
 
 install_pips:
 	pip install -r Pipfile
-
-install_npm:
-	npm install -g create-react-app
-	npm install -g create-react-native-app
-	npm install -g @google-cloud/functions-emulator
-	npm install -g lighthouse
-	npm install -g yo
-
-install_glcoud:
-	gcloud components install kubectl
 
 install_vim:
 	# get vimplug
@@ -81,7 +66,6 @@ install_fish:
 	# get fisher
 	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 	fish -c "fisher barnybug/docker-fish-completion Doctusoft/google-cloud-sdk-fish-completion"
-	# link fish autocompletion ln -f ~/.bin/tmuxinator.fish ~/.config/fish/completions/
 
 install_base16shell:
 	git -C ~/.config/base16-shell pull || \

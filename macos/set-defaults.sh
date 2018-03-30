@@ -18,4 +18,4 @@ defaults write com.apple.Safari ShowFavoritesBar -bool true
 
 # Change login shell
 sudo echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-sudo chsh -s /usr/local/bin/fish livio
+sudo chsh -s /usr/local/bin/fish livioso
