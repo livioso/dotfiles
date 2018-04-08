@@ -121,26 +121,23 @@ Plug 'vim-airline/vim-airline'
       \ '' : 'S',
       \ }
 
-Plug 'benekastah/neomake'
-  autocmd! BufWritePost,BufWinEnter * silent Neomake
-  autocmd BufWritePost *.js silent Neomake eslint
-  let g:neomake_error_sign = { 'text': "●" }
-  let g:neomake_warning_sign = { 'text': "●" }
-  let g:neomake_informational_sign = { 'text': "●" }
-  let g:neomake_message_sign = { 'text': "●" }
-  let g:neomake_javascript_eslint_exe = './node_modules/eslint/bin/eslint.js'
-  let g:neomake_javascript_enabled_makers = ['eslint, flow']
-  let g:neomake_open_list = 0
+Plug 'w0rp/ale'
+  let g:ale_sign_error = "●"
+  let g:ale_sign_warning = "●"
+  let g:ale_sign_info = "●"
+  let g:ale_sign_style_error = "●"
+  let g:ale_sign_style_warning = "●"
+  " little work around to get a error sign
+  " that's red but has the proper background color
+  hi link ALEErrorSign DiffDelete
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
-    " let g:deoplete#sources._ = ['buffer', 'tag']
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#disable_auto_complete = 0
-    let g:deoplete#max_list = 10
-    inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" : "\<TAB>"
-endif
+Plug 'Shougo/deoplete.nvim'
+  " let g:deoplete#sources._ = ['buffer', 'tag']
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#disable_auto_complete = 0
+  let g:deoplete#max_list = 10
+  inoremap <silent><expr> <Tab>
+    \ pumvisible() ? "\<C-n>" : "\<TAB>"
 
 call plug#end()
 
