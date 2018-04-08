@@ -53,6 +53,7 @@ function fish-set-arbitrary-settings
   set -Ux fish_term256
   set -g -x EDITOR "nvim"
 
+  export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
   export PIPENV_SHELL_COMPAT=1
   export GOPATH=/Users/livio/Desktop/●/go/
