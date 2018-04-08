@@ -9,7 +9,8 @@ function fish-set-path -d "PATH settings"
     /usr/bin \
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
-    /usr/local/lib/python2.7/site-packages
+    /usr/local/lib/python2.7/site-packages \
+    /usr/local/opt/asdf/shims/
 end
 
 function fish-set-environment-variables -d "ENV variables"
