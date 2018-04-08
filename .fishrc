@@ -82,6 +82,8 @@ function fish-set-aliases
   alias lock "pmset displaysleepnow"
   alias http_server "python3 -m http.server 8888"
   alias ff "j cc/code; n ."
+  alias ccod "j cc/onedrive; open ."
+  alias pes "pipenv shell"
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -160,6 +162,7 @@ end
 complete -c j -c p --description Mark --no-files -a "
     (cat ~/.fishmarks | cut -f 1 -d ' ')
 "
+
 function osx-msgme -d "Send a notification to OSX."
   set notification ($argv[1])
   set title (argv[2])
