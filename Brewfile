@@ -60,6 +60,7 @@ brew 'adr-tools'
 brew 'ethereum'
 brew 'asciinema'
 brew 'asdf'
+brew 'heroku'
 
 # apps
 cask 'google-chrome'
