@@ -24,6 +24,7 @@ Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 Plug 'benmills/vimux'
+Plug 'posva/vim-vue'
 Plug 'dag/vim-fish'
 
 " trail
@@ -293,6 +294,10 @@ autocmd BufNewFile,BufRead .fishrc
 " treat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
   \ set filetype=json
+
+" treat .vue as html
+autocmd BufNewFile,BufRead *.vue
+  \ set filetype=html
 
 " treat .docker as Dockerfile
 autocmd BufNewFile,BufRead *.docker
