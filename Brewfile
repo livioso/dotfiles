@@ -94,6 +94,8 @@ cask 'firefox'
 cask 'shades'
 cask 'wireshark'
 cask 'hammerspoon'
+cask 'postgres'
+cask 'dbeaver-community'
 
 # fonts
 cask 'font-inconsolata'
