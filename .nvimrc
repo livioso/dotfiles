@@ -409,6 +409,11 @@ function! SafariTab()
 endfunction
 command! SafariTab :call SafariTab()
 
+function! GermanSpellchecker()
+  setlocal spell spelllang=de
+endfunction
+command! GermanSpellchecker :call GermanSpellchecker()
+
 " minor color tweaks: search coloring
 highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
 highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
