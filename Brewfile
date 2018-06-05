@@ -61,6 +61,8 @@ brew 'ethereum'
 brew 'asciinema'
 brew 'asdf'
 brew 'heroku'
+brew 'nmap'
+brew 'wtf'
 
 # apps
 cask 'google-chrome'
