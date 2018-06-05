@@ -2,6 +2,7 @@
 # we still use the pre-installed versions instead of brew's
 function fish-set-path -d "PATH settings"
   set PATH \
+    /usr/local/opt/libressl/bin \
     /usr/local/bin \
     /usr/local/sbin \
     /bin \
