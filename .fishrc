@@ -65,6 +65,8 @@ function fish-set-arbitrary-settings
   export CPPFLAGS="-I/usr/local/opt/openssl/include"
   export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
+  export PYTHONDONTWRITEBYTECODE=1
+
   # asdf
   source /usr/local/opt/asdf/asdf.fish
 end
