@@ -63,6 +63,7 @@ brew 'asdf'
 brew 'heroku'
 brew 'nmap'
 brew 'wtf'
+brew 'mtr'
 
 # apps
 cask 'google-chrome'
