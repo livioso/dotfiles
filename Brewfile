@@ -65,6 +65,7 @@ brew 'heroku'
 brew 'nmap'
 brew 'wtf'
 brew 'mtr'
+brew 'sshfs'
 
 # apps
 cask 'google-chrome'
@@ -100,6 +101,7 @@ cask 'wireshark'
 cask 'hammerspoon'
 cask 'postgres'
 cask 'dbeaver-community'
+cask 'osxfuse'
 
 # fonts
 cask 'font-inconsolata'
