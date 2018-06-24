@@ -1,11 +1,11 @@
 [pycodestyle]
-ignore = E5,W391,W503
+ignore = E5,W391,E501,W503
 
 [pep8]
-ignore = E5,W391,W503
+ignore = E5,W391,E501.W503
 
 [flake8]
-ignore = E5,W391,W503
+ignore = E5,W391,E501,W503
 exclude =
     .git,
     __pycache__,

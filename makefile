@@ -19,6 +19,7 @@ link:
 	ln -f .gitconfig ~/.gitconfig
 	ln -f .npmrc ~/.npmrc
 	ln -f .flake8 ~/.config/flake8
+	ln -f .flake8 ~/.config/pycodestyle
 	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
 	ln -f .pdbrc ~/.pdbrc
 	ln -f .ctags ~/.ctags

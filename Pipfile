@@ -5,5 +5,5 @@ flake8
 pipenv
 youtube-dl
 ptpython
-autopep8
 jupyter
+python-language-server
