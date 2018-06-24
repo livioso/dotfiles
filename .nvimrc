@@ -14,7 +14,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'robbles/logstash.vim'
 Plug 'jparise/vim-graphql'
-Plug 'zchee/deoplete-jedi'
 Plug 'wellle/targets.vim'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
@@ -27,7 +26,14 @@ Plug 'benmills/vimux'
 Plug 'posva/vim-vue'
 Plug 'dag/vim-fish'
 
-" trail
+" Replace jedi with LC
+" Plug 'zchee/deoplete-jedi'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+  let g:LanguageClient_diagnosticsEnable = 0
+  let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls']
+    \ }
+
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 150
 
@@ -345,13 +351,13 @@ vmap <Leader>P "+P
 map <Leader>w :w <CR>
 map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
-map <Leader>t :vsplit <CR><ESC> :terminal<CR>
 map <Leader>q :q <CR>
 map <Leader>src :source ~/.vimrc <CR>
 map <Leader>erc :e ~/.dotfiles/.nvimrc <CR>
 map <Leader>n :lnext<CR>
 map <Leader>ll :Limelight!! <CR>
 map <Leader>b :VimuxRunLastCommand <CR>
+map <Leader>lc :call LanguageClient_contextMenu()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
