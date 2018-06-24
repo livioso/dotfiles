@@ -434,12 +434,3 @@ else
   echomsg 'Missing rg: install rg'
   echohl NONE<Paste>
 endif
-
-if !has('nvim')
-  set nolist
-endif
-
-if has('nvim')
-  " deoplete -> favour buffer over everything
-  " call deoplete#custom#set('buffer', 'rank', 9999)
-endif
