@@ -90,6 +90,9 @@ function fish-set-aliases
 
   # read and merge history from disk
   alias hr 'history --merge'
+
+  # run the tests, on changes
+  alias tests "fswatch -o ./src/** ./test/** | while read; echo '=> Changes! Running tests...'; env PYTHONPATH=src:backends:test pipenv run python -m unittest discover; end"
 end
 
 function fish-set-abbreviations
