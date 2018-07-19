@@ -287,6 +287,14 @@ function load-base16-theme -d "Load the colors scheme defined in ~/.theme"
 end
 
 function dark -d "Use the dark color scheme."
+  switch-base16-theme oceanicnext
+end
+
+function green -d "Use the dark color scheme."
+  switch-base16-theme greenscreen
+end
+
+function dark-1 -d "Use the dark color scheme."
   switch-base16-theme eighties
 end
 
