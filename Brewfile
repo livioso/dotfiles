@@ -5,6 +5,7 @@ tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
 tap 'ethereum/ethereum'
+tap 'browsh-org/homebrew-browsh'
 
 brew 'ack'
 brew 'git'
@@ -66,6 +67,7 @@ brew 'nmap'
 brew 'wtf'
 brew 'mtr'
 brew 'sshfs'
+brew 'browsh'
 
 # apps
 cask 'google-chrome'
