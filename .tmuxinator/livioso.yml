@@ -1,5 +1,6 @@
 # ~/.tmuxinator/livioso.yml
 
+on_project_start: export AWS_DEFAULT_PROFILE=livioso
 name: Livioso
 root: ~/
 
