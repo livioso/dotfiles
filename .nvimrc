@@ -26,8 +26,9 @@ Plug 'benmills/vimux'
 Plug 'posva/vim-vue'
 Plug 'dag/vim-fish'
 
-" Replace jedi with LC
-" Plug 'zchee/deoplete-jedi'
+" Trail
+Plug 'RRethy/vim-illuminate'
+
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
   let g:LanguageClient_diagnosticsEnable = 0
   let g:LanguageClient_serverCommands = {
