@@ -359,6 +359,7 @@ map <Leader>n :lnext<CR>
 map <Leader>ll :Limelight!! <CR>
 map <Leader>b :VimuxRunLastCommand <CR>
 map <Leader>lc :call LanguageClient_contextMenu()<CR>
+map <Leader>gd :call LanguageClient#textDocument_references()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
