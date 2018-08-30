@@ -68,6 +68,7 @@ brew 'wtf'
 brew 'mtr'
 brew 'sshfs'
 brew 'browsh'
+brew 'ctop'
 
 # apps
 cask 'google-chrome'
