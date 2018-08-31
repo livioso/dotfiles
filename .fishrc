@@ -87,6 +87,9 @@ function fish-set-aliases
   alias ff "j cc/code; n ."
   alias ccod "j cc/onedrive; open ."
   alias pes "pipenv shell"
+  alias ll "exa --long"
+  alias ls "exa"
+  alias cat "bat"
 
   # read and merge history from disk
   alias hr 'history --merge'
