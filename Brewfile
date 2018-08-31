@@ -69,6 +69,8 @@ brew 'mtr'
 brew 'sshfs'
 brew 'browsh'
 brew 'ctop'
+brew 'bat'
+brew 'glances'
 
 # apps
 cask 'google-chrome'
