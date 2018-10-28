@@ -360,6 +360,7 @@ map <Leader>ll :Limelight!! <CR>
 map <Leader>b :VimuxRunLastCommand <CR>
 map <Leader>lc :call LanguageClient_contextMenu()<CR>
 map <Leader>gd :call LanguageClient#textDocument_references()<CR>
+map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
@@ -421,6 +422,24 @@ function! GermanSpellchecker()
   setlocal spell spelllang=de
 endfunction
 command! GermanSpellchecker :call GermanSpellchecker()
+
+" toggle between foo.py and foo_test.py
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_test = match(current_file, '_test\.py$') != -1
+  let going_to_test = !in_test
+  if going_to_test
+    let new_file = substitute(new_file, '\.e\?py$', '_test.py', '')
+  else
+    let new_file = substitute(new_file, '_test\.py$', '.py', '')
+  endif
+  return new_file
+endfunction
 
 " minor color tweaks: search coloring
 highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
