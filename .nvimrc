@@ -427,7 +427,7 @@ command! GermanSpellchecker :call GermanSpellchecker()
 " toggle between foo.py and foo_test.py
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
-  exec ':e ' . new_file
+  exec ':vsp ' . new_file
 endfunction
 function! AlternateForCurrentFile()
   let current_file = expand("%")
