@@ -100,6 +100,8 @@ end
 function fish-set-abbreviations
   abbr --add kcp "kubectl get pods -n"
   abbr --add kcq "kubectl proxy"
+  abbr --add sar "ag -l | xargs sed -i '' -e 's/foo/bar/g'"
+  abbr --add ecs "eval (aws ecr get-login --no-include-email)"
 end
 
 function source-fish -d "Source fish config."

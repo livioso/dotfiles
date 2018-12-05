@@ -368,9 +368,10 @@ map <silent> <Leader>ag :Ag <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
 
-" common spelling mistakes
+" common spelling mistake
 iabbrev mispell misspell
 iabbrev prodcut product
+iabbrev teh the
 
 " Functions
 " trim trailing white spaces
