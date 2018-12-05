@@ -1410,12 +1410,18 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>219 1083 445 77 -950 1050 3440 1440 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>570 2033 400 129 -950 1050 3440 1440 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>530 493 620 392 0 0 1680 1050 </string>
+	<string>460 1836 620 392 -950 1050 3440 1440 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>-681 1176 606 469 -950 1050 3440 1440 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>426 127 918 512 0 0 1680 1050 </string>
+	<string>91 1891 918 423 -950 1050 3440 1440 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1028 0 0 1680 1028 </string>
+	<string>-950 1050 3440 1417 -950 1050 3440 1440 </string>
 	<key>NeverWarnAboutShortLivedSessions_097A428B-344B-4A5A-B43C-8CE0FA2D00D5</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -2071,7 +2077,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<false/>
 			<key>Normal Font</key>
-			<string>Hack-Bold 13</string>
+			<string>Hack-Bold 14</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -2280,6 +2286,8 @@
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>544099715.376899</real>
 	<key>OnlyWhenMoreTabs</key>
@@ -2351,6 +2359,8 @@
 	<integer>3</integer>
 	<key>RunJobsInServers</key>
 	<false/>
+	<key>SUAutomaticallyUpdate</key>
+	<false/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -2360,7 +2370,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-03-30T11:07:27Z</date>
+	<date>2018-11-03T12:03:51Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -3451,7 +3461,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.6beta5</string>
+	<string>3.2.5beta1</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
