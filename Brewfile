@@ -66,6 +66,7 @@ brew 'ctop'
 brew 'bat'
 brew 'glances'
 brew 'entr'
+brew 'sox'
 
 # apps
 cask 'google-chrome'
