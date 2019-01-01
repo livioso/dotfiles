@@ -28,6 +28,7 @@ Plug 'dag/vim-fish'
 
 " Trail
 Plug 'RRethy/vim-illuminate'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
   let g:LanguageClient_diagnosticsEnable = 0
