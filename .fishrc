@@ -387,6 +387,25 @@ function fish_user_key_bindings
   end
 end
 
+function chost
+  tail -n +22 /etc/hosts | fzf | awk '{ print $2 }'
+end
+
+function crsync
+  set host (chost)
+  echo $host
+  if test $host
+    ag -l | entr rsync -avzhP --exclude '.git' ~/Caruhome/code/cariot-smartsensor/ root@$host:/home/caru-statemachine/cariot-smartsensor
+  end
+end
+
+function cmosh
+  set host (chost)
+  echo $host
+  if test $host
+    mosh root@$host
+  end
+end
 
 function buildJSCTags
   bash -c "find . -type f -iregex '.*\.js' -not -path './node_modules/*' -exec jsctags {} -f \; | sed '/^\$/d' | sort > tags" &
@@ -404,3 +423,6 @@ function main
 end
 
 main
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
