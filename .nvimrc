@@ -172,7 +172,7 @@ set noswapfile
 set backspace=indent,eol,start
 set emoji
 set history=1000
-set cmdheight=4
+set cmdheight=2
 set foldcolumn=0
 set scrolloff=5
 set sidescrolloff=5
