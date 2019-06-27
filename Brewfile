@@ -4,6 +4,8 @@ tap 'homebrew/bundle'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'caskroom/versions'
+tap 'buildkite/buildkite'
+tap 'buildkite/cli'
 
 brew 'ack'
 brew 'git'
@@ -67,6 +69,8 @@ brew 'bat'
 brew 'glances'
 brew 'entr'
 brew 'sox'
+brew 'buildkite-agent'
+brew 'bk'
 
 # apps
 cask 'google-chrome'
