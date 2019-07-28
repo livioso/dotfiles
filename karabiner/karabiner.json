@@ -8,37 +8,53 @@
         {
             "complex_modifications": {
                 "parameters": {
-                    "basic.to_delayed_action_delay_milliseconds": 500,
-                    "basic.to_if_alone_timeout_milliseconds": 250,
-                    "basic.to_if_held_down_threshold_milliseconds": 250
+                    "basic.simultaneous_threshold_milliseconds": 50,
+                    "basic.to_delayed_action_delay_milliseconds": 250,
+                    "basic.to_if_alone_timeout_milliseconds": 100,
+                    "basic.to_if_held_down_threshold_milliseconds": 100,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
-                  {
-                    "description": "Caps Lock to Control when used as modifier, Escape when used alone",
-                      "manipulators": [
-                        {
-                          "type": "basic",
-                          "from": {
-                            "key_code": "caps_lock"
-                          },
-                          "to_if_alone": [
+                    {
+                        "description": "Caps Lock to Control when used as modifier, Escape when used alone",
+                        "manipulators": [
                             {
-                              "key_code": "escape",
-                              "repeat": true
+                                "from": {
+                                    "key_code": "caps_lock"
+                                },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape",
+                                        "repeat": true
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_control",
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
                             }
-                          ],
-                          "to_if_held_down": [
-                          {
-                            "key_code": "left_control",
-                            "repeat": true
-                          }
                         ]
-                      }
-                    ]
-                  }
+                    }
                 ]
             },
-            "devices": [],
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 45082,
+                        "vendor_id": 1133
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": {
@@ -138,16 +154,11 @@
                 }
             ],
             "name": "Default profile",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": true,
             "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "caps_lock"
-                    },
-                    "to": {
-                        "key_code": "escape"
-                    }
-                },
                 {
                     "from": {
                         "key_code": "right_command"
@@ -159,7 +170,9 @@
             ],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
-                "keyboard_type": "ansi"
+                "country_code": 0,
+                "keyboard_type": "ansi",
+                "mouse_key_xy_scale": 100
             }
         }
     ]

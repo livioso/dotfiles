@@ -34,11 +34,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
+
   " coc
   nmap <silent> ggd <Plug>(coc-definition)
   nmap <silent> ggx <Plug>(coc-references)
@@ -51,6 +51,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> ggy <Plug>(coc-type-definition)
   nmap <silent> gga <Plug>(coc-codeaction-selected)
   nmap <silent> ggi <Plug>(coc-implementation)
+  " trigger completion
+  inoremap <silent><expr> <c-l> coc#refresh()
 
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 150
