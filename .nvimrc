@@ -1,25 +1,17 @@
 set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'vim-airline/vim-airline-themes'
-Plug 'othree/es.next.syntax.vim'
-Plug 'gavocanov/vim-js-indent'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'elixir-lang/vim-elixir'
+Plug 'RRethy/vim-illuminate'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
-Plug 'robbles/logstash.vim'
 Plug 'jparise/vim-graphql'
 Plug 'wellle/targets.vim'
-Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
-Plug 'uarun/vim-protobuf'
 Plug 'tpope/vim-vinegar'
-Plug 'sheerun/yajs.vim'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 Plug 'benmills/vimux'
@@ -27,32 +19,45 @@ Plug 'posva/vim-vue'
 Plug 'dag/vim-fish'
 
 " Trail
-Plug 'RRethy/vim-illuminate'
-Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " https://github.com/neoclide/coc.nvim/issues/1011
+  set guicursor=n:blinkon1
+  " workaround to get nicer colors
+  hi link CocErrorSign DiffDelete
+  hi link CocWarningSign DiffText
+  hi link CocInfoSign DiffChange
+  hi link CocHintSign DiffChange
+  inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-  let g:LanguageClient_diagnosticsEnable = 0
-  let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls']
-    \ }
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+  " coc
+  nmap <silent> ggd <Plug>(coc-definition)
+  nmap <silent> ggx <Plug>(coc-references)
+  nmap <silent> ggr <Plug>(coc-rename)
+  nmap <silent> ggf :call CocAction('format') <CR>
+  nmap <silent> ggn <Plug>(coc-diagnostic-next)
+  nmap <silent> ggp <Plug>(coc-diagnostic-prev)
+  " coc used?
+  nmap <silent> ggh :call CocAction('doHover') <CR>
+  nmap <silent> ggy <Plug>(coc-type-definition)
+  nmap <silent> gga <Plug>(coc-codeaction-selected)
+  nmap <silent> ggi <Plug>(coc-implementation)
 
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 150
 
-Plug 'maxmellon/vim-jsx-pretty'
-  let g:vim_jsx_pretty_colorful_config = 1
-
-Plug 'SirVer/ultisnips'
-  let g:UltiSnipsExpandTrigger="<c-l>"
-  let g:UltiSnipsJumpForwardTrigger="<c-k>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-
 Plug 'airblade/vim-gitgutter'
   let g:gitgutter_realtime = 1
   let g:gitgutter_eager = 1
-
-Plug 'ElmCast/elm-vim'
-  let g:elm_setup_keybindings = 0
 
 Plug 'wincent/loupe'
   let g:LoupeClearHighlightMap = 0
@@ -62,10 +67,6 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'elzr/vim-json'
   let g:vim_json_syntax_conceal = 0
-
-Plug 'terryma/vim-expand-region'
-  vmap v <Plug>(expand_region_expand)
-  vmap <C-v> <Plug>(expand_region_shrink)
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -130,24 +131,6 @@ Plug 'vim-airline/vim-airline'
       \ '' : 'S',
       \ }
 
-Plug 'w0rp/ale'
-  let g:ale_sign_error = "●"
-  let g:ale_sign_warning = "●"
-  let g:ale_sign_info = "●"
-  let g:ale_sign_style_error = "●"
-  let g:ale_sign_style_warning = "●"
-  " little work around to get a error sign
-  " that's red but has the proper background color
-  hi link ALEErrorSign DiffDelete
-
-Plug 'Shougo/deoplete.nvim'
-  " let g:deoplete#sources._ = ['buffer', 'tag']
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#disable_auto_complete = 0
-  let g:deoplete#max_list = 10
-  inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" : "\<TAB>"
-
 call plug#end()
 
 " General settings
@@ -167,6 +150,7 @@ set virtualedit=block             " block selection even if line is not long eno
 set laststatus=2                  " always show the status line
 set inccommand=nosplit            " live preview substitution
 set nostartofline                 " keep cursor on same column on scrolling
+set signcolumn=yes                " always show sign column
 set nobackup
 set noswapfile
 set backspace=indent,eol,start
@@ -246,6 +230,10 @@ set smartcase   " except we write it BOLD then don't ignore case
 highlight VertSplit ctermbg=NONE guibg=NONE
 set fillchars=vert:│
 
+" use rg over grep
+set grepprg=rg\ --vimgrep\ --no-heading
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+
 " add .js suffix for modules (enables gf)
 set suffixesadd+=.js
 
@@ -275,6 +263,7 @@ hi SpellLocal cterm=underline
 " messages
 set shortmess+=I " remove startup message
 set shortmess+=w " [w] instead of written
+set shortmess+=c
 
 " hide tool bar
 set showtabline=0
@@ -340,9 +329,6 @@ vnoremap . :normal .<CR>
 inoremap <C-E> <C-X><C-E>
 inoremap <C-Y> <C-X><C-Y>
 
-" because fuck you K
-map K <nop>
-
 " <Leader> mappings
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -356,11 +342,7 @@ map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
 map <Leader>src :source ~/.vimrc <CR>
 map <Leader>erc :e ~/.dotfiles/.nvimrc <CR>
-map <Leader>n :lnext<CR>
-map <Leader>ll :Limelight!! <CR>
-map <Leader>b :VimuxRunLastCommand <CR>
-map <Leader>lc :call LanguageClient_contextMenu()<CR>
-map <Leader>gd :call LanguageClient#textDocument_references()<CR>
+map <Leader>b :VimuxRunCommand "!!" <CR>
 map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
@@ -369,61 +351,22 @@ map <silent> <Leader>ag :Ag <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
 
-" common spelling mistake
+" abbreviations
 iabbrev mispell misspell
-iabbrev prodcut product
 iabbrev teh the
+iabbrev ipdb __import__(ipbd).setTrace()
+iabbrev pylintdisable pylint: disable="foo"
 
-" Functions
 " trim trailing white spaces
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 command! TrimWhiteSpace :call TrimWhiteSpace()
 
-function! Todo()
-  let today = strftime("TODO (livioso %d.%m.%Y) ")
-  exe "normal o". today
-  exe "normal gcc"
-  exe "normal A"
-endfunction
-command! Todo :call Todo()
-
-function! Fixme()
-  let today = strftime("FIXME (livioso %d.%m.%Y) ")
-  exe "normal o". today
-  exe "normal gcc"
-  exe "normal A"
-endfunction
-command! Fixme :call Fixme()
-
-function! Date()
-  let today = strftime(" %d.%m.%Y ")
-  exe "normal a". today
-endfunction
-command! Date :call Date()
-
-function! LastGitCommit()
-  let hash = system("git log --oneline | head -n1 | awk '{print $1}'")
-  exe "normal a". hash
-endfunction
-command! LastGitCommit :call LastGitCommit()
-
 function! PrettyPrintJSON()
   exe '%!python -m json.tool'
 endfunction
 command! PrettyPrintJSON :call PrettyPrintJSON()
-
-function! SafariTab()
-  let tab = system('osascript -e "tell application \"Safari\" to return URL of document 1"')
-  exe "normal a". tab
-endfunction
-command! SafariTab :call SafariTab()
-
-function! GermanSpellchecker()
-  setlocal spell spelllang=de
-endfunction
-command! GermanSpellchecker :call GermanSpellchecker()
 
 " toggle between foo.py and foo_test.py
 function! OpenTestAlternate()
@@ -447,13 +390,3 @@ endfunction
 highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
 highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
 highlight EndOfBuffer ctermfg=black ctermbg=black
-
-" use rg over grep
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-else
-  echohl ErrorMsg
-  echomsg 'Missing rg: install rg'
-  echohl NONE<Paste>
-endif

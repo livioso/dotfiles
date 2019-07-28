@@ -302,6 +302,11 @@ function dark-1 -d "Use the dark color scheme."
   switch-base16-theme eighties
 end
 
+
+function dark-2 -d "Use the dark color scheme."
+  switch-base16-theme tomorrow-night-eighties
+end
+
 function darker -d "Use the darkest color scheme."
   switch-base16-theme irblack
 end
