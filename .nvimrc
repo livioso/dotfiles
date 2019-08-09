@@ -21,6 +21,8 @@ Plug 'dag/vim-fish'
 " Trail
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " https://github.com/neoclide/coc.nvim/issues/1011
   set guicursor=n:blinkon1
@@ -29,6 +31,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   hi link CocWarningSign DiffText
   hi link CocInfoSign DiffChange
   hi link CocHintSign DiffChange
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+    \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
