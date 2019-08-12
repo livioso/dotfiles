@@ -137,6 +137,10 @@ function i-history -d "i-reverse history"
   end
 end
 
+function osx-battery-percentage -d "Get battery percentage."		
+   pmset -g batt | sed '1 d' | awk '{print $3}' | sed 's/;*$//'		
+end
+
 function j -d "Like fish marks but self made with fzf support."
   if test (count $argv) -ne 1
     set dir (cat ~/.fishmarks | fzf-tmux | awk '{print $2}')
