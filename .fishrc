@@ -17,7 +17,6 @@ end
 function fish-set-environment-variables -d "ENV variables"
   set -x ANDROID_HOME /usr/local/opt/android-sdk
   set -x PIP_REQUIRE_VIRTUALENV true
-  set -x GOOGLE_APPLICATION_CREDENTIALS /Users/livio/.credentials-gcloud.json
 end
 
 function fish-set-colors -d "Set colors used by Fish"
@@ -64,7 +63,6 @@ function fish-set-arbitrary-settings
   export LDFLAGS="-L/usr/local/opt/openssl/lib"
   export CPPFLAGS="-I/usr/local/opt/openssl/include"
   export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
-
   export PYTHONDONTWRITEBYTECODE=1
 
   # asdf
@@ -78,30 +76,17 @@ function fish-set-aliases
   alias clare "clear"
   alias clera "clear"
   alias grep "grep -n --color"
-  alias subl "open -a /Applications/Sublime\ Text.app/"
-  alias t "tree -L 1 -a ."
-  alias r "ranger"
-  alias livioso "tmuxinator start livioso"
   alias lock "pmset displaysleepnow"
-  alias http_server "python3 -m http.server 8888"
-  alias ff "j cc/code; n ."
-  alias pes "pipenv shell"
   alias ll "exa --long"
   alias ls "exa"
   alias cat "bat"
 
   # read and merge history from disk
   alias hr 'history --merge'
-
-  # run the tests, on changes
-  alias tests "fswatch -o ./src/** ./test/** | while read; echo '=> Changes! Running tests...'; env PYTHONPATH=src:backends:test pipenv run python -m unittest discover; end"
 end
 
 function fish-set-abbreviations
-  abbr --add kcp "kubectl get pods -n"
-  abbr --add kcq "kubectl proxy"
   abbr --add sar "ag -l | xargs sed -i '' -e 's/foo/bar/g'"
-  abbr --add ecs "eval (aws ecr get-login --no-include-email)"
 end
 
 function source-fish -d "Source fish config."
@@ -173,31 +158,6 @@ complete -c j -c p --description Mark --no-files -a "
     (cat ~/.fishmarks | cut -f 1 -d ' ')
 "
 
-function osx-msgme -d "Send a notification to OSX."
-  set notification ($argv[1])
-  set title (argv[2])
-  osascript -e "display notification $notification with title $title"
-end
-
-function osx-battery-percentage -d "Get battery percentage."
-  pmset -g batt | sed '1 d' | awk '{print $3}' | sed 's/;*$//'
-end
-
-function osx-set-https-proxies-to-mitmproxy -d "See docker_mitmproxy"
-  networksetup -setwebproxy Wi-Fi 127.0.0.1 6666
-  networksetup -setsecurewebproxy Wi-Fi 127.0.0.1 6666
-end
-
-function osx-turn-https-proxies-on -d "Network → Advanced → Proxies: HTTP & HTTPS Proxies"
-  networksetup -setwebproxystate Wi-Fi on
-  networksetup -setsecurewebproxystate Wi-Fi on
-end
-
-function osx-turn-https-proxies-off -d "Network → Advanced → Proxies: HTTP & HTTPS Proxies"
-  networksetup -setwebproxystate Wi-Fi off
-  networksetup -setsecurewebproxystate Wi-Fi off
-end
-
 function git-fzf-commits
   set commit (git log --pretty=format:(git-pretty-format-2) | fzf-tmux | awk '{print $1}')
   if test $commit
@@ -264,20 +224,6 @@ function git-recap -d "Git recap the day"
     --author=Livio
 end
 
-function git-standup -d "Git log over the last 24h."
-  git log \
-    --color \
-    --branches="*" \
-    --abbrev-commit \
-    --author="Livio" \
-    --since="24hours" \
-    --pretty=format:(git-pretty-format-1)
-end
-
-function tmux-new-or-attach -d "Tmux attach if exising otherwise create."
-  bash -c "tmux attach-session -t $argv || tmux new-session -s $argv"
-end
-
 function switch-base16-theme
   echo $argv > ~/.theme
   load-base16-theme
@@ -317,25 +263,6 @@ end
 
 function docker-stop-all-container -d "Stop all running container."
   docker kill (docker ps -q)
-end
-
-# for setup see: http://docs.mitmproxy.org/en/stable/transparent/osx.html
-function docker_mitmproxy -d "Run the mitmproxy docker on localhost:6666."
-  docker run --rm \
-    -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy \
-    -v ~/Downloads:/home/Downloads \
-    -p 6666:8080 \
-    -it mitmproxy/mitmproxy
-end
-
-function __gcbuilds -d "Pretty print gcloud builds"
-  gcloud container builds list --limit=5 | \
-    awk '{print $6 ":" $5}' | \
-    awk -F ':' '{print $1 "\t" $2 "\t" $3}'
-end
-
-function gcbuilds -d "Watch gcloud builds"
-   watch fish -c __gcbuilds
 end
 
 function fish_mode_prompt -d "Displays the current mode."
@@ -381,17 +308,6 @@ function fish_prompt -d "Write out the prompt"
   set_color normal
 end
 
-function fish_right_prompt -d "Right prompt"
-  # set_color blue
-  # printf '%s' (__fish_git_prompt)
-end
-
-function fish_user_key_bindings
-  for mode in default insert visual
-    bind -M $mode \cr "i-history"
-  end
-end
-
 function chost
   tail -n +22 /etc/hosts | fzf | awk '{ print $2 }'
 end
@@ -412,10 +328,6 @@ function cmosh
   end
 end
 
-function buildJSCTags
-  bash -c "find . -type f -iregex '.*\.js' -not -path './node_modules/*' -exec jsctags {} -f \; | sed '/^\$/d' | sort > tags" &
-end
-
 function main
   fish-set-path
   fish-set-aliases
@@ -430,4 +342,3 @@ end
 main
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
