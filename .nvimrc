@@ -360,8 +360,7 @@ imap <silent> jj <ESC> <CR>
 " abbreviations
 iabbrev mispell misspell
 iabbrev teh the
-iabbrev ipdb __import__(ipbd).setTrace()
-iabbrev pylintdisable pylint: disable="foo"
+iabbrev ipdb __import__("ipdb").set_trace()
 
 " trim trailing white spaces
 function! TrimWhiteSpace()
