@@ -11,17 +11,17 @@ install: \
 
 link:
 	ln -f nvim/init.vim ~/.config/nvim/init.vim
+	ln -f nvim/.coc-settings.json ~/.config/nvim/coc-settings.json
 	ln -f fish/config.fish ~/.config/fish/config.fish
-	ln -f .tmux.conf ~/.tmux.conf
-	ln -f .gitmessage ~/.gitmessage
-	ln -f .gitconfig ~/.gitconfig
-	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
-	ln -f .pdbrc ~/.pdbrc
-	ln -f .theme ~/.theme
-	ln -f .coc-settings.json ~/.config/nvim/coc-settings.json
+	ln -f tmux/.tmux.conf ~/.tmux.conf
+	ln -f git/.gitmessage ~/.gitmessage
+	ln -f git/.gitconfig ~/.gitconfig
+	ln -f python/.ipython ~/.ipython/profile_default/ipython_config.py
+	ln -f python/.pdbrc ~/.pdbrc
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 	ln -f karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 	ln -f hammerspoon/*.lua ~/.hammerspoon/
+	ln -f .theme ~/.theme
 
 prepare_dirs:
 	mkdir -p ~/.config/nvim
