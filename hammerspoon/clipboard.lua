@@ -1,5 +1,5 @@
 -- Inspired by https://github.com/victorso/.hammerspoon/blob/master/tools/clipboard.lua
-local frequency = 2
+local frequency = 10
 local hist_size = 20
 local label_length = 70
 local honor_clearcontent = true
