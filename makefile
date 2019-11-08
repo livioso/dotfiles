@@ -14,13 +14,11 @@ link:
 	ln -f .nvimrc ~/.config/nvim/init.vim
 	ln -f .fishrc ~/.config/fish/config.fish
 	ln -f .tmux.conf ~/.tmux.conf
-	ln -f .tmuxinator/* ~/.tmuxinator/
 	ln -f .gitmessage ~/.gitmessage
 	ln -f .gitconfig ~/.gitconfig
 	ln -f .npmrc ~/.npmrc
 	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
 	ln -f .pdbrc ~/.pdbrc
-	ln -f .ctags ~/.ctags
 	ln -f .theme ~/.theme
 	ln -f .coc-settings.json ~/.config/nvim/coc-settings.json
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
@@ -30,7 +28,6 @@ link:
 prepare_dirs:
 	mkdir -p ~/.config/nvim
 	mkdir -p ~/.config/fish
-	mkdir -p ~/.tmuxinator
 	mkdir -p ~/.config/fish/completions
 	mkdir -p ~/.ipython/profile_default
 	mkdir -p ~/Library/KeyBindings
