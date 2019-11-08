@@ -4,19 +4,17 @@ install: \
 	install_pips \
 	install_gems \
 	install_vim \
-	install_fish \
 	install_base16shell \
 	macos_set_defaults \
 	link \
 	cleanup
 
 link:
-	ln -f .nvimrc ~/.config/nvim/init.vim
-	ln -f .fishrc ~/.config/fish/config.fish
+	ln -f nvim/init.vim ~/.config/nvim/init.vim
+	ln -f fish/config.fish ~/.config/fish/config.fish
 	ln -f .tmux.conf ~/.tmux.conf
 	ln -f .gitmessage ~/.gitmessage
 	ln -f .gitconfig ~/.gitconfig
-	ln -f .npmrc ~/.npmrc
 	ln -f .ipython ~/.ipython/profile_default/ipython_config.py
 	ln -f .pdbrc ~/.pdbrc
 	ln -f .theme ~/.theme
@@ -54,10 +52,6 @@ install_vim:
 install_vim_min:
 	wget https://raw.githubusercontent.com/livioso/vim-sensible/master/plugin/sensible.vim
 	mv sensible.vim ~/.vimrc
-
-install_fish:
-	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-	fish -c "fisher barnybug/docker-fish-completion Doctusoft/google-cloud-sdk-fish-completion"
 
 setup_asdf:
 	asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
