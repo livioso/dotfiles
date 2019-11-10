@@ -124,6 +124,7 @@ function fish-set-aliases
   alias claer "clear"
   alias clare "clear"
   alias caler "clear"
+  alias celar "clear"
   alias clera "clear"
   alias grep "grep -n --color"
   alias ll "exa --long"
