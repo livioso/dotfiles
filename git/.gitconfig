@@ -27,7 +27,8 @@
   ll = log --cc
   df = diff
   co = checkout
-  tt = add -p
+  # https://github.com/so-fancy/diff-so-fancy/issues/296
+  tt = !git -c 'interactive.diffFilter=less' add --p
   rt = checkout -p
   st = status --short --branch
   stu = status --short --branch -uno
