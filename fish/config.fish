@@ -181,10 +181,8 @@ function j -d "Like fish marks but self made with fzf support."
   end
 end
 
-# completion for j
-complete -c j -c p --description Mark --no-files -a "
-    (cat ~/.fishmarks | cut -f 1 -d ' ')
-"
+# troubleshoot strange autocomplete: complete -e -c j
+complete -x -c j -d "Location" -a "(cat ~/.fishmarks | cut -f 1 -d ' ')"
 
 function git-rebase-unpushed -d "Git rebase -i the unpushed commits."
   set current_branch (git branch | awk '{print $2}' | sed '/^$/d')
@@ -244,7 +242,7 @@ function light -d "Use the light color scheme."
   switch-base16-theme harmonic-light
 end
 
-function dark -d "Use the favorite oceanicnext dark color scheme."
+function dark -d "Use a favorite dark color scheme."
   if test (count $argv) -ne 1
     switch-base16-theme oceanicnext
   else

@@ -72,6 +72,7 @@ brew 'entr'
 brew 'sox'
 brew 'buildkite-agent'
 brew 'bk'
+brew 'ipython'
 
 # apps
 cask 'google-chrome'

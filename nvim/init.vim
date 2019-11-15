@@ -3,7 +3,6 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'RRethy/vim-illuminate'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
@@ -15,7 +14,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 Plug 'benmills/vimux'
-Plug 'posva/vim-vue'
 Plug 'dag/vim-fish'
 
 " Trail
@@ -23,25 +21,52 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " extensions:
+  " coc-eslint
+  " coc-prettier
+  " coc-json
+  " coc-docker
+  " coc-vetur
+  " coc-html
+  " coc-css
+  " coc-python
+  " coc-markdownlint
+
   " https://github.com/neoclide/coc.nvim/issues/1011
   set guicursor=n:blinkon1
+
   " workaround to get nicer colors
   hi link CocErrorSign DiffDelete
   hi link CocWarningSign DiffText
   hi link CocInfoSign DiffChange
   hi link CocHintSign DiffChange
+
   inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
     \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
   inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
     \ coc#refresh()
+
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
+
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
 
   " coc
   nmap <silent> ggd <Plug>(coc-definition)
@@ -50,11 +75,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> ggf :call CocAction('format') <CR>
   nmap <silent> ggn <Plug>(coc-diagnostic-next)
   nmap <silent> ggp <Plug>(coc-diagnostic-prev)
+
   " coc used?
   nmap <silent> ggh :call CocAction('doHover') <CR>
   nmap <silent> ggy <Plug>(coc-type-definition)
   nmap <silent> gga <Plug>(coc-codeaction-selected)
   nmap <silent> ggi <Plug>(coc-implementation)
+
   " trigger completion
   inoremap <silent><expr> <c-l> coc#refresh()
 
@@ -70,9 +97,6 @@ Plug 'wincent/loupe'
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
-
-Plug 'elzr/vim-json'
-  let g:vim_json_syntax_conceal = 0
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -289,10 +313,6 @@ autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
-
-" treat .fishrc as fish
-autocmd BufNewFile,BufRead .fishrc
-  \ set filetype=fish
 
 " treat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc

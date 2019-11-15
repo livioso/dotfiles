@@ -12,8 +12,8 @@ hs.hotkey.bind(hyper, "Right", window_manager.windowHalfScreenRight)
 hs.hotkey.bind(hyper, "Up", window_manager.windowFullScreen)
 
 --- Quick Open Applications
-hs.hotkey.bind({"alt"}, "1", util.launchOrFocusApp("Terminal"))
-hs.hotkey.bind({"alt"}, "2", util.launchOrFocusApp("Safari"))
+hs.hotkey.bind({"alt", "ctrl"}, "1", util.launchOrFocusApp("Terminal"))
+hs.hotkey.bind({"alt", "ctrl"}, "2", util.launchOrFocusApp("Safari"))
 
 -- Focus next screen, move mouse to center of next screen
 hs.hotkey.bind({"alt"}, "j", window_manager.focusNextScreen)

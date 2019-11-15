@@ -4,5 +4,6 @@
     "diagnostic.errorSign": "●",
     "diagnostic.warningSign": "●",
     "diagnostic.infoSign": "●",
-    "diagnostic.hintSign": "●"
+    "diagnostic.hintSign": "●",
+    "coc.preferences.hoverTarget": "float"
 }
