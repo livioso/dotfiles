@@ -130,6 +130,7 @@ function fish-set-aliases
   alias ll "exa --long"
   alias ls "exa"
   alias cat "bat"
+  alias jw "j w"
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -165,6 +166,9 @@ function osx-battery-percentage -d "Get battery percentage."
    pmset -g batt | sed '1 d' | awk '{print $3}' | sed 's/;*$//'
 end
 
+# troubleshoot strange autocomplete: complete -e -c j
+complete -x -c j -d "Location" -a "(cat ~/.fishmarks | cut -f 1 -d ' ')"
+
 function j -d "Like fish marks but self made with fzf support."
   if test (count $argv) -ne 1
     set dir (cat ~/.fishmarks | fzf-tmux | awk '{print $2}')
@@ -180,9 +184,6 @@ function j -d "Like fish marks but self made with fzf support."
     end < ~/.fishmarks
   end
 end
-
-# troubleshoot strange autocomplete: complete -e -c j
-complete -x -c j -d "Location" -a "(cat ~/.fishmarks | cut -f 1 -d ' ')"
 
 function git-rebase-unpushed -d "Git rebase -i the unpushed commits."
   set current_branch (git branch | awk '{print $2}' | sed '/^$/d')
