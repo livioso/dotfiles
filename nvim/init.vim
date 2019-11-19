@@ -326,6 +326,9 @@ autocmd BufNewFile,BufRead *.vue
 autocmd BufNewFile,BufRead *.docker
   \ set filetype=dockerfile
 
+autocmd BufNewFile,BufRead .ini
+  \ set filetype=config
+
 " jump to last cursor position when
 " reopening file, except if gitcommit
 autocmd BufReadPost *
@@ -366,8 +369,7 @@ map <Leader>w :w <CR>
 map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
-map <Leader>src :source ~/.vimrc <CR>
-map <Leader>erc :e ~/.dotfiles/.nvimrc <CR>
+map <Leader>erc :e ~/.dotfiles/nvim/init.vim <CR>
 map <Leader>b :VimuxRunCommand "!!" <CR>
 map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
