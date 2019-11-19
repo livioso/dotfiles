@@ -40,17 +40,17 @@ function fish_mode_prompt -d "Displays the current mode."
   echo -n ''
   switch $fish_bind_mode
     case default
-      set_color --bold --background black red
-      echo '●'
+      set_color green
+      echo 'N'
     case insert
-      set_color --bold --background black brgrey
-      echo 'ـ'
+      set_color brgrey
+      echo '#'
     case replace-one
-      set_color --bold --background black magenta
-      echo '●'
+      set_color blue
+      echo 'R'
     case visual
-      set_color --bold --background black green
-      echo '●'
+      set_color red
+      echo 'V'
   end
   set_color normal
   echo -n ' '
@@ -62,7 +62,8 @@ function fish_prompt -d "Write out the prompt"
   end
 
   set_color green
-  printf (basename (pwd))
+  # printf (basename (pwd))
+  printf (prompt_pwd)
 
   if git-is-repo
     set_color brgrey
@@ -127,7 +128,7 @@ function fish-set-aliases
   alias celar "clear"
   alias clera "clear"
   alias grep "grep -n --color"
-  alias ll "exa --long"
+  alias ll "exa --long --all"
   alias ls "exa"
   alias cat "bat"
   alias jw "j w"
