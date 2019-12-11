@@ -370,7 +370,8 @@ map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
 map <Leader>erc :e ~/.dotfiles/nvim/init.vim <CR>
-map <Leader>b :VimuxRunCommand "!!" <CR>
+" :call VimuxRunCommand("ls")
+map <Leader>b :VimuxRunLastCommand<CR>
 map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
