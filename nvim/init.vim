@@ -3,6 +3,9 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
 Plug 'vim-airline/vim-airline-themes'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
 Plug 'RRethy/vim-illuminate'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jiangmiao/auto-pairs'
@@ -13,13 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
-Plug 'benmills/vimux'
 Plug 'dag/vim-fish'
-
-" Trail
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -39,7 +36,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " workaround to get nicer colors
   hi link CocErrorSign DiffDelete
-  hi link CocWarningSign DiffText
+  hi link CocWarningSign DiffDelete
   hi link CocInfoSign DiffChange
   hi link CocHintSign DiffChange
 
@@ -97,6 +94,16 @@ Plug 'wincent/loupe'
 
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
+
+Plug 'benmills/vimux'
+  function! VimuxRunDockerComposeTest()
+    :call VimuxRunCommand("docker-compose run test")
+  endfunction
+
+  command! VimuxRunDockerComposeTest :call VimuxRunDockerComposeTest()
+  command! DockerComposeRunTestVimux :call VimuxRunDockerComposeTest()
+
+  map <Leader>b :VimuxRunLastCommand<CR>
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -370,8 +377,6 @@ map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
 map <Leader>erc :e ~/.dotfiles/nvim/init.vim <CR>
-" :call VimuxRunCommand("ls")
-map <Leader>b :VimuxRunLastCommand<CR>
 map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
