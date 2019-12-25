@@ -103,8 +103,6 @@ Plug 'benmills/vimux'
   command! VimuxRunDockerComposeTest :call VimuxRunDockerComposeTest()
   command! DockerComposeRunTestVimux :call VimuxRunDockerComposeTest()
 
-  map <Leader>b :VimuxRunLastCommand<CR>
-
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
   nmap gx <Plug>(openbrowser-smart-search)
@@ -376,6 +374,7 @@ map <Leader>w :w <CR>
 map <Leader><Leader> <C-w><C-p>
 map <Leader>v :vsplit .<CR>
 map <Leader>q :q <CR>
+map <Leader>b :VimuxRunLastCommand<CR>
 map <Leader>erc :e ~/.dotfiles/nvim/init.vim <CR>
 map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
