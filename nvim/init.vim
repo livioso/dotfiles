@@ -388,6 +388,7 @@ imap <silent> jj <ESC> <CR>
 iabbrev mispell misspell
 iabbrev teh the
 iabbrev ipdb __import__("ipdb").set_trace()
+iabbrev pdb __import__("pdb").set_trace()
 
 " trim trailing white spaces
 function! TrimWhiteSpace()
