@@ -1,9 +1,9 @@
-  {
-    "python.jediEnabled": false,
-    "python.formatting.provider": "black",
-    "diagnostic.errorSign": "●",
-    "diagnostic.warningSign": "●",
-    "diagnostic.infoSign": "●",
-    "diagnostic.hintSign": "●",
-    "coc.preferences.hoverTarget": "float"
+{
+  "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "diagnostic.errorSign": "●",
+  "diagnostic.warningSign": "●",
+  "diagnostic.infoSign": "●",
+  "diagnostic.hintSign": "●",
+  "coc.preferences.hoverTarget": "float"
 }
