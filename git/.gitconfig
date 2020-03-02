@@ -28,7 +28,7 @@
   df = diff
   co = checkout
   # https://github.com/so-fancy/diff-so-fancy/issues/296
-  tt = !git -c 'interactive.diffFilter=less' add --p
+  tt = add -p
   rt = checkout -p
   st = status --short --branch
   stu = status --short --branch -uno
@@ -55,8 +55,6 @@
   autocorrect = 10
 [diff]
   indentHeuristic = true
-[interactive]
-  diffFilter = diff-so-fancy --patch-mode | less --tabs=2 -RFX
 [pull]
   rebase = true
 [merge]
