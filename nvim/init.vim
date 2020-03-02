@@ -383,6 +383,7 @@ map <silent> <Leader>/ :Ag <CR>
 map <silent> <Leader>ag :Ag <CR>
 imap <silent> '' `
 imap <silent> jj <ESC> <CR>
+imap <silent> dddd <C-r>=strftime('%F')<CR>
 
 " abbreviations
 iabbrev mispell misspell
