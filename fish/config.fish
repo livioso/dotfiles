@@ -132,6 +132,7 @@ function fish-set-aliases
   alias ls "exa"
   alias cat "bat"
   alias jw "j w"
+  alias x "notes"
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -226,6 +227,10 @@ function git-lg -d "Git improved log."
     --color \
     --abbrev-commit -7 \
     --pretty=format:(git-pretty-format-1)
+end
+
+function notes
+  nvim $HOME/notes.md
 end
 
 function switch-base16-theme
