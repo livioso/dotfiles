@@ -114,6 +114,9 @@ function fish-set-arbitrary-settings
 end
 
 function fish-set-aliases
+  alias b "cd .."
+  alias ba "cd .."
+  alias back "cd .."
   alias e "exit"
   alias c "clear"
   alias cl "clear"
@@ -121,6 +124,7 @@ function fish-set-aliases
   alias cle "clear"
   alias clea "clear"
   alias cler "clear"
+  alias clar "clear"
   alias clae "clear"
   alias claer "clear"
   alias clare "clear"
@@ -132,7 +136,12 @@ function fish-set-aliases
   alias ls "exa"
   alias cat "bat"
   alias jw "j w"
+  alias jj "j w"
   alias x "notes"
+  alias fzf-nvim "nvim -o (fd -t f | fzf-tmux || echo '.')"
+  alias fzf-cd "cd (fd -t d | fzf-tmux || echo '.')"
+  alias fcd "fzf-cd"
+  alias fn "fzf-nvim"
 
   # read and merge history from disk
   alias hr 'history --merge'
