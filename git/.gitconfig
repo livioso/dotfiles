@@ -27,9 +27,10 @@
   ll = log --cc
   df = diff
   co = checkout
-  # https://github.com/so-fancy/diff-so-fancy/issues/296
+  t = add -p
   tt = add -p
   rt = checkout -p
+  s = status --short --branch
   st = status --short --branch
   stu = status --short --branch -uno
   pushup = push --set-upstream origin HEAD
