@@ -70,6 +70,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> ggx <Plug>(coc-references)
   nmap <silent> ggr <Plug>(coc-rename)
   nmap <silent> ggf :call CocAction('format') <CR>
+  nmap <silent> ggs :call CocAction('runCommand', 'editor.action.organizeImport') <CR>
   nmap <silent> ggn <Plug>(coc-diagnostic-next)
   nmap <silent> ggp <Plug>(coc-diagnostic-prev)
 

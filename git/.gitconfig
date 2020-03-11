@@ -22,6 +22,7 @@
 [alias]
   alias = !fish -c "git-alias"
   lg = !fish -c "git-lg"
+  changed = diff --name-only HEAD
   cia = commit --verbose --untracked-files=no --all
   ci = commit --verbose --untracked-files=no
   ll = log --cc

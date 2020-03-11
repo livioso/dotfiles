@@ -1,6 +1,7 @@
 {
   "python.jediEnabled": false,
   "python.formatting.provider": "black",
+  "python.sortImports.path": "isort",
   "diagnostic.errorSign": "●",
   "diagnostic.warningSign": "●",
   "diagnostic.infoSign": "●",
