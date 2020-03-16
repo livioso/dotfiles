@@ -109,6 +109,9 @@ function fish-set-arbitrary-settings
   export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
   export PYTHONDONTWRITEBYTECODE=1
 
+  # prevent me from not accidentally using the wrong account
+  export AWS_DEFAULT_PROFILE"__SET_ENV_AWS_PROFILE_EXPLICITLY__"
+
   # asdf
   source /usr/local/opt/asdf/asdf.fish
 end
