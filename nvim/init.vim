@@ -134,6 +134,7 @@ Plug 'junegunn/fzf.vim'
     endfunction
 
     autocmd! User FzfStatusLine call <SID>fzf_statusline()
+    command! -nargs=* -complete=dir Cd call fzf#run({'source': 'fd -t d','sink': 'Ntree'})
 
 Plug 'vim-airline/vim-airline'
   let g:airline_detect_spell=0 " changes mode from N > SPELL => N
