@@ -17,4 +17,4 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.Safari ShowFavoritesBar -bool true
 
 # Change login shell
-sudo chsh -s /usr/local/bin/zsh livioso
+sudo chsh -s /bin/zsh livioso
