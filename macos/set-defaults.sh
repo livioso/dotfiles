@@ -17,5 +17,4 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 defaults write com.apple.Safari ShowFavoritesBar -bool true
 
 # Change login shell
-sudo echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-sudo chsh -s /usr/local/bin/fish livioso
+sudo chsh -s /usr/local/bin/zsh livioso
