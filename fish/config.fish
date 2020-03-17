@@ -145,6 +145,7 @@ function fish-set-aliases
   alias fzf-cd "cd (fd -t d | fzf-tmux || echo '.')"
   alias fcd "fzf-cd"
   alias fn "fzf-nvim"
+  alias tsl "tmuxinator start livioso"
 
   # read and merge history from disk
   alias hr 'history --merge'
