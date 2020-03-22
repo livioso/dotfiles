@@ -172,12 +172,30 @@ end
 
 function cd -d "Auto ls for each cd."
   if [ -n $argv[1] ]
+    fasd -A $argv[1]
+
     builtin cd $argv[1]
     and exa
   else
     builtin cd ~
     and exa
   end
+end
+
+function z
+    if test (count $argv) -ne 1
+      return 1
+    end
+    set -l dir (fasd -de "printf %s" "$argv")
+    if test "$dir" = ""
+        echo "✗ no matching directory."
+        return 1
+    end
+    cd $dir
+end
+
+function zz
+    fasd
 end
 
 function osx-battery-percentage -d "Get battery percentage."

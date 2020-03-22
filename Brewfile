@@ -70,6 +70,7 @@ brew 'sox'
 brew 'ipython'
 brew 'pre-commit'
 brew 'fd'
+brew 'fasd'
 
 # apps
 cask 'vlc'
