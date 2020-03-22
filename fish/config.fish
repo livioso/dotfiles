@@ -110,7 +110,7 @@ function fish-set-arbitrary-settings
   export PYTHONDONTWRITEBYTECODE=1
 
   # prevent me from not accidentally using the wrong account
-  export AWS_DEFAULT_PROFILE="__SET_ENV_AWS_PROFILE_EXPLICITLY__"
+  export AWS_PROFILE="set-aws-profile-explicitly"
 
   # asdf
   source /usr/local/opt/asdf/asdf.fish
@@ -277,6 +277,14 @@ complete -c dark -c p --description Mark --no-files -a "
 
 function docker-stop-all-container -d "Stop all running container."
   docker kill (docker ps -q)
+end
+
+function aws-profile
+    set profile (grep "^\[.*]" ~/.aws/credentials | tr -d "[]" | fzf-tmux)
+    if test $profile
+      export AWS_PROFILE=$profile
+      echo "→ AWS Profile '$profile' exported."
+    end
 end
 
 function main
