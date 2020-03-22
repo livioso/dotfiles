@@ -134,7 +134,7 @@ function fish-set-aliases
   alias caler "clear"
   alias celar "clear"
   alias clera "clear"
-  alias grep "grep -n --color"
+  alias grep "grep --color"
   alias ll "exa --long --all"
   alias ls "exa"
   alias cat "bat"
@@ -145,7 +145,10 @@ function fish-set-aliases
   alias fzf-cd "cd (fd -t d | fzf-tmux || echo '.')"
   alias fcd "fzf-cd"
   alias fn "fzf-nvim"
+  alias t "tmuxinator"
   alias tsl "tmuxinator start livioso"
+  alias tmuxinator-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
+  alias t-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
 
   # read and merge history from disk
   alias hr 'history --merge'
