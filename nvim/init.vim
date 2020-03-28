@@ -19,6 +19,8 @@ Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
 Plug 'mxw/vim-jsx'
 
+Plug 'fedorenchik/qt-support.vim'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " extensions:
   " coc-eslint

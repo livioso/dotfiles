@@ -71,6 +71,7 @@ brew 'ipython'
 brew 'pre-commit'
 brew 'fd'
 brew 'fasd'
+brew 'ccls'
 
 # apps
 cask 'vlc'
