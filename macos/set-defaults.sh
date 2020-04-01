@@ -10,6 +10,9 @@ chflags nohidden ~/Library
 defaults write NSGlobalDomain InitialKeyRepeat 15
 defaults write NSGlobalDomain KeyRepeat 2
 
+# disable press and hold
+defaults write -g ApplePressAndHoldEnabled -bool false
+
 # Set the Finder prefs for showing a few different volumes on the Desktop.
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
 
