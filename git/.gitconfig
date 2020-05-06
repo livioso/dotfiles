@@ -47,8 +47,14 @@
   untrackedCache = true
   editor = nvim
   ignorecase = false
-  pager = diff-so-fancy --patch-mode | less --tabs=2 -RFX
   excludesfile = ~/.gitignore
+  # diff-so-fancy
+  # pager = diff-so-fancy --patch-mode | less --tabs=2 -RFX
+  # delta
+  pager = delta
+[interactive]
+  # delta
+  diffFilter = delta --color-only
 [commit]
   template = ~/.gitmessage
 [branch "master"]
