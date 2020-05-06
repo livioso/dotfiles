@@ -20,6 +20,7 @@ Plug 'dag/vim-fish'
 Plug 'mxw/vim-jsx'
 
 Plug 'fedorenchik/qt-support.vim'
+Plug 'posva/vim-vue'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " extensions:
@@ -32,6 +33,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " coc-css
   " coc-python
   " coc-markdownlint
+  " coc-vetur
 
   " https://github.com/neoclide/coc.nvim/issues/1011
   set guicursor=n:blinkon1
@@ -392,6 +394,7 @@ imap <silent> dddd <C-r>=strftime('%F')<CR>
 " abbreviations
 iabbrev mispell misspell
 iabbrev teh the
+iabbrev clog console.log(
 iabbrev ipdb __import__("ipdb").set_trace()
 iabbrev pdb __import__("pdb").set_trace()
 
