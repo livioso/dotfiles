@@ -70,6 +70,7 @@ brew 'pre-commit'
 brew 'fd'
 brew 'fasd'
 brew 'ccls'
+brew 'delta'
 
 # apps
 cask 'vlc'
