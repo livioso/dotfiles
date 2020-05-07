@@ -71,6 +71,7 @@ brew 'fd'
 brew 'fasd'
 brew 'ccls'
 brew 'delta'
+brew 'clang-format'
 
 # apps
 cask 'vlc'
