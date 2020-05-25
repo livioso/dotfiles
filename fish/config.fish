@@ -115,6 +115,10 @@ function fish-set-arbitrary-settings
 
   # asdf
   source /usr/local/opt/asdf/asdf.fish
+
+  # reason:
+  # https://github.com/aws/aws-sdk-cpp/issues/1334
+  export CPLUS_INCLUDE_PATH="/usr/include:/usr/local/include"
 end
 
 function fish-set-aliases
