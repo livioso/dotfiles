@@ -1,6 +1,5 @@
 local application = require "hs.application"
 local window_manager = require('window_manager')
-local clipboard = require('clipboard')
 local util = require('util')
 
 hyper = {"alt", "ctrl", "cmd"}
