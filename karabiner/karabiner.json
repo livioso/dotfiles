@@ -53,6 +53,52 @@
                     "ignore": true,
                     "manipulate_caps_lock_led": false,
                     "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 2330,
+                        "vendor_id": 2321
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "pointing_button": "button2"
+                            },
+                            "to": {
+                                "key_code": "return_or_enter"
+                            }
+                        },
+                        {
+                            "from": {
+                                "pointing_button": "button3"
+                            },
+                            "to": {
+                                "key_code": "delete_or_backspace"
+                            }
+                        },
+                        {
+                            "from": {
+                                "pointing_button": "button4"
+                            },
+                            "to": {
+                                "key_code": "spacebar"
+                            }
+                        },
+                        {
+                            "from": {
+                                "pointing_button": "button1"
+                            },
+                            "to": {
+                                "key_code": "delete_or_backspace"
+                            }
+                        }
+                    ]
                 }
             ],
             "fn_function_keys": [
