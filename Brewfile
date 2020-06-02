@@ -104,6 +104,7 @@ cask 'ghidra'
 cask 'fujitsu-scansnap-manager-s1100'
 cask 'steam'
 cask 'platypus'
+cask 'sourcetrail'
 
 # fonts
 cask 'font-inconsolata'
