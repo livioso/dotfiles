@@ -71,7 +71,7 @@
                                 "pointing_button": "button2"
                             },
                             "to": {
-                                "key_code": "return_or_enter"
+                                "key_code": "left_control"
                             }
                         },
                         {
@@ -95,7 +95,7 @@
                                 "pointing_button": "button1"
                             },
                             "to": {
-                                "key_code": "delete_or_backspace"
+                                "key_code": "return_or_enter"
                             }
                         }
                     ]
