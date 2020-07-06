@@ -105,6 +105,7 @@ cask 'fujitsu-scansnap-manager-s1100'
 cask 'steam'
 cask 'platypus'
 cask 'sourcetrail'
+cask 'hex-fiend'
 
 # fonts
 cask 'font-inconsolata'
