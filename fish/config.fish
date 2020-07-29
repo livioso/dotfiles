@@ -146,6 +146,7 @@ function fish-set-aliases
   alias jw "j w"
   alias jj "j w"
   alias x "notes"
+  alias r "ranger"
   alias fzf-nvim "nvim -o (fd -t f | fzf-tmux || echo '.')"
   alias fzf-cd "cd (fd -t d | fzf-tmux || echo '.')"
   alias fcd "fzf-cd"
