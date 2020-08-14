@@ -10,8 +10,9 @@ function fish-set-path -d "PATH settings"
     /usr/bin \
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
-    /usr/local/opt/asdf/shims/ \
-    /Users/livioso/Code/bin/
+    /Users/livioso/Code/bin/ \
+    /Users/livioso/.nodenv/shims \
+    /Users/livioso/.pyenv/bin/
 end
 
 function fish-set-colors -d "Set colors used by Fish"
@@ -113,12 +114,13 @@ function fish-set-arbitrary-settings
   # prevent me from not accidentally using the wrong account
   export AWS_PROFILE="set-aws-profile-explicitly"
 
-  # asdf
-  source /usr/local/opt/asdf/asdf.fish
-
   # reason:
   # https://github.com/aws/aws-sdk-cpp/issues/1334
   export CPLUS_INCLUDE_PATH="/usr/include:/usr/local/include"
+
+  # pyenv & nodeenv
+  status --is-interactive; and source (pyenv init -|psub)
+  status --is-interactive; and source (nodenv init -|psub)
 end
 
 function fish-set-aliases
