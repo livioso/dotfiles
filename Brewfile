@@ -105,6 +105,7 @@ cask 'steam'
 cask 'platypus'
 cask 'sourcetrail'
 cask 'hex-fiend'
+cask 'maccy'
 
 # fonts
 cask 'font-inconsolata'
