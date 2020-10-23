@@ -71,6 +71,7 @@ brew 'fasd'
 brew 'ccls'
 brew 'delta'
 brew 'clang-format'
+brew 'r'
 
 # apps
 cask 'vlc'
@@ -91,7 +92,6 @@ cask 'virtualbox'
 cask 'paw'
 cask 'ngrok'
 cask 'google-chrome'
-cask 'caskroom/versions/google-chrome-canary'
 cask 'minikube'
 cask 'wireshark'
 cask 'hammerspoon'
@@ -105,6 +105,7 @@ cask 'sourcetrail'
 cask 'hex-fiend'
 cask 'maccy'
 cask 'vimr'
+cask 'rstudio'
 
 # fonts
 cask 'font-inconsolata'
