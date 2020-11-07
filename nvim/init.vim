@@ -272,9 +272,8 @@ set smartcase   " except we write it BOLD then don't ignore case
 highlight VertSplit ctermbg=NONE guibg=NONE
 set fillchars=vert:│
 
-" use rg over grep
-set grepprg=rg\ --vimgrep\ --no-heading
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+" use ag over grep
+set grepprg=ag\ --nogroup\ --nocolor
 
 " add .js suffix for modules (enables gf)
 set suffixesadd+=.js

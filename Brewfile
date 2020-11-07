@@ -70,6 +70,8 @@ brew 'ccls'
 brew 'delta'
 brew 'clang-format'
 brew 'r'
+brew 'ripgrep'
+brew 'isort'
 
 # apps
 cask 'vlc'
