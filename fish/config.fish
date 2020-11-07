@@ -157,6 +157,7 @@ function fish-set-aliases
   alias tsl "tmuxinator start livioso"
   alias tmuxinator-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
   alias t-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
+  alias pan "penvhere && n"
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -168,6 +169,15 @@ end
 
 function source-fish -d "Source fish config."
   source ~/.config/fish/config.fish
+end
+
+function penvhere
+  if test -d .venv
+    if type -q $deactivate
+       deactivate
+    end
+    . .venv/bin/activate.fish
+  end
 end
 
 function n -d "(n)eovim with append . when no args."
