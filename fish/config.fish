@@ -156,8 +156,10 @@ function fish-set-aliases
   alias t "tmuxinator"
   alias tsl "tmuxinator start livioso"
   alias tmuxinator-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
-  alias t-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
-  alias pan "penvhere && n"
+  alias t-stop-all "tmuxinatoc list | sed -n 2p | xargs -n1 tmuxinator stop"
+  alias pan "penvherc && n"
+  alias gst "git st"
+  alias g "git"
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -324,6 +326,19 @@ function aws-profile
       export AWS_PROFILE=$profile
       echo "→ AWS Profile '$profile' exported."
     end
+end
+
+function mute
+  set --local settings (osascript -e "get volume settings")
+  set --local volume (string match -r "input volume:(\d+)" $settings | tail -n1)
+
+  if [ $volume = "0" ]
+    osascript -e "set volume input volume 100"
+    echo "Microphone unmuted → 100"
+  else
+    osascript -e "set volume input volume 0"
+    echo "Microphone muted → 0"
+  end
 end
 
 function main
