@@ -23,7 +23,7 @@ Plug 'fedorenchik/qt-support.vim'
 Plug 'posva/vim-vue'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " extensions:
+  " extensions → :CocInstall <ext>
   " coc-eslint
   " coc-prettier
   " coc-json
@@ -70,20 +70,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
   " coc
+  nmap ggs :CocSearch 
   nmap <silent> ggd <Plug>(coc-definition)
   nmap <silent> ggx <Plug>(coc-references)
   nmap <silent> ggr <Plug>(coc-rename)
-  nmap <silent> ggs :call CocAction('runCommand', 'editor.action.organizeImport') <CR>
+  nmap <silent> ggi :call CocAction('runCommand', 'editor.action.organizeImport') <CR>
   nmap <silent> ggn <Plug>(coc-diagnostic-next)
   nmap <silent> ggp <Plug>(coc-diagnostic-prev)
   nmap <silent> ggf :call CocAction('format') <CR>
   autocmd FileType cpp nmap <silent> ggf :!clang-format -i % <CR>
 
-  " coc used?
-  nmap <silent> ggh :call CocAction('doHover') <CR>
-  nmap <silent> ggy <Plug>(coc-type-definition)
-  nmap <silent> gga <Plug>(coc-codeaction-selected)
-  nmap <silent> ggi <Plug>(coc-implementation)
+  " Probably not used?
+  " nmap <silent> ggh :call CocAction('doHover') <CR>
+  " nmap <silent> ggy <Plug>(coc-type-definition)
+  " nmap <silent> gga <Plug>(coc-codeaction-selected)
+  " nmap <silent> ggi <Plug>(coc-implementation)
 
   " trigger completion
   inoremap <silent><expr> <c-l> coc#refresh()
@@ -273,7 +274,7 @@ highlight VertSplit ctermbg=NONE guibg=NONE
 set fillchars=vert:│
 
 " use ag over grep
-set grepprg=ag\ --nogroup\ --nocolor
+" set grepprg=ag\ --nogroup\ --nocolor
 
 " add .js suffix for modules (enables gf)
 set suffixesadd+=.js
