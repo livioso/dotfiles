@@ -106,6 +106,8 @@ cask 'hex-fiend'
 cask 'maccy'
 cask 'vimr'
 cask 'rstudio'
+cask 'keepassxc'
+cask 'mqtt-explorer'
 
 # fonts
 cask 'font-inconsolata'
