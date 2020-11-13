@@ -121,6 +121,13 @@ function fish-set-arbitrary-settings
   # pyenv & nodeenv
   status --is-interactive; and source (pyenv init -|psub)
   status --is-interactive; and source (nodenv init -|psub)
+
+  # tmux → new pane if sourced
+  # in previous pane:
+  # tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
+  if test $VIRTUAL_ENV
+    source $VIRTUAL_ENV/bin/activate.fish
+  end
 end
 
 function fish-set-aliases
@@ -157,7 +164,7 @@ function fish-set-aliases
   alias tsl "tmuxinator start livioso"
   alias tmuxinator-stop-all "tmuxinator list | sed -n 2p | xargs -n1 tmuxinator stop"
   alias t-stop-all "tmuxinatoc list | sed -n 2p | xargs -n1 tmuxinator stop"
-  alias pan "penvherc && n"
+  alias pan "penvhere && n"
   alias gst "git st"
   alias g "git"
 
