@@ -128,6 +128,9 @@ function fish-set-arbitrary-settings
   if test $VIRTUAL_ENV
     source $VIRTUAL_ENV/bin/activate.fish
   end
+
+  # SHELL
+  export SHELL=/usr/local/bin/fish
 end
 
 function fish-set-aliases
