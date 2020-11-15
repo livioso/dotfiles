@@ -14,31 +14,7 @@
                     "basic.to_if_held_down_threshold_milliseconds": 100,
                     "mouse_motion_to_scroll.speed": 100
                 },
-                "rules": [
-                    {
-                        "description": "Caps Lock to Control when used as modifier, Escape when used alone",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "caps_lock"
-                                },
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "escape",
-                                        "repeat": true
-                                    }
-                                ],
-                                "to_if_held_down": [
-                                    {
-                                        "key_code": "left_control",
-                                        "repeat": true
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
+                "rules": []
             },
             "devices": [
                 {
@@ -68,6 +44,14 @@
                     "simple_modifications": [
                         {
                             "from": {
+                                "pointing_button": "button1"
+                            },
+                            "to": {
+                                "key_code": "return_or_enter"
+                            }
+                        },
+                        {
+                            "from": {
                                 "pointing_button": "button2"
                             },
                             "to": {
@@ -88,14 +72,6 @@
                             },
                             "to": {
                                 "key_code": "spacebar"
-                            }
-                        },
-                        {
-                            "from": {
-                                "pointing_button": "button1"
-                            },
-                            "to": {
-                                "key_code": "return_or_enter"
                             }
                         }
                     ]
