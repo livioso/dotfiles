@@ -1,9 +1,4 @@
-virtualenv
 ipython
 neovim
-flake8
-pipenv
-youtube-dl
-ptpython
 jupyter
-python-language-server
+saws
