@@ -116,15 +116,20 @@ function fish-set-arbitrary-settings
   # https://github.com/aws/aws-sdk-cpp/issues/1334
   export CPLUS_INCLUDE_PATH="/usr/include:/usr/local/include"
 
+  # SHELL
+  export SHELL=/usr/local/bin/fish
+
   # tmux → new pane if sourced
   # in previous pane:
   # tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
   if test $VIRTUAL_ENV
+    # https://github.com/pypa/virtualenv/issues/480
+    set -e _OLD_FISH_PROMPT_OVERRIDE
+    set -e _OLD_VIRTUAL_PYTHONHOME
+    set -e _OLD_VIRTUAL_PATH
     source $VIRTUAL_ENV/bin/activate.fish
   end
 
-  # SHELL
-  export SHELL=/usr/local/bin/fish
 end
 
 function fish-set-aliases
