@@ -72,6 +72,7 @@ brew 'clang-format'
 brew 'r'
 brew 'ripgrep'
 brew 'isort'
+brew 'scrcpy'
 
 # apps
 cask 'vlc'
