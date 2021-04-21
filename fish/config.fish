@@ -10,7 +10,8 @@ function fish-set-path -d "PATH settings"
     /usr/bin \
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
-    /Users/livioso/Code/bin/
+    /Users/livioso/Code/bin/ \
+    /Users/livioso/.poetry/bin
 end
 
 function fish-set-colors -d "Set colors used by Fish"
