@@ -11,6 +11,7 @@ install: \
 
 link:
 	ln -f nvim/init.vim ~/.config/nvim/init.vim
+	ln -f jetbrains/ideavimrc ~/.ideavimrc
 	ln -f nvim/.coc-settings.json ~/.config/nvim/coc-settings.json
 	ln -f fish/config.fish ~/.config/fish/config.fish
 	ln -f tmux/.tmux.conf ~/.tmux.conf

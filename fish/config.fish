@@ -157,7 +157,6 @@ function fish-set-aliases
   alias cat "bat"
   alias jw "j w"
   alias jj "j w"
-  alias x "notes"
   alias r "ranger"
   alias fzf-nvim "nvim -o (fd -t f | fzf-tmux || echo '.')"
   alias fzf-cd "cd (fd -t d | fzf-tmux || echo '.')"
@@ -293,10 +292,6 @@ function git-lg -d "Git improved log."
     --pretty=format:(git-pretty-format-1)
 end
 
-function notes
-  nvim $HOME/notes.md
-end
-
 function switch-base16-theme
   echo $argv > ~/.theme
   load-base16-theme
@@ -319,6 +314,10 @@ function dark -d "Use a favorite dark color scheme."
   else
     switch-base16-theme $argv
   end
+end
+
+function pycharm
+  open -na "PyCharm.app" --args (pwd)/$argv
 end
 
 # completion for dark

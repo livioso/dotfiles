@@ -6,7 +6,6 @@
   "diagnostic.warningSign": "●",
   "diagnostic.infoSign": "●",
   "diagnostic.hintSign": "●",
-  "coc.preferences.hoverTarget": "float",
   "languageserver": {
     "ccls": {
       "command": "ccls",

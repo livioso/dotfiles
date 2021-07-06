@@ -79,6 +79,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> ggp <Plug>(coc-diagnostic-prev)
   nmap <silent> ggf :call CocAction('format') <CR>
   autocmd FileType cpp nmap <silent> ggf :!clang-format -i % <CR>
+  autocmd FileType vue nmap <silent> ggf :w \| !prettier % --write <CR><CR>
 
   " Probably not used?
   " nmap <silent> ggh :call CocAction('doHover') <CR>
@@ -349,6 +350,9 @@ autocmd BufReadPost *
   \ && &filetype != "gitcommit" |
   \   exe "normal g`\"" |
   \ endif
+
+autocmd BufNewFile,BufRead *.txt
+  \ set wrap linebreak nolist
 
 " let self keyword in python stand out a bit
 autocmd FileType python
