@@ -109,6 +109,7 @@ cask 'vimr'
 cask 'rstudio'
 cask 'keepassxc'
 cask 'mqtt-explorer'
+cask 'raycast'
 
 # fonts
 cask 'font-inconsolata'
