@@ -1,0 +1,29 @@
+let mapleader = "\<Space>"
+
+" emulated plugins
+set surround
+set highlightedyank
+
+set ideajoin
+set scrolloff=5
+set incsearch
+set ignorecase
+set smartcase
+
+nnoremap gt *g<C-]>
+nmap ggd :action GotoImplementation<CR>
+nmap ggf :action ReformatCode<CR>
+nmap ggx :action FindUsages<CR>
+nmap ggi :action OptimizeImport<CR>
+nmap ggr :action RenameElement<CR>
+
+
+map <Leader>w :w <CR>
+map <Leader><Leader> <C-w><C-w>
+map <Leader>v :vsplit <CR>
+map <Leader>j :action SearchEverywhere<CR>
+map <Leader>q :action CloseContent<CR>
+map <Leader>Q :action ReopenClosedTab<CR>
+map <Leader>src :source ~/.ideavimrc <CR>
+map gc :action CommentByLineComment<CR>
+imap <silent> '' `
