@@ -54,27 +54,9 @@ install_vim_min:
 	wget https://raw.githubusercontent.com/livioso/vim-sensible/master/plugin/sensible.vim
 	mv sensible.vim ~/.vimrc
 
-setup_asdf:
-	asdf plugin-add python https://github.com/tuvistavie/asdf-python.git
-	asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-	asdf install python 3.6.5
-	asdf install python 2.7
-	asdf global python 3.5.6
-
 install_base16shell:
 	git -C ~/.config/base16-shell pull || \
 		git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
-update_base16shell:
-	cd ~/.config/base16-shell && git pull
-
 macos_set_defaults:
 	sh macos/set-defaults.sh
-
-cleanup:
-	brew cleanup
-	brew cask cleanup
-
-doctor:
-	brew doctor
-	tmuxinator doctor
