@@ -96,7 +96,7 @@ function fish-set-arbitrary-settings
   # style key bindings, default behaviour before fish 2.4
   # https://github.com/fish-shell/fish-shell/issues/3556
   set -g -x fish_key_bindings "fish_hybrid_key_bindings"
-  set fish_greeting ""
+  set -U fish_greeting ""
   set -Ux fish_term256
   set -g -x EDITOR "nvim"
 

@@ -7,7 +7,6 @@ install: \
 	install_base16shell \
 	macos_set_defaults \
 	link \
-	cleanup
 
 link:
 	ln -f nvim/init.vim ~/.config/nvim/init.vim
@@ -17,11 +16,8 @@ link:
 	ln -f tmux/.tmux.conf ~/.tmux.conf
 	ln -f git/.gitmessage ~/.gitmessage
 	ln -f git/.gitconfig ~/.gitconfig
-	ln -f python/.ipython ~/.ipython/profile_default/ipython_config.py
-	ln -f python/.pdbrc ~/.pdbrc
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 	ln -f karabiner/karabiner.json ~/.config/karabiner/karabiner.json
-	ln -f hammerspoon/*.lua ~/.hammerspoon/
 	ln -f .theme ~/.theme
 
 prepare_dirs:
@@ -31,7 +27,6 @@ prepare_dirs:
 	mkdir -p ~/.ipython/profile_default
 	mkdir -p ~/Library/KeyBindings
 	mkdir -p ~/.config/karabiner/
-	mkdir -p ~/.hammerspoon/
 
 install_brew:
 	brew tap Homebrew/bundle
@@ -42,7 +37,7 @@ install_gems:
 	bundle install --system
 
 install_pips:
-	pip install -r Pipfile
+	pip3 install -r Pipfile
 
 install_vim:
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
