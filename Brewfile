@@ -44,6 +44,7 @@ brew 'delta'
 brew 'ripgrep'
 brew 'isort'
 brew 'scrcpy'
+brew 'smudge/smudge/nightlight'
 
 # apps
 # cask 'arq'
