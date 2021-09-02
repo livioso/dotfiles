@@ -50,11 +50,9 @@
   excludesfile = ~/.gitignore
   # diff-so-fancy
   # pager = diff-so-fancy --patch-mode | less --tabs=2 -RFX
-  # delta
-  # pager = delta
+  pager = delta
 [interactive]
-  # delta
-  # diffFilter = delta --color-only --features=interactive
+  diffFilter = delta --color-only --features=interactive
 [commit]
   template = ~/.gitmessage
 [branch "master"]
