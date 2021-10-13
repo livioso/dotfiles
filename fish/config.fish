@@ -2,6 +2,7 @@
 # we still use the pre-installed versions instead of brew's
 function fish-set-path -d "PATH settings"
   set PATH \
+    /opt/homebrew/bin/ \
     /usr/local/opt/libressl/bin \
     /usr/local/bin \
     /usr/local/sbin \
@@ -10,8 +11,7 @@ function fish-set-path -d "PATH settings"
     /usr/bin \
     /usr/sbin \
     /usr/local/share/git-core/contrib/diff-highlight \
-    /Users/livioso/Code/bin/ \
-    /Users/livioso/.poetry/bin
+    /Users/livioso/Code/bin/
 end
 
 function fish-set-colors -d "Set colors used by Fish"
@@ -57,29 +57,29 @@ function fish_mode_prompt -d "Displays the current mode."
   echo -n ' '
 end
 
-function fish_prompt -d "Write out the prompt"
-  if not set -q __fish_prompt_normal
-    set -g __fish_prompt_normal (set_color normal)
-  end
-
-  set_color green
-  # printf (basename (pwd))
-  printf (prompt_pwd)
-
-  if git-is-repo
-    set_color brgrey
-    printf ' on '
-
-    set_color blue
-    printf (git rev-parse --abbrev-ref HEAD)
-  end
-
-  printf "\n"
-  set_color brgrey
-  printf '❯ '
-
-  set_color normal
-end
+#function fish_prompt -d "Write out the prompt"
+#  if not set -q __fish_prompt_normal
+#    set -g __fish_prompt_normal (set_color normal)
+#  end
+#
+#  set_color green
+#  # printf (basename (pwd))
+#  printf (prompt_pwd)
+#
+#  if git-is-repo
+#    set_color brgrey
+#    printf ' on '
+#
+#    set_color blue
+#    printf (git rev-parse --abbrev-ref HEAD)
+#  end
+#
+#  printf "\n"
+#  set_color brgrey
+#  printf '❯ '
+#
+#  set_color normal
+#end
 
 function fish-set-fzf-environment-variables
   set -U FZF_TMUX 1
@@ -96,7 +96,7 @@ function fish-set-arbitrary-settings
   # style key bindings, default behaviour before fish 2.4
   # https://github.com/fish-shell/fish-shell/issues/3556
   set -g -x fish_key_bindings "fish_hybrid_key_bindings"
-  set fish_greeting ""
+  set -U fish_greeting ""
   set -Ux fish_term256
   set -g -x EDITOR "nvim"
 
@@ -118,7 +118,7 @@ function fish-set-arbitrary-settings
   export CPLUS_INCLUDE_PATH="/usr/include:/usr/local/include"
 
   # SHELL
-  export SHELL=/usr/local/bin/fish
+  export SHELL=/opt/homebrew/bin/fish
 
   # tmux → new pane if sourced
   # in previous pane:
@@ -193,9 +193,9 @@ end
 
 function n -d "(n)eovim with append . when no args."
   if test (count $argv) -eq 0
-    /usr/local/bin/nvim .
+    nvim .
   else
-    /usr/local/bin/nvim $argv
+    nvim $argv
   end
 end
 

@@ -31,7 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " coc-vetur
   " coc-html
   " coc-css
-  " coc-python
+  " coc-pyright or coc-python
   " coc-markdownlint
   " coc-vetur
 
@@ -89,6 +89,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " trigger completion
   inoremap <silent><expr> <c-l> coc#refresh()
+
+  let g:coc_node_path = '/opt/homebrew/bin/node'
 
 Plug 'machakann/vim-highlightedyank'
   let g:highlightedyank_highlight_duration = 150
@@ -431,8 +433,3 @@ function! AlternateForCurrentFile()
   endif
   return new_file
 endfunction
-
-" minor color tweaks: search coloring
-highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
-highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
-highlight EndOfBuffer ctermfg=black ctermbg=black
