@@ -31,7 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " coc-vetur
   " coc-html
   " coc-css
-  " coc-python
+  " coc-pyright or coc-python
   " coc-markdownlint
   " coc-vetur
 
@@ -433,8 +433,3 @@ function! AlternateForCurrentFile()
   endif
   return new_file
 endfunction
-
-" minor color tweaks: search coloring
-highlight Search cterm=NONE ctermfg=black ctermbg=lightgrey
-highlight IncSearch cterm=NONE ctermfg=black ctermbg=lightgreen
-highlight EndOfBuffer ctermfg=black ctermbg=black
