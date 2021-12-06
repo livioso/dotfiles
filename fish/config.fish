@@ -84,6 +84,7 @@ end
 #end
 
 function fish-set-fzf-environment-variables
+  set -U HOMEBREW_NO_AUTO_UPDATE 1
   set -U FZF_TMUX 1
   set -U FZF_TMUX_HEIGHT 33%
   set -g -x FZF_DEFAULT_OPTS --color=16 # use 16 color for fzf
@@ -171,6 +172,7 @@ function fish-set-aliases
   alias pan "penvhere && n"
   alias gst "git st"
   alias g "git"
+  alias n "nvim"
 
   # read and merge history from disk
   alias hr 'history --merge'
@@ -193,13 +195,13 @@ function penvhere
   end
 end
 
-function n -d "(n)eovim with append . when no args."
-  if test (count $argv) -eq 0
-    nvim .
-  else
-    nvim $argv
-  end
-end
+# function n -d "(n)eovim with append . when no args."
+#   if test (count $argv) -eq 0
+#     nvim
+#   else
+#     nvim $argv
+#   end
+# end
 
 function cd -d "Auto ls for each cd."
   if [ -n $argv[1] ]

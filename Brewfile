@@ -45,6 +45,7 @@ brew 'ripgrep'
 brew 'isort'
 brew 'scrcpy'
 brew 'smudge/smudge/nightlight'
+brew 'KDAB/gammaray'
 
 # apps
 # cask 'arq'

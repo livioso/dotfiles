@@ -1,4 +1,4 @@
-set shell=/bin/bash
+set shell=/opt/homebrew/bin/fish
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
@@ -20,7 +20,16 @@ Plug 'dag/vim-fish'
 Plug 'mxw/vim-jsx'
 
 Plug 'fedorenchik/qt-support.vim'
+Plug 'github/copilot.vim'
 Plug 'posva/vim-vue'
+
+Plug 'octol/vim-cpp-enhanced-highlight'
+  let g:cpp_class_scope_highlight = 1
+  let g:cpp_member_variable_highlight = 1
+  let g:cpp_class_decl_highlight = 1
+  let g:cpp_posix_standard = 1
+
+Plug 'rmagatti/auto-session'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " extensions → :CocInstall <ext>
@@ -78,6 +87,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> ggn <Plug>(coc-diagnostic-next)
   nmap <silent> ggp <Plug>(coc-diagnostic-prev)
   nmap <silent> ggf :call CocAction('format') <CR>
+  autocmd FileType cpp nmap <silent> ggt :call HeaderToggle()<CR>
   autocmd FileType cpp nmap <silent> ggf :!clang-format -i % <CR>
   autocmd FileType vue nmap <silent> ggf :w \| !prettier % --write <CR><CR>
 
@@ -122,6 +132,7 @@ Plug 'junegunn/fzf',
   \ { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'junegunn/fzf.vim'
+  let g:fzf_history_dir = '~/.fzf_history'
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
   let g:fzf_layout = { 'down': '~25%' }
   let g:fzf_colors =
@@ -224,6 +235,9 @@ set viminfo=h,'1000,<1000,s1000,/1000,:1000
 " cursor styling, blinking cursor in insert mode
 set guicursor=i-ci:ver30-iCursor-blinkwait10-blinkon150-blinkoff150
 
+" suggestions
+set pumheight=5
+
 " persistent undo
 set undodir=~/.vimundo/
 set undolevels=5000
@@ -306,7 +320,7 @@ hi SpellCap cterm=underline
 hi SpellLocal cterm=underline
 
 " messages
-set shortmess+=I " remove startup message
+" set shortmess+=I " remove startup message
 set shortmess+=w " [w] instead of written
 set shortmess+=c
 
@@ -421,6 +435,7 @@ function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':vsp ' . new_file
 endfunction
+
 function! AlternateForCurrentFile()
   let current_file = expand("%")
   let new_file = current_file
@@ -432,4 +447,29 @@ function! AlternateForCurrentFile()
     let new_file = substitute(new_file, '_test\.py$', '.py', '')
   endif
   return new_file
+endfunction
+
+function! HeaderToggle() " bang for overwrite when saving vimrc
+let file_path = expand("%")
+let file_name = expand("%<")
+let extension = split(file_path, '\.')[-1] " '\.' is how you really split on dot
+let err_msg = "There is no file "
+
+if extension == "cpp"
+    let next_file = join([file_name, ".h"], "")
+
+    if filereadable(next_file)
+    :e %<.h
+    else
+        echo join([err_msg, next_file], "")
+    endif
+elseif extension == "h"
+    let next_file = join([file_name, ".cpp"], "")
+
+    if filereadable(next_file)
+        :e %<.cpp
+    else
+        echo join([err_msg, next_file], "")
+    endif
+endif
 endfunction
