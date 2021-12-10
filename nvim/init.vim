@@ -116,12 +116,6 @@ Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
 
 Plug 'benmills/vimux'
-  function! VimuxRunDockerComposeTest()
-    :call VimuxRunCommand("docker-compose run test")
-  endfunction
-
-  command! VimuxRunDockerComposeTest :call VimuxRunDockerComposeTest()
-  command! DockerComposeRunTestVimux :call VimuxRunDockerComposeTest()
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
