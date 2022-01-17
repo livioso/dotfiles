@@ -29,7 +29,12 @@ Plug 'octol/vim-cpp-enhanced-highlight'
   let g:cpp_class_decl_highlight = 1
   let g:cpp_posix_standard = 1
 
-Plug 'rmagatti/auto-session'
+if has("gui_running")
+  "
+else
+  Plug 'rmagatti/auto-session'
+endif
+
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " extensions → :CocInstall <ext>
@@ -115,7 +120,9 @@ Plug 'wincent/loupe'
 Plug 'chriskempson/base16-vim'
   let base16colorspace = 256
 
-Plug 'benmills/vimux'
+if executable('tmux')
+  Plug 'benmills/vimux'
+endif
 
 Plug 'tyru/open-browser.vim'
   let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -187,7 +194,7 @@ call plug#end()
 " General settings
 set background=dark
 colorscheme base16-oceanicnext    " also nice: base16-eighties
-language C                        " LC=C where C is default
+" language C                        " LC=C where C is default
 command! Wq wq                    " map Wq => wq
 let mapleader = "\<Space>"        " set leader key to space
 set mouse=a                       " a = all
