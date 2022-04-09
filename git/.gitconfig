@@ -53,8 +53,6 @@
   pager = delta
 [interactive]
   diffFilter = delta --color-only --features=interactive
-[commit]
-  template = ~/.gitmessage
 [branch "master"]
   mergeoptions = --no-ff
 [help]

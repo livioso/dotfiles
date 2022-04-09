@@ -13,7 +13,8 @@ function fish-set-path -d "PATH settings"
     /usr/local/share/git-core/contrib/diff-highlight \
     /Users/livioso/Code/bin/ \
     /Users/livioso/Qt/5.15.2/clang_64/bin \
-    /Users/livioso/Qt/5.15.2/clang_64/bin/qml.app/Contents/MacOS/
+    /Users/livioso/Qt/5.15.2/clang_64/bin/qml.app/Contents/MacOS/ \
+    /Users/livioso/Qt/Tools/QtInstallerFramework/4.2/bin/
 end
 
 function fish-set-colors -d "Set colors used by Fish"
