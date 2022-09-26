@@ -14,7 +14,6 @@ link:
 	ln -f nvim/.coc-settings.json ~/.config/nvim/coc-settings.json
 	ln -f fish/config.fish ~/.config/fish/config.fish
 	ln -f tmux/.tmux.conf ~/.tmux.conf
-	ln -f git/.gitmessage ~/.gitmessage
 	ln -f git/.gitconfig ~/.gitconfig
 	ln -f macos/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 	ln -f karabiner/karabiner.json ~/.config/karabiner/karabiner.json

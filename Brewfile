@@ -69,6 +69,8 @@ cask 'vimr'
 cask 'keepassxc'
 cask 'raycast'
 cask 'monitorcontrol'
+cask 'onyx'
+cask 'shottr'
 
 # fonts
 cask 'font-inconsolata'

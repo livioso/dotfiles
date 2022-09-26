@@ -1,4 +1,4 @@
-set shell=/opt/homebrew/bin/fish
+set shell=/bin/zsh
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive' " => vim-fugitive before vim-airline!
@@ -18,10 +18,11 @@ Plug 'tpope/vim-repeat'
 Plug 'wincent/terminus'
 Plug 'dag/vim-fish'
 Plug 'mxw/vim-jsx'
-
 Plug 'fedorenchik/qt-support.vim'
-Plug 'github/copilot.vim'
 Plug 'posva/vim-vue'
+
+Plug 'github/copilot.vim'
+  let g:copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
 
 Plug 'octol/vim-cpp-enhanced-highlight'
   let g:cpp_class_scope_highlight = 1
@@ -175,19 +176,19 @@ Plug 'vim-airline/vim-airline'
   let g:airline_section_c = "%f %m"
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
-  let g:airline_mode_map = {
-      \ '__' : '-',
-      \ 'n'  : 'N',
-      \ 'i'  : 'I',
-      \ 'R'  : 'R',
-      \ 'c'  : 'C',
-      \ 'v'  : 'V',
-      \ 'V'  : 'V',
-      \ '' : 'V',
-      \ 's'  : 'S',
-      \ 'S'  : 'S',
-      \ '' : 'S',
-      \ }
+  " let g:airline_mode_map = {
+  "     \ '__' : '-',
+  "     \ 'n'  : 'N',
+  "     \ 'i'  : 'I',
+  "     \ 'R'  : 'R',
+  "     \ 'c'  : 'C',
+  "     \ 'v'  : 'V',
+  "     \ 'V'  : 'V',
+  "     \ '' : 'V',
+  "     \ 's'  : 'S',
+  "     \ 'S'  : 'S',
+  "     \ '' : 'S',
+  "     \ }
 
 call plug#end()
 
