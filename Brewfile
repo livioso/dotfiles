@@ -46,6 +46,7 @@ brew 'scrcpy'
 brew 'smudge/smudge/nightlight'
 brew 'KDAB/gammaray'
 brew 'saulpw/vd/visidata'
+brew 'lnav'
 
 # apps
 # cask 'arq'

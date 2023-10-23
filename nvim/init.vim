@@ -8,7 +8,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'RRethy/vim-illuminate'
 Plug 'junegunn/vim-peekaboo'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'jparise/vim-graphql'
 Plug 'wellle/targets.vim'
@@ -23,6 +22,9 @@ Plug 'posva/vim-vue'
 
 Plug 'github/copilot.vim'
   let g:copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
+  let g:copilot_filetypes = {
+   \ '*': v:true,
+   \ }
 
 Plug 'octol/vim-cpp-enhanced-highlight'
   let g:cpp_class_scope_highlight = 1
@@ -49,6 +51,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " coc-pyright or coc-python
   " coc-markdownlint
   " coc-vetur
+  " coc-pairs
 
   " https://github.com/neoclide/coc.nvim/issues/1011
   set guicursor=n:blinkon1
@@ -59,13 +62,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   hi link CocInfoSign DiffChange
   hi link CocHintSign DiffChange
 
-  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
     \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-  inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+  " inoremap <silent><expr> <TAB>
+  "   \ pumvisible() ? "\<C-n>" :
+  "   \ <SID>check_back_space() ? "\<TAB>" :
+  "   \ coc#refresh()
 
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -329,9 +332,6 @@ set shortmess+=c
 " hide tool bar
 set showtabline=0
 set tabpagemax=0
-
-" printing options (print using :hardcopy)
-set printoptions=portrait:n "landscape
 
 " clear search on when hitting return
 nnoremap <silent> <CR> :nohlsearch <CR>

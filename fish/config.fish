@@ -14,7 +14,7 @@ function fish-set-path -d "PATH settings"
     /Users/livioso/Code/bin/ \
     /Users/livioso/Qt/5.15.2/clang_64/bin \
     /Users/livioso/Qt/5.15.2/clang_64/bin/qml.app/Contents/MacOS/ \
-    /Users/livioso/Qt/Tools/QtInstallerFramework/4.2/bin/
+    /Users/livioso/Qt/Tools/QtInstallerFramework/4.4/bin/
 end
 
 function fish-set-colors -d "Set colors used by Fish"
@@ -368,3 +368,5 @@ function main
 end
 
 main
+
+source /Users/livioso/.docker/init-fish.sh || true # Added by Docker Desktop
