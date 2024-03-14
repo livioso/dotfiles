@@ -174,6 +174,7 @@ function fish-set-aliases
   alias gst "git st"
   alias g "git"
   alias n "nvim"
+  alias copilot "gh copilot suggest"
 
   # read and merge history from disk
   alias hr 'history --merge'

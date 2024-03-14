@@ -98,6 +98,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   nmap <silent> ggf :call CocAction('format') <CR>
   autocmd FileType cpp nmap <silent> ggt :call HeaderToggle()<CR>
   autocmd FileType cpp nmap <silent> ggf :!clang-format -i % <CR>
+  autocmd FileType c nmap <silent> ggf :!clang-format -i % <CR>
   autocmd FileType vue nmap <silent> ggf :w \| !prettier % --write <CR><CR>
 
   " Probably not used?
@@ -252,12 +253,23 @@ set undofile
 set wildmenu
 set wildignore+=*/node_modules/*
 
-" netrw show tree view
-let g:netrw_liststyle = 3
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-let g:netrw_preview = 1   "(p)review on vertical split
-let g:netrw_winsize = 40
-let g:netrw_alto = 0
+" side file explorer
+let g:netrw_altv=1
+let g:netrw_banner=0
+let g:netrw_winsize=20
+let g:netrw_liststyle=3
+let g:netrw_bufsettings='noma nomod nu nobl nowrap ro'
+let g:native_sidebar_shortcut = '<c-b>'
+exe 'nnoremap <silent> ' g:native_sidebar_shortcut ' :Lexplore %:p:h<cr>'
+exe 'vnoremap <silent> ' g:native_sidebar_shortcut ' :Lexplore %:p:h<cr>'
+exe 'inoremap <silent> ' g:native_sidebar_shortcut ' <esc>:Lexplore %:p:h<cr>'
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+function! NetrwMapping()
+  nmap <buffer> <c-l> <c-w>l
+endfunction
 
 " disable all bells
 set belloff=all
@@ -345,6 +357,10 @@ autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
 " automatically resize splits equally on resize
 autocmd VimResized * execute "normal \<C-w>="
 
+" ino (arduino) files are c files
+autocmd BufNewFile,BufRead .ino
+  \ set filetype=c
+
 " treat eslintrc as JSON
 autocmd BufNewFile,BufRead .eslintrc
   \ set filetype=json
@@ -401,11 +417,10 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 map <Leader>w :w <CR>
 map <Leader><Leader> <C-w><C-p>
-map <Leader>v :vsplit .<CR>
+map <Leader>v :vsplit<CR>
 map <Leader>q :q <CR>
 map <Leader>b :VimuxRunLastCommand<CR>
 map <Leader>erc :e ~/.dotfiles/nvim/init.vim <CR>
-map <leader>a :call OpenTestAlternate()<CR>
 map <silent> <Leader>j :GFiles <CR>
 map <silent> <Leader>J :FZF <CR>
 map <silent> <Leader>/ :Ag <CR>
@@ -431,25 +446,6 @@ function! PrettyPrintJSON()
   exe '%!python -m json.tool'
 endfunction
 command! PrettyPrintJSON :call PrettyPrintJSON()
-
-" toggle between foo.py and foo_test.py
-function! OpenTestAlternate()
-  let new_file = AlternateForCurrentFile()
-  exec ':vsp ' . new_file
-endfunction
-
-function! AlternateForCurrentFile()
-  let current_file = expand("%")
-  let new_file = current_file
-  let in_test = match(current_file, '_test\.py$') != -1
-  let going_to_test = !in_test
-  if going_to_test
-    let new_file = substitute(new_file, '\.e\?py$', '_test.py', '')
-  else
-    let new_file = substitute(new_file, '_test\.py$', '.py', '')
-  endif
-  return new_file
-endfunction
 
 function! HeaderToggle() " bang for overwrite when saving vimrc
 let file_path = expand("%")
