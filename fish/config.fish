@@ -156,8 +156,7 @@ function fish-set-aliases
   alias celar "clear"
   alias clera "clear"
   alias grep "grep --color"
-  alias ll "exa --long --all"
-  alias ls "exa"
+  alias ll "ls -la"
   alias cat "bat"
   alias jw "j w"
   alias jj "j w"
@@ -210,10 +209,10 @@ function cd -d "Auto ls for each cd."
     fasd -A $argv[1]
 
     builtin cd $argv[1]
-    and exa
+    and ls -la
   else
     builtin cd ~
-    and exa
+    and ls -la
   end
 end
 
