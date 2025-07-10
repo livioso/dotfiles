@@ -27,3 +27,7 @@ map <Leader>Q :action ReopenClosedTab<CR>
 map <Leader>src :source ~/.ideavimrc <CR>
 map gc :action CommentByLineComment<CR>
 imap <silent> '' `
+
+map <Leader>b :action Run<CR>
+
+

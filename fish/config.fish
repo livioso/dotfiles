@@ -14,7 +14,8 @@ function fish-set-path -d "PATH settings"
     /Users/livioso/Code/bin/ \
     /Users/livioso/Qt/5.15.2/clang_64/bin \
     /Users/livioso/Qt/5.15.2/clang_64/bin/qml.app/Contents/MacOS/ \
-    /Users/livioso/Qt/Tools/QtInstallerFramework/4.4/bin/
+    /Users/livioso/Qt/Tools/QtInstallerFramework/4.4/bin/ \
+    /Users/livioso/.local/bin
 end
 
 function fish-set-colors -d "Set colors used by Fish"
@@ -177,6 +178,8 @@ function fish-set-aliases
 
   # read and merge history from disk
   alias hr 'history --merge'
+
+  alias aider 'aider --completion-menu-current-color "#FFFFFF" --completion-menu-bg-color "#FFFFFF" --completion-menu-color "#111111"'
 end
 
 function fish-set-abbreviations
@@ -370,3 +373,6 @@ end
 main
 
 source /Users/livioso/.docker/init-fish.sh || true # Added by Docker Desktop
+
+# uv
+fish_add_path "/Users/livioso/.local/bin"
